@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="二维码 - 扫描、分离隐藏文件，暴力破解压缩包 ①binwalk扫描文件：发现隐藏文件，藏了一个压缩包在图片中。     ②分离隐藏文件：四种方法https:&#x2F;&#x2F;www.cnblogs.com&#x2F;jiaxinguoguo&#x2F;p&#x2F;7351202.html （1）dd命令分离隐藏文件：dd if&#x3D;QR_code.png of&#x3D;flag1.zip skip&#x3D;471 bs&#x3D;1  ​    ※bs为其他值会报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coriiiander&#39;blog">
+<meta property="og:url" content="http://example.com/2022/02/12/buuMisc/index.html">
+<meta property="og:site_name" content="Coriiiander&#39;blog">
+<meta property="og:description" content="二维码 - 扫描、分离隐藏文件，暴力破解压缩包 ①binwalk扫描文件：发现隐藏文件，藏了一个压缩包在图片中。     ②分离隐藏文件：四种方法https:&#x2F;&#x2F;www.cnblogs.com&#x2F;jiaxinguoguo&#x2F;p&#x2F;7351202.html （1）dd命令分离隐藏文件：dd if&#x3D;QR_code.png of&#x3D;flag1.zip skip&#x3D;471 bs&#x3D;1  ​    ※bs为其他值会报">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="og:image" content="d:/CTF/notes">
+<meta property="article:published_time" content="2022-02-12T03:59:05.932Z">
+<meta property="article:modified_time" content="2022-03-02T03:32:24.159Z">
+<meta property="article:author" content="六月二十日香菜">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/CTF/notes">
+
+<link rel="canonical" href="http://example.com/2022/02/12/buuMisc/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | Coriiiander'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Coriiiander'blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Coriiiander'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/12/buuMisc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="六月二十日香菜">
+      <meta itemprop="description" content="凡是过往，皆为序章">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coriiiander'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-12 11:59:05" itemprop="dateCreated datePublished" datetime="2022-02-12T11:59:05+08:00">2022-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-02 11:32:24" itemprop="dateModified" datetime="2022-03-02T11:32:24+08:00">2022-03-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<h4 id="二维码-扫描、分离隐藏文件，暴力破解压缩包"><a href="#二维码-扫描、分离隐藏文件，暴力破解压缩包" class="headerlink" title="二维码 - 扫描、分离隐藏文件，暴力破解压缩包"></a>二维码 - 扫描、分离隐藏文件，暴力破解压缩包</h4></blockquote>
+<p>①<strong>binwalk扫描文件</strong>：发现隐藏文件，藏了一个压缩包<strong>在图片中</strong>。</p>
+<img src="D:\CTF\notes' pictures\binwalkQR.png" alt="binwalkQR" style="zoom:70%;" />
+
+
+
+<p>②<strong>分离隐藏文件</strong>：四种方法<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiaxinguoguo/p/7351202.html">https://www.cnblogs.com/jiaxinguoguo/p/7351202.html</a></p>
+<p>（1）<strong>dd命令</strong>分离隐藏文件：<code>dd if=QR_code.png of=flag1.zip skip=471 bs=1</code> </p>
+<p>​    ※bs为其他值会报错“无法跳至指定偏移量”，且文件不正常。</p>
+<ul>
+<li><p><strong>LINUX dd命令：</strong></p>
+<p>dd命令主要用来块拷贝一个指定大小的文件，并在拷贝的同时进行指定的转换。<u>参数注释：</u></p>
+<p>1.if=文件名：输入文件名，缺省为标准输入。即指定源文件。&lt; if=input file &gt;</p>
+<p>2.of=文件名：输出文件名，缺省为标准输出。即指定目的文件。&lt; of=output file &gt;</p>
+<p>3.skip=blocks：从输入文件开头跳过blocks个块后再开始复制。</p>
+<p>4.bs=bytes：设置读入/输出的块大小为bytes个字节。</p>
+<p>……可以灵活使用参数进行<u>磁盘测试</u>etc.</p>
+</li>
+</ul>
+<img src="D:\CTF\notes' pictures\binwalk更改skip.png" alt="binwalk更改skip" style="zoom:67%;" />
+
+<p>（2）也可在<font color=#00BFFF>一定环境配置(java)下</font>使用**<code>binwalk -e</code>**来分离文件。</p>
+<img src="D:\CTF\notes' pictures\binwalk -e报错.png" alt="binwalk -e报错" style="zoom:70%;" />
+
+
+
+<p>③破解压缩包密码</p>
+<p>（1）<strong>fcrackzip</strong>暴力破解<strong>zip</strong>压缩包密码：下载安装<code>sudo apt-get install fcrackzip</code>，命令<code>fcrackzip -b -c1 -l 1-4 -u /home/vivi/flag1.zip</code></p>
+<ul>
+<li>参数解释：-b 暴力破解模式，-c 指定掩码类型（a=a-z; 1=0-9; !=特殊字符），-l 密码长度，-u 压缩文件名</li>
+</ul>
+<p>※只能破解zip，rar就不行了。</p>
+<p>（2）<strong>rar</strong>用<strong>ARCHPR</strong>：注意设置攻击类型、范围与掩码。</p>
+<ul>
+<li><font color=#00BFFF>攻击类型</font></li>
+</ul>
+<blockquote>
+<h4 id="N种方法解决"><a href="#N种方法解决" class="headerlink" title="N种方法解决"></a>N种方法解决</h4></blockquote>
+<p>1.万能的txt读程序源码</p>
+<p>2.用html加载图片</p>
+<img src="D:\CTF\notes' pictures\html加载图片.png" alt="html加载图片" style="zoom:67%;" />
+
+
+
+<blockquote>
+<h4 id="文件中的秘密"><a href="#文件中的秘密" class="headerlink" title="文件中的秘密"></a>文件中的秘密</h4></blockquote>
+<p>图片属性中也能藏信息</p>
+<blockquote>
+<h4 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a><font color=#00BFFF>wireshark</font></h4></blockquote>
+<p>wireshark&amp;被嗅探的流量两题，不知道wireshark怎么用。</p>
+<blockquote>
+<h4 id="LSB隐写"><a href="#LSB隐写" class="headerlink" title="LSB隐写"></a>LSB隐写</h4></blockquote>
+<p>只可在无损压缩或者无压缩的图片（.bmp）上实现lsb隐写。</p>
+<p>.jpg：对像数进行了<strong>有损</strong>压缩，<strong>无法用LSB隐写</strong>。</p>
+<p>.bmp：把所有的像数都按原样储存，一般特别大，<strong>没有进行压缩</strong>。可LSB隐写。</p>
+<p>.png：一种<strong>无损</strong>压缩的位图片形格式。可LSB隐写。</p>
+<p>图像像数一般由RGB三原色（红绿蓝）组成，每一种颜色占用8位，取值范围为0x00~0xFF，即共有256种颜色，一共包含了256的3次方的颜色，即16777216种颜色。而人类的眼睛可以区分约1000万种不同的颜色，这就意味着人类的眼睛无法区分余下的大约6777216种颜色。</p>
+<img src="D:\CTF\notes' pictures\RGB.png" alt="RGB" style="zoom:50%;" />
+
+<p>LSB隐写就是修改RGB颜色分量的最低二进制位也就是最低有效位（LSB），而人类的眼睛不会注意到这前后的变化，每个像数可以携带<strong>3比特</strong>的信息。</p>
+<img src="D:\CTF\notes' pictures\最低有效位.png" alt="最低有效位" style="zoom: 35%;" />
+
+<p>图片通道：一幅完整的图像，红色绿色蓝色三个通道缺一不可。</p>
+<blockquote>
+<p>（PhotoShop中）关闭红色通道，图像偏青色；关闭绿色通道，图像偏红色；关闭蓝色通道，图像偏黄色；Alpha通道是一个8位的灰度通道，也可理解为透明度。</p>
+</blockquote>
+<p>配置java环境后用<strong>Stegsolve</strong>打开LSB隐写的图片，查看<code>Red plane 0</code>、<code>Grenn plane 0</code>、<code>Blue plane0</code>通道上方有东西，调整保存DataAnalyse数据生成图片。</p>
+<img src="D:\CTF\notes' pictures\Stegsolve_BluePlane0.png" alt="Stegsolve_BluePlane0" style="zoom:50%;" />
+
+<img src="D:\CTF\notes' pictures\StegsolveDataExtract.png" alt="StegsolveDataExtract" style="zoom:55%;" />
+
+
+
+<blockquote>
+<h4 id="zip伪加密-十六进制编辑器"><a href="#zip伪加密-十六进制编辑器" class="headerlink" title="zip伪加密 - 十六进制编辑器"></a>zip伪加密 - 十六进制编辑器</h4></blockquote>
+<p>010editor template下载相关插件，修改参数。</p>
+<p>zip伪加密：不需要真的解密，修改相应参数后再打开就不用密码了。一般在压缩源文件数据区全局方式位标记处，真加密为 09 00，伪加密为00 00，而这道题把两处标记全改过了，所以应当改两处。</p>
+<img src="D:\CTF\notes' pictures\伪加密标记位.png" alt="伪加密标记位" style="zoom:70%;" />
+
+<img src="D:\CTF\notes' pictures\010editor改参数.png" alt="010editor改参数" style="zoom:65%;" />
+
+
+
+<blockquote>
+<h4 id="另外一个世界"><a href="#另外一个世界" class="headerlink" title="另外一个世界"></a>另外一个世界</h4></blockquote>
+<p>二进制八个一组转ASCII码</p>
+<blockquote>
+<h4 id="FLAG"><a href="#FLAG" class="headerlink" title="FLAG"></a>FLAG</h4></blockquote>
+<p>.png中隐藏.zlib文件。</p>
+<p>※**.zlib文件**：用于数据压缩的开源软件包。</p>
+<p>Stegsolve打开图片，Data Analyse按上LSB加密设置（MSB也可）（主要是查看隐写）调出数据，看到文件头为504B0304（zip和zlib文件头一样）。各类型file的文件头尾：<a target="_blank" rel="noopener" href="http://www.mamicode.com/info-detail-2468733.html%E3%80%82">http://www.mamicode.com/info-detail-2468733.html。</a></p>
+<p>不用Windows自带的压缩器打开压缩包后看到一个无后缀的ELF文件。在其中查找“hctf”。</p>
+<p>※<strong>ELF文件</strong>：一种用于二进制文件、可执行文件、目标代码、共享库和核心转储格式文件。是UNIX系统实验室（USL）作为应用程序二进制接口而开发和发布的，也是Linux的主要可执行文件格式。</p>
+<blockquote>
+<h4 id="假如给我三天光明"><a href="#假如给我三天光明" class="headerlink" title="假如给我三天光明"></a>假如给我三天光明</h4></blockquote>
+<p>用Audacity处理摩斯电码：200宽度的表示_ 50宽度的表示 . 距离50宽度的连读 50宽度外的表示停顿。</p>
+<p><a target="_blank" rel="noopener" href="http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx">http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx</a></p>
+<blockquote>
+<h4 id="神秘龙卷风"><a href="#神秘龙卷风" class="headerlink" title="神秘龙卷风"></a>神秘龙卷风</h4></blockquote>
+<p>brainfuck（一种计算机语言）加密。<a target="_blank" rel="noopener" href="http://bf.doleczek.pl/">http://bf.doleczek.pl/</a></p>
+<blockquote>
+<h4 id="后门查杀"><a href="#后门查杀" class="headerlink" title="后门查杀"></a>后门查杀</h4></blockquote>
+<p>解压后用D盾。</p>
+<p><strong>后门</strong>：指绕过安全控制而获取对程序或系统访问权的方法。后门的最主要目的就是方便以后再次秘密进入或者控制系统。有攻击者建立的后门，也有程序员自己在软件内创建后门以方便测试或者修改程序中的缺陷。后者在软件发布时，后门被有意或者无意忽视了，没有被删除，那么这个软件天生就存在后门，安装该软件的主机就不可避免的引入了后门。</p>
+<blockquote>
+<h4 id="荷兰宽带数据泄露"><a href="#荷兰宽带数据泄露" class="headerlink" title="荷兰宽带数据泄露"></a>荷兰宽带数据泄露</h4></blockquote>
+<p>.bin 文件是一个路由配置文件，路由器信息数据，一般包含账号密码。</p>
+<p>用<font color=#00BFFF>RouterPassView</font></p>
+<blockquote>
+<h4 id="面具下的flag"><a href="#面具下的flag" class="headerlink" title="面具下的flag"></a>面具下的flag</h4></blockquote>
+<p>binwalk分离出压缩包，010editor修改伪加密（不修改伪加密linux上打不开压缩包，看不到vmdk文件），再在linux里解压vmdk文件（windows解不了压，linux里解压才能看到txt文件）</p>
+<p><strong>vmdk文件</strong>：VMDK是虚拟机VMware创建的虚拟硬盘格式，文件存在于VMware文件系统中，被称为VMFS（虚拟机文件系统）。一个VMDK文件代表VMFS在虚拟机上的一个物理硬盘驱动。所有用户数据和有关虚拟服务器的配置信息都存储在VMDK文件中。</p>
+<blockquote>
+<h4 id="九连环"><a href="#九连环" class="headerlink" title="九连环"></a>九连环</h4></blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/10/buuWeb/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/25/buuReverse/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E7%A0%81-%E6%89%AB%E6%8F%8F%E3%80%81%E5%88%86%E7%A6%BB%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%EF%BC%8C%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="nav-number">1.</span> <span class="nav-text">二维码 - 扫描、分离隐藏文件，暴力破解压缩包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#N%E7%A7%8D%E6%96%B9%E6%B3%95%E8%A7%A3%E5%86%B3"><span class="nav-number">2.</span> <span class="nav-text">N种方法解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E7%A7%98%E5%AF%86"><span class="nav-number">3.</span> <span class="nav-text">文件中的秘密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wireshark"><span class="nav-number">4.</span> <span class="nav-text">wireshark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSB%E9%9A%90%E5%86%99"><span class="nav-number">5.</span> <span class="nav-text">LSB隐写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">zip伪加密 - 十六进制编辑器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E4%B8%96%E7%95%8C"><span class="nav-number">7.</span> <span class="nav-text">另外一个世界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FLAG"><span class="nav-number">8.</span> <span class="nav-text">FLAG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%87%E5%A6%82%E7%BB%99%E6%88%91%E4%B8%89%E5%A4%A9%E5%85%89%E6%98%8E"><span class="nav-number">9.</span> <span class="nav-text">假如给我三天光明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A5%9E%E7%A7%98%E9%BE%99%E5%8D%B7%E9%A3%8E"><span class="nav-number">10.</span> <span class="nav-text">神秘龙卷风</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8E%E9%97%A8%E6%9F%A5%E6%9D%80"><span class="nav-number">11.</span> <span class="nav-text">后门查杀</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8D%B7%E5%85%B0%E5%AE%BD%E5%B8%A6%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2"><span class="nav-number">12.</span> <span class="nav-text">荷兰宽带数据泄露</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%85%B7%E4%B8%8B%E7%9A%84flag"><span class="nav-number">13.</span> <span class="nav-text">面具下的flag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%9D%E8%BF%9E%E7%8E%AF"><span class="nav-number">14.</span> <span class="nav-text">九连环</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="六月二十日香菜"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">六月二十日香菜</p>
+  <div class="site-description" itemprop="description">凡是过往，皆为序章</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">六月二十日香菜</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
