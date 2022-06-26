@@ -20,17 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="凡是过往，皆为序章">
+  <meta name="description" content="☁参考：Autolabor-赵虚左 0x00 安装ROS按照1.2.4 安装ROS没有遇到问题，测试成功。泪目😭  0x01 HelloWorld简单实现 创建工作空间  123mkdir -p 自定义空间名称&#x2F;srccd 自定义空间名称catkin_make &#x2F;&#x2F;ROS编译命令     创建功能包  123&#x2F;&#x2F;进入 src 创建 ros 包并添加依赖cd srccatkin_create_pk">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ROS">
 <meta property="og:url" content="http://example.com/2022/06/23/ROS/index.html">
 <meta property="og:site_name" content="Coriiiander&#39;blog">
-<meta property="og:description" content="凡是过往，皆为序章">
+<meta property="og:description" content="☁参考：Autolabor-赵虚左 0x00 安装ROS按照1.2.4 安装ROS没有遇到问题，测试成功。泪目😭  0x01 HelloWorld简单实现 创建工作空间  123mkdir -p 自定义空间名称&#x2F;srccd 自定义空间名称catkin_make &#x2F;&#x2F;ROS编译命令     创建功能包  123&#x2F;&#x2F;进入 src 创建 ros 包并添加依赖cd srccatkin_create_pk">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:/blog/coriiiander/pictures/测试ROS.png">
 <meta property="article:published_time" content="2022-06-23T02:52:30.757Z">
-<meta property="article:modified_time" content="2022-06-23T02:52:30.758Z">
+<meta property="article:modified_time" content="2022-06-26T08:27:31.988Z">
 <meta property="article:author" content="六月二十日香菜">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/blog/coriiiander/pictures/测试ROS.png">
 
 <link rel="canonical" href="http://example.com/2022/06/23/ROS/">
 
@@ -176,6 +178,13 @@
 
               <time title="创建时间：2022-06-23 10:52:30" itemprop="dateCreated datePublished" datetime="2022-06-23T10:52:30+08:00">2022-06-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-26 16:27:31" itemprop="dateModified" datetime="2022-06-26T16:27:31+08:00">2022-06-26</time>
+              </span>
 
           
 
@@ -188,7 +197,74 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>☁参考：<a target="_blank" rel="noopener" href="http://www.autolabor.com.cn/book/ROSTutorials/">Autolabor-赵虚左</a></p>
+<h4 id="0x00-安装ROS"><a href="#0x00-安装ROS" class="headerlink" title="0x00 安装ROS"></a>0x00 安装ROS</h4><p>按照1.2.4 安装ROS没有遇到问题，测试成功。泪目😭</p>
+<p><img src="D:\blog\coriiiander\pictures\测试ROS.png" alt="测试ROS"></p>
+<h4 id="0x01-HelloWorld简单实现"><a href="#0x01-HelloWorld简单实现" class="headerlink" title="0x01 HelloWorld简单实现"></a>0x01 HelloWorld简单实现</h4><ol>
+<li>创建工作空间</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p 自定义空间名称/src</span><br><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make //ROS编译命令</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>创建功能包</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//进入 src 创建 ros 包并添加依赖</span><br><span class="line">cd src</span><br><span class="line">catkin_create_pkg 自定义ROS包名 roscpp rospy std_msgs</span><br></pre></td></tr></table></figure>
+
+<p>该功能包依赖于 roscpp、rospy 与 std_msgs，其中roscpp是使用C++实现的库，而rospy则是使用python实现的库，std_msgs是标准消息库。</p>
+<blockquote>
+<p>ubuntu20.04 创建文件：<code>sudo gedit 文件名</code></p>
+<p>ubuntu20.04 输入中文：</p>
+</blockquote>
+<ol start="3">
+<li>编辑源文件</li>
+</ol>
+<p><strong>C++版</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* demo01/src/helloworld/src */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.包含 ros 的头文件</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="comment">//2.编写main函数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="comment">//执行 ros 节点初始化</span></span><br><span class="line">    ros::<span class="built_in">init</span>(argc,argv,<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="comment">//创建 ros 节点句柄(非必须)</span></span><br><span class="line">    ros::NodeHandle n;</span><br><span class="line">    <span class="comment">//控制台输出 hello world</span></span><br><span class="line">    <span class="built_in">ROS_INFO</span>(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>python版</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="comment">##指定解释器</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1.导包</span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.编写主入口</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#3.初始化 ROS 节点</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">    <span class="comment">#4.输出日志</span></span><br><span class="line">    rospy.loginfo(<span class="string">&quot;Hello World!!!!&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>为 python 文件添加可执行权限 <code>chmod +x 自定义文件名.py</code></p>
+<blockquote>
+<p>ll命令查看文件属性：可读r，可写w，可执行x</p>
+</blockquote>
+</li>
+</ul>
+<ol start="4">
+<li>编辑配置文件</li>
+</ol>
+<p><strong>C++版</strong></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add_executable(步骤3的源文件名(也可以随便起一个名字)</span><br><span class="line">  src/步骤3的源文件名.cpp</span><br><span class="line">)</span><br><span class="line">target_link_libraries(步骤3的源文件名</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>python版</strong></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#为Python配置合适的解释器</span></span><br><span class="line">catkin_install_python(PROGRAMS scripts/自定义文件名.py</span><br><span class="line">  DESTINATION $&#123;CATKIN_PACKAGE_BIN_DESTINATION&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="5">
+<li>编译并执行</li>
+</ol>
+<p><strong>C++版</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make</span><br><span class="line">:~$ roscore</span><br><span class="line">cd 工作空间</span><br><span class="line">source ./devel/setup.bash //将当前工作空间刷新到当前窗口下的环境变量</span><br><span class="line">rosrun 包名 C++节点(步骤3的源文件名/配置文件中随便起的名字)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>当前工作空间外执行：</strong><code>source ~/工作空间/devel/setup.bash</code>添加进<code>.bashrc</code>文件（参考安装ROS时配置环境变量，方便在任意终端中使用 ROS）</p>
+<ul>
+<li><p><strong>添加方式1</strong>: 直接使用 gedit 或 vi 编辑 .bashrc 文件，最后添加该内容</p>
+</li>
+<li><p><strong>添加方式2</strong>:<code>echo &quot;source ~/工作空间/devel/setup.bash&quot; &gt;&gt; ~/.bashrc</code></p>
+</li>
+</ul>
+<p>添加后用<code>source .bashrc</code>重新加载它，这样以后执行不用再输入<code>source ./devel/setup.bash</code></p>
+</blockquote>
+<blockquote>
+<p>.xxx文件是隐藏文件，用<code>ctrl+h</code>将其显现出来</p>
+</blockquote>
+<p><strong>python版</strong> 同C++版</p>
+
     </div>
 
     
@@ -265,6 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0x00-%E5%AE%89%E8%A3%85ROS"><span class="nav-number">1.</span> <span class="nav-text">0x00 安装ROS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x01-HelloWorld%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">0x01 HelloWorld简单实现</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
