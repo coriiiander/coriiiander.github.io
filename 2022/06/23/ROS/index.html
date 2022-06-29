@@ -20,16 +20,18 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="☁参考：Autolabor-赵虚左 0x00 安装ROS按照1.2.4 安装ROS没有遇到问题，测试成功。泪目😭  0x01 HelloWorld简单实现 创建工作空间  123mkdir -p 自定义空间名称&#x2F;srccd 自定义空间名称catkin_make &#x2F;&#x2F;ROS编译命令     创建功能包  123&#x2F;&#x2F;进入 src 创建 ros 包并添加依赖cd srccatkin_create_pk">
+  <meta name="description" content="☁参考：Autolabor-赵虚左 0x00 安装ROS按照1.2.4 安装ROS没有遇到问题，测试成功。泪目😭  0x01 HelloWorld简单实现1.创建工作空间123mkdir -p 自定义空间名称&#x2F;srccd 自定义空间名称catkin_make &#x2F;&#x2F;ROS编译命令    2.创建功能包123&#x2F;&#x2F;进入 src 创建 ros 包并添加依赖cd srccatkin_create_pkg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ROS">
 <meta property="og:url" content="http://example.com/2022/06/23/ROS/index.html">
 <meta property="og:site_name" content="Coriiiander&#39;blog">
-<meta property="og:description" content="☁参考：Autolabor-赵虚左 0x00 安装ROS按照1.2.4 安装ROS没有遇到问题，测试成功。泪目😭  0x01 HelloWorld简单实现 创建工作空间  123mkdir -p 自定义空间名称&#x2F;srccd 自定义空间名称catkin_make &#x2F;&#x2F;ROS编译命令     创建功能包  123&#x2F;&#x2F;进入 src 创建 ros 包并添加依赖cd srccatkin_create_pk">
+<meta property="og:description" content="☁参考：Autolabor-赵虚左 0x00 安装ROS按照1.2.4 安装ROS没有遇到问题，测试成功。泪目😭  0x01 HelloWorld简单实现1.创建工作空间123mkdir -p 自定义空间名称&#x2F;srccd 自定义空间名称catkin_make &#x2F;&#x2F;ROS编译命令    2.创建功能包123&#x2F;&#x2F;进入 src 创建 ros 包并添加依赖cd srccatkin_create_pkg">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="d:/blog/coriiiander/pictures/测试ROS.png">
+<meta property="og:image" content="d:/blog/coriiiander/pictures/通信机制.jpg">
+<meta property="og:image" content="d:/blog/coriiiander/pictures/理论模型.jpg">
 <meta property="article:published_time" content="2022-06-23T02:52:30.757Z">
-<meta property="article:modified_time" content="2022-06-26T12:30:42.978Z">
+<meta property="article:modified_time" content="2022-06-28T03:29:30.945Z">
 <meta property="article:author" content="六月二十日香菜">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="d:/blog/coriiiander/pictures/测试ROS.png">
@@ -183,7 +185,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-26 20:30:42" itemprop="dateModified" datetime="2022-06-26T20:30:42+08:00">2022-06-26</time>
+                <time title="修改时间：2022-06-28 11:29:30" itemprop="dateModified" datetime="2022-06-28T11:29:30+08:00">2022-06-28</time>
               </span>
 
           
@@ -200,27 +202,18 @@
         <p>☁参考：<a target="_blank" rel="noopener" href="http://www.autolabor.com.cn/book/ROSTutorials/">Autolabor-赵虚左</a></p>
 <h4 id="0x00-安装ROS"><a href="#0x00-安装ROS" class="headerlink" title="0x00 安装ROS"></a>0x00 安装ROS</h4><p>按照1.2.4 安装ROS没有遇到问题，测试成功。泪目😭</p>
 <p><img src="D:\blog\coriiiander\pictures\测试ROS.png" alt="测试ROS"></p>
-<h4 id="0x01-HelloWorld简单实现"><a href="#0x01-HelloWorld简单实现" class="headerlink" title="0x01 HelloWorld简单实现"></a>0x01 HelloWorld简单实现</h4><ol>
-<li>创建工作空间</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p 自定义空间名称/src</span><br><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make //ROS编译命令</span><br></pre></td></tr></table></figure>
+<h4 id="0x01-HelloWorld简单实现"><a href="#0x01-HelloWorld简单实现" class="headerlink" title="0x01 HelloWorld简单实现"></a>0x01 HelloWorld简单实现</h4><h5 id="1-创建工作空间"><a href="#1-创建工作空间" class="headerlink" title="1.创建工作空间"></a>1.创建工作空间</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p 自定义空间名称/src</span><br><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make //ROS编译命令</span><br></pre></td></tr></table></figure>
 
 
 
-<ol start="2">
-<li>创建功能包</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//进入 src 创建 ros 包并添加依赖</span><br><span class="line">cd src</span><br><span class="line">catkin_create_pkg 自定义ROS包名 roscpp rospy std_msgs</span><br></pre></td></tr></table></figure>
+<h5 id="2-创建功能包"><a href="#2-创建功能包" class="headerlink" title="2.创建功能包"></a>2.创建功能包</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//进入 src 创建 ros 包并添加依赖</span><br><span class="line">cd src</span><br><span class="line">catkin_create_pkg 自定义ROS包名 roscpp rospy std_msgs</span><br></pre></td></tr></table></figure>
 
 <p>该功能包依赖于 roscpp、rospy 与 std_msgs，其中roscpp是使用C++实现的库，而rospy则是使用python实现的库，std_msgs是标准消息库。</p>
 <blockquote>
 <p>ubuntu20.04 创建文件：<code>sudo gedit 文件名</code></p>
-<p>ubuntu20.04 输入中文：</p>
+<p>ubuntu20.04 输入中文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013819452/article/details/125324881">https://blog.csdn.net/u013819452/article/details/125324881</a></p>
 </blockquote>
-<ol start="3">
-<li>编辑源文件</li>
-</ol>
-<p><strong>C++版</strong></p>
+<h5 id="3-编辑源文件"><a href="#3-编辑源文件" class="headerlink" title="3.编辑源文件"></a>3.编辑源文件</h5><p><strong>C++版</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* demo01/src/helloworld/src */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.包含 ros 的头文件</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="comment">//2.编写main函数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="comment">//执行 ros 节点初始化</span></span><br><span class="line">    ros::<span class="built_in">init</span>(argc,argv,<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="comment">//创建 ros 节点句柄(非必须)</span></span><br><span class="line">    ros::NodeHandle n;</span><br><span class="line">    <span class="comment">//控制台输出 hello world</span></span><br><span class="line">    <span class="built_in">ROS_INFO</span>(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>python版</strong></p>
@@ -233,21 +226,15 @@
 </blockquote>
 </li>
 </ul>
-<ol start="4">
-<li>编辑配置文件</li>
-</ol>
-<p><strong>C++版</strong></p>
+<h5 id="4-编辑配置文件"><a href="#4-编辑配置文件" class="headerlink" title="4.编辑配置文件"></a>4.编辑配置文件</h5><p><strong>C++版</strong></p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add_executable(步骤3的源文件名(也可以随便起一个名字)</span><br><span class="line">  src/步骤3的源文件名.cpp</span><br><span class="line">)</span><br><span class="line">target_link_libraries(步骤3的源文件名</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 <p><strong>python版</strong></p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#为Python配置合适的解释器</span></span><br><span class="line">catkin_install_python(PROGRAMS scripts/自定义文件名.py</span><br><span class="line">  DESTINATION $&#123;CATKIN_PACKAGE_BIN_DESTINATION&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为Python配置合适的解释器 1.安装 2.定位解释器</span></span><br><span class="line"><span class="comment"># 未配置CMakeList.txt是解决方法：1.直接声明解释器为python3（不建议） 2.通过软链接将 python 链接到 python3（建议）</span></span><br><span class="line">catkin_install_python(PROGRAMS scripts/自定义文件名.py</span><br><span class="line">  DESTINATION $&#123;CATKIN_PACKAGE_BIN_DESTINATION&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 
 
-<ol start="5">
-<li>编译并执行</li>
-</ol>
-<p><strong>C++版</strong></p>
+<h5 id="5-编译并执行"><a href="#5-编译并执行" class="headerlink" title="5.编译并执行"></a>5.编译并执行</h5><p><strong>C++版</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make</span><br><span class="line">:~$ roscore</span><br><span class="line">cd 工作空间</span><br><span class="line">source ./devel/setup.bash //将当前工作空间刷新到当前窗口下的环境变量</span><br><span class="line">rosrun 包名 C++节点(步骤3的源文件名/配置文件中随便起的名字)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -264,7 +251,81 @@
 <p>.xxx文件是隐藏文件，用<code>ctrl+h</code>将其显现出来</p>
 </blockquote>
 <p><strong>python版</strong> 同C++版</p>
-<h4 id="0x02-ROS集成环境搭建"><a href="#0x02-ROS集成环境搭建" class="headerlink" title="0x02 ROS集成环境搭建"></a>0x02 ROS集成环境搭建</h4>
+<h4 id="0x02-ROS集成环境搭建"><a href="#0x02-ROS集成环境搭建" class="headerlink" title="0x02 ROS集成环境搭建"></a>0x02 ROS集成环境搭建</h4><h5 id="安装终端"><a href="#安装终端" class="headerlink" title="安装终端"></a>安装终端</h5><p>ROS中，频繁用到终端且需要同时开启多个窗口，推荐Terminator及其快捷键。</p>
+<h5 id="安装VScode"><a href="#安装VScode" class="headerlink" title="安装VScode"></a>安装VScode</h5><p>详细看1.4.2 P28</p>
+<h5 id="安装launch文件"><a href="#安装launch文件" class="headerlink" title="安装launch文件"></a>安装launch文件</h5><p>一个程序中可能需要启动多个节点，对“调用 rosrun 逐一启动”进行优化：使用 launch 文件，可以一次性启动多个 ROS 节点。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 添加被执行的节点 pkg是包 type是节点 name是节点名 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 乌龟GUI --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;helloworld&quot;</span> <span class="attr">type</span>=<span class="string">&quot;demo_hello&quot;</span> <span class="attr">name</span>=<span class="string">&quot;hello&quot;</span> <span class="attr">output</span>=<span class="string">&quot;screen&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtlesim_node&quot;</span> <span class="attr">name</span>=<span class="string">&quot;t1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtle_teleop_key&quot;</span> <span class="attr">name</span>=<span class="string">&quot;key1&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>参考执行乌龟程序时的<code>rosrun turtlesim turtlesim_node</code></p>
+<h4 id="0x03-ROS架构"><a href="#0x03-ROS架构" class="headerlink" title="0x03 ROS架构"></a>0x03 ROS架构</h4><p>💦本节建议在对ROS有一定经验后再回来学习（P31-P35）</p>
+<h5 id="ROS文件系统"><a href="#ROS文件系统" class="headerlink" title="ROS文件系统"></a>ROS文件系统</h5><h5 id="ROS文件系统相关命令"><a href="#ROS文件系统相关命令" class="headerlink" title="ROS文件系统相关命令"></a>ROS文件系统相关命令</h5><ol>
+<li>执行</li>
+</ol>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">roscore</span></span><br><span class="line"><span class="variable">roscore</span> -<span class="variable">p</span> <span class="function"><span class="title">xxxx</span>(指定端口号)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>roscore是 ROS 的系统先决条件节点和程序的集合， 必须运行 roscore 才能使 ROS 节点进行通信。</p>
+</li>
+<li><p>roscore 将启动：ros master，ros 参数服务器，rosout 日志节点。</p>
+</li>
+<li><pre><code class="shell">vivi@ubuntu:~$ roscore
+# 日志写到哪去了
+... logging to /home/vivi/.ros/log/a6cd7df8-f5ea-11ec-8a5d-4d68047558b7/roslaunch-ubuntu-4173.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is &lt;1GB.
+
+# 在该端口上启动roslaunch server
+started roslaunch server http://ubuntu:39577/
+ros_comm version 1.15.14
+
+# ros摘要
+SUMMARY
+========
+
+PARAMETERS
+ * /rosdistro: noetic
+ * /rosversion: 1.15.14
+
+# 启动节点
+NODES
+
+auto-starting new master # 启动新的master节点
+process[master]: started with pid [4183]
+ROS_MASTER_URI=http://ubuntu:11311/
+
+setting /run_id to a6cd7df8-f5ea-11ec-8a5d-4d68047558b7
+process[rosout-1]: started with pid [4193] # 启动日志输出rosout节点
+started core service [/rosout]
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+rosrun 包名 可执行文件名
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+ 运行指定的ROS节点，如`rosrun turtlesim turtlesim_node`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+roslaunch 包名 launch文件名
+</code></pre>
+</li>
+<li><p>执行某个包下的 launch 文件</p>
+</li>
+</ul>
+<h5 id="ROS计算图"><a href="#ROS计算图" class="headerlink" title="ROS计算图"></a>ROS计算图</h5><h4 id="0x04-ROS通信机制"><a href="#0x04-ROS通信机制" class="headerlink" title="0x04 ROS通信机制"></a>0x04 ROS通信机制</h4><p>ROS中每个功能点都是一个单独的进程，ROS是进程（也称为Nodes）的分布式框架。不同的进程是如何通信的？</p>
+<ul>
+<li>话题通信(发布订阅模式)</li>
+<li>服务通信(请求响应模式)</li>
+<li>参数服务器(参数共享模式)</li>
+</ul>
+<h5 id="话题通信"><a href="#话题通信" class="headerlink" title="话题通信"></a>话题通信</h5><img src="D:\blog\coriiiander\pictures\通信机制.jpg" alt="通信机制" style="zoom:67%;" />
+
+<p>适用于不断更新的数据传输相关的应用场景。</p>
+<img src="D:\blog\coriiiander\pictures\理论模型.jpg" alt="理论模型" style="zoom:60%;" />
+
+
+
+<ol>
+<li><strong>最基本的发布订阅模型，发布方以固定频率发送一段文本，订阅方接收文本并输出。</strong></li>
+</ol>
+<ol start="2">
+<li><strong>实现对自定义消息的发布与订阅。</strong></li>
+</ol>
+
     </div>
 
     
@@ -341,7 +402,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0x00-%E5%AE%89%E8%A3%85ROS"><span class="nav-number">1.</span> <span class="nav-text">0x00 安装ROS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x01-HelloWorld%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">0x01 HelloWorld简单实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x02-ROS%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">0x02 ROS集成环境搭建</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0x00-%E5%AE%89%E8%A3%85ROS"><span class="nav-number">1.</span> <span class="nav-text">0x00 安装ROS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x01-HelloWorld%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">0x01 HelloWorld简单实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4"><span class="nav-number">2.1.</span> <span class="nav-text">1.创建工作空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E5%8A%9F%E8%83%BD%E5%8C%85"><span class="nav-number">2.2.</span> <span class="nav-text">2.创建功能包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E7%BC%96%E8%BE%91%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">3.编辑源文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">4.编辑配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E7%BC%96%E8%AF%91%E5%B9%B6%E6%89%A7%E8%A1%8C"><span class="nav-number">2.5.</span> <span class="nav-text">5.编译并执行</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x02-ROS%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">0x02 ROS集成环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%BB%88%E7%AB%AF"><span class="nav-number">3.1.</span> <span class="nav-text">安装终端</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85VScode"><span class="nav-number">3.2.</span> <span class="nav-text">安装VScode</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85launch%E6%96%87%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">安装launch文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x03-ROS%E6%9E%B6%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">0x03 ROS架构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ROS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.1.</span> <span class="nav-text">ROS文件系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ROS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-number">4.2.</span> <span class="nav-text">ROS文件系统相关命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ROS%E8%AE%A1%E7%AE%97%E5%9B%BE"><span class="nav-number">4.3.</span> <span class="nav-text">ROS计算图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x04-ROS%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">0x04 ROS通信机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%9D%E9%A2%98%E9%80%9A%E4%BF%A1"><span class="nav-number">5.1.</span> <span class="nav-text">话题通信</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -357,7 +418,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
