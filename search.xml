@@ -43,6 +43,145 @@
 ]]></content>
   </entry>
   <entry>
+    <title>ROS</title>
+    <url>/2022/06/23/ROS/</url>
+    <content><![CDATA[<p>☁参考：<a href="http://www.autolabor.com.cn/book/ROSTutorials/">Autolabor-赵虚左</a>  <a href="http://wiki.ros.org/cn/ROS/Tutorials">ROS手册</a></p>
+<p>最初是为后来没去的暑假实习硬件岗位学的ROS，这东西蛮有趣、蛮好上手（比起二进制安全（根本原因是我自学能力差））的。学都学了，干脆多学一点。</p>
+<h4 id="0x00-安装ROS"><a href="#0x00-安装ROS" class="headerlink" title="0x00 安装ROS"></a>0x00 安装ROS</h4><p>按照1.2.4 安装ROS没有遇到问题，测试成功。</p>
+<p><img src="D:\blog\coriiiander\pictures\测试ROS.png" alt="测试ROS"></p>
+<h4 id="0x01-HelloWorld简单实现"><a href="#0x01-HelloWorld简单实现" class="headerlink" title="0x01 HelloWorld简单实现"></a>0x01 HelloWorld简单实现</h4><p><strong>vscode图形界面下总结</strong>：/DEMO/src → 右击Create Catkin Package → 输入包名和依赖包 → 包下src中创建c文件 → 修改CMakeLists文件 → catkin_make:debug终端下编译 → 0x01 5 执行</p>
+<p>​    python在功能包下新建scripts文件夹 → 创建c文件 → …</p>
+<h5 id="1-创建工作空间"><a href="#1-创建工作空间" class="headerlink" title="1.创建工作空间"></a>1.创建工作空间</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p 自定义空间名称/src</span><br><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make //ROS编译命令</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2-创建功能包"><a href="#2-创建功能包" class="headerlink" title="2.创建功能包"></a>2.创建功能包</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//进入 src 创建 ros 包并添加依赖</span><br><span class="line">cd src</span><br><span class="line">catkin_create_pkg 自定义ROS包名 roscpp rospy std_msgs</span><br></pre></td></tr></table></figure>
+
+<p>该功能包依赖于 roscpp、rospy 与 std_msgs，其中roscpp是使用C++实现的库，而rospy则是使用python实现的库，std_msgs是标准消息库。</p>
+<blockquote>
+<p>ubuntu20.04 创建文件：<code>sudo gedit 文件名</code></p>
+<p>ubuntu20.04 输入中文：<a href="https://blog.csdn.net/u013819452/article/details/125324881">https://blog.csdn.net/u013819452/article/details/125324881</a></p>
+</blockquote>
+<h5 id="3-编辑源文件"><a href="#3-编辑源文件" class="headerlink" title="3.编辑源文件"></a>3.编辑源文件</h5><p><strong>C++版</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* demo01/src/helloworld/src */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.包含 ros 的头文件</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="comment">//2.编写main函数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="comment">//执行 ros 节点初始化</span></span><br><span class="line">    ros::<span class="built_in">init</span>(argc,argv,<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="comment">//创建 ros 节点句柄(非必须)</span></span><br><span class="line">    ros::NodeHandle n;</span><br><span class="line">    <span class="comment">//控制台输出 hello world</span></span><br><span class="line">    <span class="built_in">ROS_INFO</span>(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>python版</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="comment">##指定解释器</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1.导包</span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.编写主入口</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#3.初始化 ROS 节点</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">    <span class="comment">#4.输出日志</span></span><br><span class="line">    rospy.loginfo(<span class="string">&quot;Hello World!!!!&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>为 python 文件添加可执行权限 <code>chmod +x 自定义文件名.py</code></p>
+<blockquote>
+<p>自定义文件名为*，表示所有文件；ll命令查看文件属性：可读r，可写w，可执行x 。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="4-编辑配置文件"><a href="#4-编辑配置文件" class="headerlink" title="4.编辑配置文件"></a>4.编辑配置文件</h5><p><strong>C++版</strong></p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">add_executable(步骤3的源文件名(也可以随便起一个名字)</span><br><span class="line">  src/步骤3的源文件名.cpp</span><br><span class="line">)</span><br><span class="line">target_link_libraries(步骤3的源文件名</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>python版</strong></p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为Python配置合适的解释器 1.安装 2.定位解释器</span></span><br><span class="line"><span class="comment"># 未配置CMakeList.txt是解决方法：1.直接声明解释器为python3（不建议） 2.通过软链接将 python 链接到 python3（建议）</span></span><br><span class="line">catkin_install_python(PROGRAMS scripts/自定义文件名.py</span><br><span class="line">  DESTINATION $&#123;CATKIN_PACKAGE_BIN_DESTINATION&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="5-编译并执行"><a href="#5-编译并执行" class="headerlink" title="5.编译并执行"></a>5.编译并执行</h5><p><strong>C++版</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make（也可在vscode下catkin_make:debug终端下ctrl + shift + b编译）</span><br><span class="line">:~$ roscore（根目录）</span><br><span class="line">cd 工作空间</span><br><span class="line">source ./devel/setup.bash //将当前工作空间刷新到当前窗口下的环境变量</span><br><span class="line">rosrun 包名 C++节点(步骤3的源文件名/配置文件中随便起的名字)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>当前工作空间外执行：</strong><code>source ~/工作空间/devel/setup.bash</code>添加进<code>.bashrc</code>文件（参考安装ROS时配置环境变量，方便在任意终端中使用 ROS）</p>
+<ul>
+<li><p><strong>添加方式1</strong>: 直接使用 gedit 或 vi 编辑 .bashrc 文件，最后添加该内容</p>
+</li>
+<li><p><strong>添加方式2</strong>:<code>echo &quot;source ~/工作空间/devel/setup.bash&quot; &gt;&gt; ~/.bashrc</code></p>
+</li>
+</ul>
+<p>添加后用<code>source .bashrc</code>重新加载它，这样以后执行不用再输入<code>source ./devel/setup.bash</code></p>
+</blockquote>
+<blockquote>
+<p>.xxx文件是隐藏文件，用<code>ctrl+h</code>将其显现出来</p>
+</blockquote>
+<p><strong>python版</strong> 同C++版</p>
+<h4 id="0x02-ROS集成环境搭建"><a href="#0x02-ROS集成环境搭建" class="headerlink" title="0x02 ROS集成环境搭建"></a>0x02 ROS集成环境搭建</h4><h5 id="安装终端"><a href="#安装终端" class="headerlink" title="安装终端"></a>安装终端</h5><p>ROS中，频繁用到终端且需要同时开启多个窗口，推荐Terminator及其快捷键。</p>
+<h5 id="安装VScode"><a href="#安装VScode" class="headerlink" title="安装VScode"></a>安装VScode</h5><p>☁详细看1.4.2 P28</p>
+<blockquote>
+<p><code>ctrl + =</code>放大  <code>ctrl + -</code>缩小  <code>ctrl + shift + b</code>编译  <code>ctrl + /</code>取消注释 <code>ctrl + shift + A</code>加注释</p>
+</blockquote>
+<h5 id="安装launch文件"><a href="#安装launch文件" class="headerlink" title="安装launch文件"></a>安装launch文件</h5><p>一个程序中可能需要启动多个节点，对“调用 rosrun 逐一启动”进行优化：使用 launch 文件，可以一次性启动多个 ROS 节点。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 添加被执行的节点 pkg是包 type是节点 name是节点名 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 乌龟GUI --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;helloworld&quot;</span> <span class="attr">type</span>=<span class="string">&quot;demo_hello&quot;</span> <span class="attr">name</span>=<span class="string">&quot;hello&quot;</span> <span class="attr">output</span>=<span class="string">&quot;screen&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtlesim_node&quot;</span> <span class="attr">name</span>=<span class="string">&quot;t1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtle_teleop_key&quot;</span> <span class="attr">name</span>=<span class="string">&quot;key1&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>参考执行乌龟程序时的<code>rosrun turtlesim turtlesim_node</code></p>
+<h4 id="0x03-ROS架构"><a href="#0x03-ROS架构" class="headerlink" title="0x03 ROS架构"></a>0x03 ROS架构</h4><p>💦本节建议在对ROS有一定经验后再回来学习（P31-P35）</p>
+<h5 id="ROS文件系统"><a href="#ROS文件系统" class="headerlink" title="ROS文件系统"></a>ROS文件系统</h5><h5 id="ROS文件系统相关命令"><a href="#ROS文件系统相关命令" class="headerlink" title="ROS文件系统相关命令"></a>ROS文件系统相关命令</h5><ol>
+<li>执行</li>
+</ol>
+<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">roscore</span></span><br><span class="line"><span class="variable">roscore</span> -<span class="variable">p</span> <span class="function"><span class="title">xxxx</span>(指定端口号)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>roscore是 ROS 的系统先决条件节点和程序的集合， 必须运行 roscore 才能使 ROS 节点进行通信。</p>
+</li>
+<li><p>roscore 将启动：ros master，ros 参数服务器，rosout 日志节点。</p>
+</li>
+<li><p>```shell<br>vivi@ubuntu:~$ roscore</p>
+<h1 id="日志写到哪去了"><a href="#日志写到哪去了" class="headerlink" title="日志写到哪去了"></a>日志写到哪去了</h1><p>… logging to /home/vivi/.ros/log/a6cd7df8-f5ea-11ec-8a5d-4d68047558b7/roslaunch-ubuntu-4173.log<br>Checking log directory for disk usage. This may take a while.<br>Press Ctrl-C to interrupt<br>Done checking log file disk usage. Usage is &lt;1GB.</p>
+<h1 id="在该端口上启动roslaunch-server"><a href="#在该端口上启动roslaunch-server" class="headerlink" title="在该端口上启动roslaunch server"></a>在该端口上启动roslaunch server</h1><p>started roslaunch server <a href="http://ubuntu:39577/">http://ubuntu:39577/</a><br>ros_comm version 1.15.14</p>
+<h1 id="ros摘要"><a href="#ros摘要" class="headerlink" title="ros摘要"></a>ros摘要</h1><h1 id="SUMMARY"><a href="#SUMMARY" class="headerlink" title="SUMMARY"></a>SUMMARY</h1><p>PARAMETERS</p>
+<ul>
+<li>/rosdistro: noetic</li>
+<li>/rosversion: 1.15.14</li>
+</ul>
+<h1 id="启动节点"><a href="#启动节点" class="headerlink" title="启动节点"></a>启动节点</h1><p>NODES</p>
+<p>auto-starting new master # 启动新的master节点<br>process[master]: started with pid [4183]<br>ROS_MASTER_URI=<a href="http://ubuntu:11311/">http://ubuntu:11311/</a></p>
+<p>setting /run_id to a6cd7df8-f5ea-11ec-8a5d-4d68047558b7<br>process[rosout-1]: started with pid [4193] # 启动日志输出rosout节点<br>started core service [/rosout]</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>rosrun 包名 可执行文件名</p>
+<figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 运行指定的ROS节点，如`rosrun turtlesim turtlesim_node`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>roslaunch 包名 launch文件名</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 执行某个包下的 launch 文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##### ROS计算图</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 0x04 ROS通信机制</span></span><br><span class="line"></span><br><span class="line">ROS中每个功能点都是一个单独的进程，ROS是进程（也称为Nodes）的分布式框架。不同的进程是如何通信的？</span><br><span class="line"></span><br><span class="line">- 话题通信(发布订阅模式)</span><br><span class="line">- 服务通信(请求响应模式)</span><br><span class="line">- 参数服务器(参数共享模式)</span><br><span class="line"></span><br><span class="line"><span class="comment">##### 话题通信</span></span><br><span class="line"></span><br><span class="line">&lt;img src=<span class="string">&quot;D:\blog\coriiiander\pictures\通信机制.jpg&quot;</span> alt=<span class="string">&quot;通信机制&quot;</span> style=<span class="string">&quot;zoom:67%;&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">适用于不断更新的数据传输相关的应用场景。理论模型（master注册时延会导致先接收后发送接收不到前几条数据，可通过休眠解决该问题&lt;我的一直接收不到数据&gt;）：</span><br><span class="line"></span><br><span class="line">&lt;img src=<span class="string">&quot;D:\blog\coriiiander\pictures\理论模型.jpg&quot;</span> alt=<span class="string">&quot;理论模型&quot;</span> style=<span class="string">&quot;zoom:30%;&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. **话题通信基本操作** - 最基本的发布订阅模型，发布方以固定频率发送一段文本，订阅方接收文本并输出。</span><br><span class="line"></span><br><span class="line">**C++**</span><br><span class="line"></span><br><span class="line">```C</span><br><span class="line">/*</span><br><span class="line">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span><br><span class="line">         实现的关键点:</span><br><span class="line">         <span class="number">1</span>.发送方</span><br><span class="line">         <span class="number">2</span>.接收方</span><br><span class="line">         <span class="number">3</span>.数据(此处为普通文本)</span><br><span class="line"></span><br><span class="line">         PS: 二者需要设置相同的话题</span><br><span class="line">/*</span><br><span class="line">/*</span><br><span class="line">    消息发布方:</span><br><span class="line">        循环发布信息:HelloWorld 后缀数字编号</span><br><span class="line"></span><br><span class="line">    实现流程:</span><br><span class="line">        <span class="number">1</span>.包含头文件 </span><br><span class="line">        <span class="number">2</span>.初始化 ROS 节点:命名(唯一)</span><br><span class="line">        <span class="number">3</span>.实例化 ROS 句柄</span><br><span class="line">        <span class="number">4</span>.实例化 发布者 对象</span><br><span class="line">        <span class="number">5</span>.组织被发布的数据，并编写逻辑发布数据</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"><span class="regexp">//</span> <span class="number">1</span>.包含头文件 </span><br><span class="line"><span class="comment">#include &quot;ros/ros.h&quot;</span></span><br><span class="line"><span class="comment">#include &quot;std_msgs/String.h&quot; //普通文本类型的消息</span></span><br><span class="line"><span class="comment">#include &lt;sstream&gt;</span></span><br><span class="line"></span><br><span class="line">int main(int argc, char  *argv[])</span><br><span class="line">&#123;   </span><br><span class="line">    <span class="regexp">//</span>设置编码</span><br><span class="line">    setlocale(LC_ALL,<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span><span class="number">2</span>.初始化 ROS 节点:命名(唯一)</span><br><span class="line">    <span class="regexp">//</span> 参数<span class="number">1</span>和参数<span class="number">2</span> 后期为节点传值会使用</span><br><span class="line">    <span class="regexp">//</span> 参数<span class="number">3</span> 是节点名称，是一个标识符，需要保证运行后，在 ROS 网络拓扑中唯一</span><br><span class="line">    ros::init(argc,argv,<span class="string">&quot;talker&quot;</span>);</span><br><span class="line">    <span class="regexp">//</span><span class="number">3</span>.实例化 ROS 句柄</span><br><span class="line">    ros::NodeHandle nh;<span class="regexp">//</span>该类封装了 ROS 中的一些常用功能</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span><span class="number">4</span>.实例化 发布者 对象</span><br><span class="line">    <span class="regexp">//</span>泛型: 发布的消息类型</span><br><span class="line">    <span class="regexp">//</span>参数<span class="number">1</span>: 要发布到的话题</span><br><span class="line">    <span class="regexp">//</span>参数<span class="number">2</span>: 队列中最大保存的消息数，超出此阀值时，先进的先销毁(时间早的先销毁)</span><br><span class="line">    ros::Publisher pub = nh.advertise&lt;std_msgs::String&gt;(<span class="string">&quot;chatter&quot;</span>,<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span><span class="number">5</span>.组织被发布的数据，并编写逻辑发布数据</span><br><span class="line">    <span class="regexp">//</span>数据(动态组织)</span><br><span class="line">    std_msgs::String msg;</span><br><span class="line">    <span class="regexp">//</span> msg.data = <span class="string">&quot;你好啊！！！&quot;</span>;</span><br><span class="line">    std::string msg_front = <span class="string">&quot;Hello 你好！&quot;</span>; <span class="regexp">//</span>消息前缀</span><br><span class="line">    int count = <span class="number">0</span>; <span class="regexp">//</span>消息计数器</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span>逻辑(一秒<span class="number">10</span>次)</span><br><span class="line">    ros::Rate r(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span>节点不死</span><br><span class="line">    <span class="keyword">while</span> (ros::ok())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="regexp">//</span>使用 stringstream 拼接字符串与编号</span><br><span class="line">        std::stringstream ss;</span><br><span class="line">        ss &lt;&lt; msg_front &lt;&lt; count;</span><br><span class="line">        msg.data = ss.str();</span><br><span class="line">        <span class="regexp">//</span>发布消息</span><br><span class="line">        pub.publish(msg);</span><br><span class="line">        <span class="regexp">//</span>加入调试，打印发送的消息</span><br><span class="line">        ROS_INFO(<span class="string">&quot;发送的消息:%s&quot;</span>,msg.data.c_str());</span><br><span class="line"></span><br><span class="line">        <span class="regexp">//</span>根据前面制定的发送贫频率自动休眠 休眠时间 = <span class="number">1</span>/频率；</span><br><span class="line">        r.sleep();</span><br><span class="line">        count++;<span class="regexp">//</span>循环结束前，让 count 自增</span><br><span class="line">        <span class="regexp">//</span>暂无应用</span><br><span class="line">        ros::spinOnce();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    消息订阅方:</span></span><br><span class="line"><span class="comment">        订阅话题并打印接收到的消息</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    实现流程:</span></span><br><span class="line"><span class="comment">        1.包含头文件 </span></span><br><span class="line"><span class="comment">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="comment">        3.实例化 ROS 句柄</span></span><br><span class="line"><span class="comment">        4.实例化 订阅者 对象</span></span><br><span class="line"><span class="comment">        5.处理订阅的消息(回调函数)</span></span><br><span class="line"><span class="comment">        6.设置循环调用回调函数</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// 1.包含头文件 </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;std_msgs/String.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">doMsg</span><span class="params">(<span class="type">const</span> std_msgs::String::ConstPtr&amp; msg_p)</span>&#123;</span><br><span class="line">    ROS_INFO(<span class="string">&quot;我听见:%s&quot;</span>,msg_p-&gt;data.c_str());</span><br><span class="line">    <span class="comment">// ROS_INFO(&quot;我听见:%s&quot;,(*msg_p).data.c_str());</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>  *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">    setlocale(LC_ALL,<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="comment">//2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    ros::init(argc,argv,<span class="string">&quot;listener&quot;</span>);</span><br><span class="line">    <span class="comment">//3.实例化 ROS 句柄</span></span><br><span class="line">    ros::NodeHandle nh;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//4.实例化 订阅者 对象</span></span><br><span class="line">    ros::Subscriber sub = nh.subscribe&lt;std_msgs::String&gt;(<span class="string">&quot;chatter&quot;</span>,<span class="number">10</span>,doMsg);</span><br><span class="line">    <span class="comment">//5.处理订阅的消息(回调函数)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//     6.设置循环调用回调函数</span></span><br><span class="line">    ros::spin();<span class="comment">//循环读取接收的数据，并调用回调函数处理</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>vscode报错</strong>  <code>fatal error: &#39;ros/ros.h&#39; file not found #include &quot;ros/ros.h&quot;</code>，在terminal中打开执行<code>catkin_make</code>，显示100% 没报错，是vs编译器设置错了。vs编译器设置成了<code>C/C++:clang++ build active file</code>，应在Terminal → Configure Default Build Task 中点击<code>catkin_make:build</code>右边的齿轮<u>修改tasks.json文件</u>（1.4.2 P28中有详细介绍）</p>
+<p><strong>没设置INFO</strong> 发给接收方接收，没显示在显示端，用<code>rostopic echo 话题</code>查看。</p>
+<p><code>rqt_graph</code> 查看节点关系（计算图）&lt;我还没安这个命令&gt;。</p>
+<p><strong>python</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span></span><br><span class="line"><span class="string">         实现的关键点:</span></span><br><span class="line"><span class="string">         1.发送方</span></span><br><span class="line"><span class="string">         2.接收方</span></span><br><span class="line"><span class="string">         3.数据(此处为普通文本)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">         PS: 二者需要设置相同的话题</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    消息发布方:</span></span><br><span class="line"><span class="string">        循环发布信息:HelloWorld 后缀数字编号</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    实现流程:</span></span><br><span class="line"><span class="string">        1.导包 </span></span><br><span class="line"><span class="string">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="string">        3.实例化 发布者 对象</span></span><br><span class="line"><span class="string">        4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导包 </span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> std_msgs.msg <span class="keyword">import</span> String</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;talker_p&quot;</span>)</span><br><span class="line">    <span class="comment">#3.实例化 发布者 对象</span></span><br><span class="line">    pub = rospy.Publisher(<span class="string">&quot;chatter&quot;</span>,String,queue_size=<span class="number">10</span>)</span><br><span class="line">    <span class="comment">#4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line">    msg = String()  <span class="comment">#创建 msg 对象</span></span><br><span class="line">    msg_front = <span class="string">&quot;hello 你好&quot;</span></span><br><span class="line">    count = <span class="number">0</span>  <span class="comment">#计数器 </span></span><br><span class="line">    <span class="comment"># 设置循环频率</span></span><br><span class="line">    rate = rospy.Rate(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> rospy.is_shutdown():</span><br><span class="line"></span><br><span class="line">        <span class="comment">#拼接字符串</span></span><br><span class="line">        msg.data = msg_front + <span class="built_in">str</span>(count)</span><br><span class="line"></span><br><span class="line">        pub.publish(msg)</span><br><span class="line">        rate.sleep()</span><br><span class="line">        rospy.loginfo(<span class="string">&quot;写出的数据:%s&quot;</span>,msg.data)</span><br><span class="line">        count += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span></span><br><span class="line"><span class="string">         实现的关键点:</span></span><br><span class="line"><span class="string">         1.发送方</span></span><br><span class="line"><span class="string">         2.接收方</span></span><br><span class="line"><span class="string">         3.数据(此处为普通文本)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    消息订阅方:</span></span><br><span class="line"><span class="string">        订阅话题并打印接收到的消息</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    实现流程:</span></span><br><span class="line"><span class="string">        1.导包 </span></span><br><span class="line"><span class="string">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="string">        3.实例化 订阅者 对象</span></span><br><span class="line"><span class="string">        4.处理订阅的消息(回调函数)</span></span><br><span class="line"><span class="string">        5.设置循环调用回调函数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导包 </span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> std_msgs.msg <span class="keyword">import</span> String</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">doMsg</span>(<span class="params">msg</span>):</span><br><span class="line">    rospy.loginfo(<span class="string">&quot;I heard:%s&quot;</span>,msg.data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;listener_p&quot;</span>)</span><br><span class="line">    <span class="comment">#3.实例化 订阅者 对象</span></span><br><span class="line">    sub = rospy.Subscriber(<span class="string">&quot;chatter&quot;</span>,String,doMsg,queue_size=<span class="number">10</span>)</span><br><span class="line">    <span class="comment">#4.处理订阅的消息(回调函数)</span></span><br><span class="line">    <span class="comment">#5.设置循环调用回调函数</span></span><br><span class="line">    rospy.spin()</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>实现对自定义消息的发布与订阅。</li>
+</ol>
+<p>std_msgs 封装了一些如String、Int32、Int64、Char、Bool、Empty的数据类型，这些数据一般只包含一个 data 字段，当传输如激光雷达的一些复杂数据时，结构的单一导致着功能上的局限性。</p>
+<h5 id="服务通信"><a href="#服务通信" class="headerlink" title="服务通信"></a>服务通信</h5><p>服务通信基于<strong>请求响应</strong>模式，是一种应答机制，也即: 一个节点A向另一个节点B发送请求，B接收处理请求并产生响应结果返回给A。它更适用于对<u>实时性</u>有要求、具有一定<u>逻辑处理</u>的应用场景，如：机器人巡逻时，控制系统分析传感器数据发现可疑物体或人…此时拍摄照片并留存。</p>
+<h5 id="参数服务器"><a href="#参数服务器" class="headerlink" title="参数服务器"></a>参数服务器</h5><p>用于实现不同节点之间的数据共享</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>buuPWN</title>
+    <url>/2022/07/03/buuPWN/</url>
+    <content><![CDATA[<h4 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h4><blockquote>
+<p>nc命令：全称netcat，用于设置路由器，能通过 TCP 和 UDP 在网络中读写数据，通过与其他工具结合和重定向。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>Reverse</title>
+    <url>/2022/02/25/buuReverse/</url>
+    <content><![CDATA[<h4 id="0x00-IDA"><a href="#0x00-IDA" class="headerlink" title="0x00 IDA"></a>0x00 IDA</h4><p>逆向工程分为动态分析(OLLYDBG)和静态分析(IDA)。IDA无法分析自解压运行(.exe)的文件，通常用OLLYDBG动态跟踪，等程序完成自解压后从内存中将解压后的代码完整的挖下来形成文件，再由IDA进行静态分析。</p>
+<p><code>shift+F12</code>查找字符串    <code>ctrl+x</code>查看流程图    <code>F5</code>查看源代码</p>
+<h4 id="0x01-壳"><a href="#0x01-壳" class="headerlink" title="0x01 壳"></a>0x01 壳</h4><p><code>exeinfo pe</code>查壳，发现是UPX-&gt;Markus &amp; …的壳。</p>
+<img src="D:\CTF\notes' pictures\exeinfopeHappyNewYear.png" alt="exeinfopeHappyNewYear" style="zoom:50%;" />
+
+<p><strong>壳</strong>：实质上是一个子程序，它在程序运行时首先取得控制权并对exe、com、和dll等程序文件进行压缩，同时隐藏程序真正的OEP。大多数病毒就是基于此原理，从而防止被杀毒软件扫描。</p>
+<blockquote>
+<p>EP是程序的入口点，OEP是程序的原始入口点。一个正常的程序只有EP，只有入口点被修改的程序（加壳等），才会拥有OEP。壳就是一把锁，OEP就是锁孔。</p>
+<p>UPX：一种可执行程序文件压缩器/压缩壳，压缩壳主要功能是压缩PE文件(比如exe,dll等文件)。壳upx是一种保护程序，一般是EXE文件的一种外保护措施。</p>
+</blockquote>
+<p><font color=#FF0000><strong>ESP定律</strong>（堆栈平衡定律）脱壳（OllyDbg）：</font></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Misc</title>
     <url>/2022/02/12/buuMisc/</url>
     <content><![CDATA[<blockquote>
@@ -163,164 +302,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>buuPWN</title>
-    <url>/2022/07/03/buuPWN/</url>
-    <content><![CDATA[<h4 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h4><blockquote>
-<p>nc命令：全称netcat，用于设置路由器，能通过 TCP 和 UDP 在网络中读写数据，通过与其他工具结合和重定向。</p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
-    <title>ROS</title>
-    <url>/2022/06/23/ROS/</url>
-    <content><![CDATA[<p>☁参考：<a href="http://www.autolabor.com.cn/book/ROSTutorials/">Autolabor-赵虚左</a>  <a href="http://wiki.ros.org/cn/ROS/Tutorials">ROS手册</a></p>
-<p>最初是为后来没去的暑假实习硬件岗位学的ROS，这东西蛮有趣、蛮好上手（比起二进制安全（根本原因是我自学能力差））的。学都学了，干脆多学一点。</p>
-<h4 id="0x00-安装ROS"><a href="#0x00-安装ROS" class="headerlink" title="0x00 安装ROS"></a>0x00 安装ROS</h4><p>按照1.2.4 安装ROS没有遇到问题，测试成功。</p>
-<p><img src="D:\blog\coriiiander\pictures\测试ROS.png" alt="测试ROS"></p>
-<h4 id="0x01-HelloWorld简单实现"><a href="#0x01-HelloWorld简单实现" class="headerlink" title="0x01 HelloWorld简单实现"></a>0x01 HelloWorld简单实现</h4><p><strong>vscode图形界面下总结</strong>：/DEMO/src → 右击Create Catkin Package → 输入包名和依赖包 → 包下src中创建c文件 → 修改CMakeLists文件 → catkin_make:debug终端下编译 → 0x01 5 执行</p>
-<p>​    python在功能包下新建scripts文件夹 → 创建c文件 → …</p>
-<h5 id="1-创建工作空间"><a href="#1-创建工作空间" class="headerlink" title="1.创建工作空间"></a>1.创建工作空间</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p 自定义空间名称/src</span><br><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make //ROS编译命令</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="2-创建功能包"><a href="#2-创建功能包" class="headerlink" title="2.创建功能包"></a>2.创建功能包</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//进入 src 创建 ros 包并添加依赖</span><br><span class="line">cd src</span><br><span class="line">catkin_create_pkg 自定义ROS包名 roscpp rospy std_msgs</span><br></pre></td></tr></table></figure>
-
-<p>该功能包依赖于 roscpp、rospy 与 std_msgs，其中roscpp是使用C++实现的库，而rospy则是使用python实现的库，std_msgs是标准消息库。</p>
-<blockquote>
-<p>ubuntu20.04 创建文件：<code>sudo gedit 文件名</code></p>
-<p>ubuntu20.04 输入中文：<a href="https://blog.csdn.net/u013819452/article/details/125324881">https://blog.csdn.net/u013819452/article/details/125324881</a></p>
-</blockquote>
-<h5 id="3-编辑源文件"><a href="#3-编辑源文件" class="headerlink" title="3.编辑源文件"></a>3.编辑源文件</h5><p><strong>C++版</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* demo01/src/helloworld/src */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.包含 ros 的头文件</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="comment">//2.编写main函数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="comment">//执行 ros 节点初始化</span></span><br><span class="line">    ros::<span class="built_in">init</span>(argc,argv,<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="comment">//创建 ros 节点句柄(非必须)</span></span><br><span class="line">    ros::NodeHandle n;</span><br><span class="line">    <span class="comment">//控制台输出 hello world</span></span><br><span class="line">    <span class="built_in">ROS_INFO</span>(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>python版</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="comment">##指定解释器</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1.导包</span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.编写主入口</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#3.初始化 ROS 节点</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">    <span class="comment">#4.输出日志</span></span><br><span class="line">    rospy.loginfo(<span class="string">&quot;Hello World!!!!&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>为 python 文件添加可执行权限 <code>chmod +x 自定义文件名.py</code></p>
-<blockquote>
-<p>自定义文件名为*，表示所有文件；ll命令查看文件属性：可读r，可写w，可执行x 。</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="4-编辑配置文件"><a href="#4-编辑配置文件" class="headerlink" title="4.编辑配置文件"></a>4.编辑配置文件</h5><p><strong>C++版</strong></p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">add_executable(步骤3的源文件名(也可以随便起一个名字)</span><br><span class="line">  src/步骤3的源文件名.cpp</span><br><span class="line">)</span><br><span class="line">target_link_libraries(步骤3的源文件名</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><strong>python版</strong></p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为Python配置合适的解释器 1.安装 2.定位解释器</span></span><br><span class="line"><span class="comment"># 未配置CMakeList.txt是解决方法：1.直接声明解释器为python3（不建议） 2.通过软链接将 python 链接到 python3（建议）</span></span><br><span class="line">catkin_install_python(PROGRAMS scripts/自定义文件名.py</span><br><span class="line">  DESTINATION $&#123;CATKIN_PACKAGE_BIN_DESTINATION&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="5-编译并执行"><a href="#5-编译并执行" class="headerlink" title="5.编译并执行"></a>5.编译并执行</h5><p><strong>C++版</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make（也可在vscode下catkin_make:debug终端下ctrl + shift + b编译）</span><br><span class="line">:~$ roscore（根目录）</span><br><span class="line">cd 工作空间</span><br><span class="line">source ./devel/setup.bash //将当前工作空间刷新到当前窗口下的环境变量</span><br><span class="line">rosrun 包名 C++节点(步骤3的源文件名/配置文件中随便起的名字)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>当前工作空间外执行：</strong><code>source ~/工作空间/devel/setup.bash</code>添加进<code>.bashrc</code>文件（参考安装ROS时配置环境变量，方便在任意终端中使用 ROS）</p>
-<ul>
-<li><p><strong>添加方式1</strong>: 直接使用 gedit 或 vi 编辑 .bashrc 文件，最后添加该内容</p>
-</li>
-<li><p><strong>添加方式2</strong>:<code>echo &quot;source ~/工作空间/devel/setup.bash&quot; &gt;&gt; ~/.bashrc</code></p>
-</li>
-</ul>
-<p>添加后用<code>source .bashrc</code>重新加载它，这样以后执行不用再输入<code>source ./devel/setup.bash</code></p>
-</blockquote>
-<blockquote>
-<p>.xxx文件是隐藏文件，用<code>ctrl+h</code>将其显现出来</p>
-</blockquote>
-<p><strong>python版</strong> 同C++版</p>
-<h4 id="0x02-ROS集成环境搭建"><a href="#0x02-ROS集成环境搭建" class="headerlink" title="0x02 ROS集成环境搭建"></a>0x02 ROS集成环境搭建</h4><h5 id="安装终端"><a href="#安装终端" class="headerlink" title="安装终端"></a>安装终端</h5><p>ROS中，频繁用到终端且需要同时开启多个窗口，推荐Terminator及其快捷键。</p>
-<h5 id="安装VScode"><a href="#安装VScode" class="headerlink" title="安装VScode"></a>安装VScode</h5><p>☁详细看1.4.2 P28</p>
-<blockquote>
-<p><code>ctrl + =</code>放大  <code>ctrl + -</code>缩小  <code>ctrl + shift + b</code>编译  <code>ctrl + /</code>取消注释 <code>ctrl + shift + A</code>加注释</p>
-</blockquote>
-<h5 id="安装launch文件"><a href="#安装launch文件" class="headerlink" title="安装launch文件"></a>安装launch文件</h5><p>一个程序中可能需要启动多个节点，对“调用 rosrun 逐一启动”进行优化：使用 launch 文件，可以一次性启动多个 ROS 节点。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 添加被执行的节点 pkg是包 type是节点 name是节点名 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 乌龟GUI --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;helloworld&quot;</span> <span class="attr">type</span>=<span class="string">&quot;demo_hello&quot;</span> <span class="attr">name</span>=<span class="string">&quot;hello&quot;</span> <span class="attr">output</span>=<span class="string">&quot;screen&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtlesim_node&quot;</span> <span class="attr">name</span>=<span class="string">&quot;t1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtle_teleop_key&quot;</span> <span class="attr">name</span>=<span class="string">&quot;key1&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>参考执行乌龟程序时的<code>rosrun turtlesim turtlesim_node</code></p>
-<h4 id="0x03-ROS架构"><a href="#0x03-ROS架构" class="headerlink" title="0x03 ROS架构"></a>0x03 ROS架构</h4><p>💦本节建议在对ROS有一定经验后再回来学习（P31-P35）</p>
-<h5 id="ROS文件系统"><a href="#ROS文件系统" class="headerlink" title="ROS文件系统"></a>ROS文件系统</h5><h5 id="ROS文件系统相关命令"><a href="#ROS文件系统相关命令" class="headerlink" title="ROS文件系统相关命令"></a>ROS文件系统相关命令</h5><ol>
-<li>执行</li>
-</ol>
-<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">roscore</span></span><br><span class="line"><span class="variable">roscore</span> -<span class="variable">p</span> <span class="function"><span class="title">xxxx</span>(指定端口号)</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>roscore是 ROS 的系统先决条件节点和程序的集合， 必须运行 roscore 才能使 ROS 节点进行通信。</p>
-</li>
-<li><p>roscore 将启动：ros master，ros 参数服务器，rosout 日志节点。</p>
-</li>
-<li><p>```shell<br>vivi@ubuntu:~$ roscore</p>
-<h1 id="日志写到哪去了"><a href="#日志写到哪去了" class="headerlink" title="日志写到哪去了"></a>日志写到哪去了</h1><p>… logging to /home/vivi/.ros/log/a6cd7df8-f5ea-11ec-8a5d-4d68047558b7/roslaunch-ubuntu-4173.log<br>Checking log directory for disk usage. This may take a while.<br>Press Ctrl-C to interrupt<br>Done checking log file disk usage. Usage is &lt;1GB.</p>
-<h1 id="在该端口上启动roslaunch-server"><a href="#在该端口上启动roslaunch-server" class="headerlink" title="在该端口上启动roslaunch server"></a>在该端口上启动roslaunch server</h1><p>started roslaunch server <a href="http://ubuntu:39577/">http://ubuntu:39577/</a><br>ros_comm version 1.15.14</p>
-<h1 id="ros摘要"><a href="#ros摘要" class="headerlink" title="ros摘要"></a>ros摘要</h1><h1 id="SUMMARY"><a href="#SUMMARY" class="headerlink" title="SUMMARY"></a>SUMMARY</h1><p>PARAMETERS</p>
-<ul>
-<li>/rosdistro: noetic</li>
-<li>/rosversion: 1.15.14</li>
-</ul>
-<h1 id="启动节点"><a href="#启动节点" class="headerlink" title="启动节点"></a>启动节点</h1><p>NODES</p>
-<p>auto-starting new master # 启动新的master节点<br>process[master]: started with pid [4183]<br>ROS_MASTER_URI=<a href="http://ubuntu:11311/">http://ubuntu:11311/</a></p>
-<p>setting /run_id to a6cd7df8-f5ea-11ec-8a5d-4d68047558b7<br>process[rosout-1]: started with pid [4193] # 启动日志输出rosout节点<br>started core service [/rosout]</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>rosrun 包名 可执行文件名</p>
-<figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 运行指定的ROS节点，如`rosrun turtlesim turtlesim_node`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>roslaunch 包名 launch文件名</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 执行某个包下的 launch 文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##### ROS计算图</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 0x04 ROS通信机制</span></span><br><span class="line"></span><br><span class="line">ROS中每个功能点都是一个单独的进程，ROS是进程（也称为Nodes）的分布式框架。不同的进程是如何通信的？</span><br><span class="line"></span><br><span class="line">- 话题通信(发布订阅模式)</span><br><span class="line">- 服务通信(请求响应模式)</span><br><span class="line">- 参数服务器(参数共享模式)</span><br><span class="line"></span><br><span class="line"><span class="comment">##### 话题通信</span></span><br><span class="line"></span><br><span class="line">&lt;img src=<span class="string">&quot;D:\blog\coriiiander\pictures\通信机制.jpg&quot;</span> alt=<span class="string">&quot;通信机制&quot;</span> style=<span class="string">&quot;zoom:67%;&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">适用于不断更新的数据传输相关的应用场景。理论模型（master注册时延会导致先接收后发送接收不到前几条数据，可通过休眠解决该问题&lt;我的一直接收不到数据&gt;）：</span><br><span class="line"></span><br><span class="line">&lt;img src=<span class="string">&quot;D:\blog\coriiiander\pictures\理论模型.jpg&quot;</span> alt=<span class="string">&quot;理论模型&quot;</span> style=<span class="string">&quot;zoom:30%;&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. **话题通信基本操作** - 最基本的发布订阅模型，发布方以固定频率发送一段文本，订阅方接收文本并输出。</span><br><span class="line"></span><br><span class="line">**C++**</span><br><span class="line"></span><br><span class="line">```C</span><br><span class="line">/*</span><br><span class="line">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span><br><span class="line">         实现的关键点:</span><br><span class="line">         <span class="number">1</span>.发送方</span><br><span class="line">         <span class="number">2</span>.接收方</span><br><span class="line">         <span class="number">3</span>.数据(此处为普通文本)</span><br><span class="line"></span><br><span class="line">         PS: 二者需要设置相同的话题</span><br><span class="line">/*</span><br><span class="line">/*</span><br><span class="line">    消息发布方:</span><br><span class="line">        循环发布信息:HelloWorld 后缀数字编号</span><br><span class="line"></span><br><span class="line">    实现流程:</span><br><span class="line">        <span class="number">1</span>.包含头文件 </span><br><span class="line">        <span class="number">2</span>.初始化 ROS 节点:命名(唯一)</span><br><span class="line">        <span class="number">3</span>.实例化 ROS 句柄</span><br><span class="line">        <span class="number">4</span>.实例化 发布者 对象</span><br><span class="line">        <span class="number">5</span>.组织被发布的数据，并编写逻辑发布数据</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"><span class="regexp">//</span> <span class="number">1</span>.包含头文件 </span><br><span class="line"><span class="comment">#include &quot;ros/ros.h&quot;</span></span><br><span class="line"><span class="comment">#include &quot;std_msgs/String.h&quot; //普通文本类型的消息</span></span><br><span class="line"><span class="comment">#include &lt;sstream&gt;</span></span><br><span class="line"></span><br><span class="line">int main(int argc, char  *argv[])</span><br><span class="line">&#123;   </span><br><span class="line">    <span class="regexp">//</span>设置编码</span><br><span class="line">    setlocale(LC_ALL,<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span><span class="number">2</span>.初始化 ROS 节点:命名(唯一)</span><br><span class="line">    <span class="regexp">//</span> 参数<span class="number">1</span>和参数<span class="number">2</span> 后期为节点传值会使用</span><br><span class="line">    <span class="regexp">//</span> 参数<span class="number">3</span> 是节点名称，是一个标识符，需要保证运行后，在 ROS 网络拓扑中唯一</span><br><span class="line">    ros::init(argc,argv,<span class="string">&quot;talker&quot;</span>);</span><br><span class="line">    <span class="regexp">//</span><span class="number">3</span>.实例化 ROS 句柄</span><br><span class="line">    ros::NodeHandle nh;<span class="regexp">//</span>该类封装了 ROS 中的一些常用功能</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span><span class="number">4</span>.实例化 发布者 对象</span><br><span class="line">    <span class="regexp">//</span>泛型: 发布的消息类型</span><br><span class="line">    <span class="regexp">//</span>参数<span class="number">1</span>: 要发布到的话题</span><br><span class="line">    <span class="regexp">//</span>参数<span class="number">2</span>: 队列中最大保存的消息数，超出此阀值时，先进的先销毁(时间早的先销毁)</span><br><span class="line">    ros::Publisher pub = nh.advertise&lt;std_msgs::String&gt;(<span class="string">&quot;chatter&quot;</span>,<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span><span class="number">5</span>.组织被发布的数据，并编写逻辑发布数据</span><br><span class="line">    <span class="regexp">//</span>数据(动态组织)</span><br><span class="line">    std_msgs::String msg;</span><br><span class="line">    <span class="regexp">//</span> msg.data = <span class="string">&quot;你好啊！！！&quot;</span>;</span><br><span class="line">    std::string msg_front = <span class="string">&quot;Hello 你好！&quot;</span>; <span class="regexp">//</span>消息前缀</span><br><span class="line">    int count = <span class="number">0</span>; <span class="regexp">//</span>消息计数器</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span>逻辑(一秒<span class="number">10</span>次)</span><br><span class="line">    ros::Rate r(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span>节点不死</span><br><span class="line">    <span class="keyword">while</span> (ros::ok())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="regexp">//</span>使用 stringstream 拼接字符串与编号</span><br><span class="line">        std::stringstream ss;</span><br><span class="line">        ss &lt;&lt; msg_front &lt;&lt; count;</span><br><span class="line">        msg.data = ss.str();</span><br><span class="line">        <span class="regexp">//</span>发布消息</span><br><span class="line">        pub.publish(msg);</span><br><span class="line">        <span class="regexp">//</span>加入调试，打印发送的消息</span><br><span class="line">        ROS_INFO(<span class="string">&quot;发送的消息:%s&quot;</span>,msg.data.c_str());</span><br><span class="line"></span><br><span class="line">        <span class="regexp">//</span>根据前面制定的发送贫频率自动休眠 休眠时间 = <span class="number">1</span>/频率；</span><br><span class="line">        r.sleep();</span><br><span class="line">        count++;<span class="regexp">//</span>循环结束前，让 count 自增</span><br><span class="line">        <span class="regexp">//</span>暂无应用</span><br><span class="line">        ros::spinOnce();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    消息订阅方:</span></span><br><span class="line"><span class="comment">        订阅话题并打印接收到的消息</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    实现流程:</span></span><br><span class="line"><span class="comment">        1.包含头文件 </span></span><br><span class="line"><span class="comment">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="comment">        3.实例化 ROS 句柄</span></span><br><span class="line"><span class="comment">        4.实例化 订阅者 对象</span></span><br><span class="line"><span class="comment">        5.处理订阅的消息(回调函数)</span></span><br><span class="line"><span class="comment">        6.设置循环调用回调函数</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// 1.包含头文件 </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;std_msgs/String.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">doMsg</span><span class="params">(<span class="type">const</span> std_msgs::String::ConstPtr&amp; msg_p)</span>&#123;</span><br><span class="line">    ROS_INFO(<span class="string">&quot;我听见:%s&quot;</span>,msg_p-&gt;data.c_str());</span><br><span class="line">    <span class="comment">// ROS_INFO(&quot;我听见:%s&quot;,(*msg_p).data.c_str());</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>  *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">    setlocale(LC_ALL,<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="comment">//2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    ros::init(argc,argv,<span class="string">&quot;listener&quot;</span>);</span><br><span class="line">    <span class="comment">//3.实例化 ROS 句柄</span></span><br><span class="line">    ros::NodeHandle nh;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//4.实例化 订阅者 对象</span></span><br><span class="line">    ros::Subscriber sub = nh.subscribe&lt;std_msgs::String&gt;(<span class="string">&quot;chatter&quot;</span>,<span class="number">10</span>,doMsg);</span><br><span class="line">    <span class="comment">//5.处理订阅的消息(回调函数)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//     6.设置循环调用回调函数</span></span><br><span class="line">    ros::spin();<span class="comment">//循环读取接收的数据，并调用回调函数处理</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>vscode报错</strong>  <code>fatal error: &#39;ros/ros.h&#39; file not found #include &quot;ros/ros.h&quot;</code>，在terminal中打开执行<code>catkin_make</code>，显示100% 没报错，是vs编译器设置错了。vs编译器设置成了<code>C/C++:clang++ build active file</code>，应在Terminal → Configure Default Build Task 中点击<code>catkin_make:build</code>右边的齿轮<u>修改tasks.json文件</u>（1.4.2 P28中有详细介绍）</p>
-<p><strong>没设置INFO</strong> 发给接收方接收，没显示在显示端，用<code>rostopic echo 话题</code>查看。</p>
-<p><code>rqt_graph</code> 查看节点关系（计算图）&lt;我还没安这个命令&gt;。</p>
-<p><strong>python</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span></span><br><span class="line"><span class="string">         实现的关键点:</span></span><br><span class="line"><span class="string">         1.发送方</span></span><br><span class="line"><span class="string">         2.接收方</span></span><br><span class="line"><span class="string">         3.数据(此处为普通文本)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">         PS: 二者需要设置相同的话题</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    消息发布方:</span></span><br><span class="line"><span class="string">        循环发布信息:HelloWorld 后缀数字编号</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    实现流程:</span></span><br><span class="line"><span class="string">        1.导包 </span></span><br><span class="line"><span class="string">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="string">        3.实例化 发布者 对象</span></span><br><span class="line"><span class="string">        4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导包 </span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> std_msgs.msg <span class="keyword">import</span> String</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;talker_p&quot;</span>)</span><br><span class="line">    <span class="comment">#3.实例化 发布者 对象</span></span><br><span class="line">    pub = rospy.Publisher(<span class="string">&quot;chatter&quot;</span>,String,queue_size=<span class="number">10</span>)</span><br><span class="line">    <span class="comment">#4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line">    msg = String()  <span class="comment">#创建 msg 对象</span></span><br><span class="line">    msg_front = <span class="string">&quot;hello 你好&quot;</span></span><br><span class="line">    count = <span class="number">0</span>  <span class="comment">#计数器 </span></span><br><span class="line">    <span class="comment"># 设置循环频率</span></span><br><span class="line">    rate = rospy.Rate(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> rospy.is_shutdown():</span><br><span class="line"></span><br><span class="line">        <span class="comment">#拼接字符串</span></span><br><span class="line">        msg.data = msg_front + <span class="built_in">str</span>(count)</span><br><span class="line"></span><br><span class="line">        pub.publish(msg)</span><br><span class="line">        rate.sleep()</span><br><span class="line">        rospy.loginfo(<span class="string">&quot;写出的数据:%s&quot;</span>,msg.data)</span><br><span class="line">        count += <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span></span><br><span class="line"><span class="string">         实现的关键点:</span></span><br><span class="line"><span class="string">         1.发送方</span></span><br><span class="line"><span class="string">         2.接收方</span></span><br><span class="line"><span class="string">         3.数据(此处为普通文本)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    消息订阅方:</span></span><br><span class="line"><span class="string">        订阅话题并打印接收到的消息</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    实现流程:</span></span><br><span class="line"><span class="string">        1.导包 </span></span><br><span class="line"><span class="string">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="string">        3.实例化 订阅者 对象</span></span><br><span class="line"><span class="string">        4.处理订阅的消息(回调函数)</span></span><br><span class="line"><span class="string">        5.设置循环调用回调函数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导包 </span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> std_msgs.msg <span class="keyword">import</span> String</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">doMsg</span>(<span class="params">msg</span>):</span><br><span class="line">    rospy.loginfo(<span class="string">&quot;I heard:%s&quot;</span>,msg.data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;listener_p&quot;</span>)</span><br><span class="line">    <span class="comment">#3.实例化 订阅者 对象</span></span><br><span class="line">    sub = rospy.Subscriber(<span class="string">&quot;chatter&quot;</span>,String,doMsg,queue_size=<span class="number">10</span>)</span><br><span class="line">    <span class="comment">#4.处理订阅的消息(回调函数)</span></span><br><span class="line">    <span class="comment">#5.设置循环调用回调函数</span></span><br><span class="line">    rospy.spin()</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="2">
-<li>实现对自定义消息的发布与订阅。</li>
-</ol>
-<p>std_msgs 封装了一些如String、Int32、Int64、Char、Bool、Empty的数据类型，这些数据一般只包含一个 data 字段，当传输如激光雷达的一些复杂数据时，结构的单一导致着功能上的局限性。</p>
-<h5 id="服务通信"><a href="#服务通信" class="headerlink" title="服务通信"></a>服务通信</h5><p>服务通信基于<strong>请求响应</strong>模式，是一种应答机制，也即: 一个节点A向另一个节点B发送请求，B接收处理请求并产生响应结果返回给A。它更适用于对<u>实时性</u>有要求、具有一定<u>逻辑处理</u>的应用场景，如：机器人巡逻时，控制系统分析传感器数据发现可疑物体或人…此时拍摄照片并留存。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Reverse</title>
-    <url>/2022/02/25/buuReverse/</url>
-    <content><![CDATA[<h4 id="0x00-IDA"><a href="#0x00-IDA" class="headerlink" title="0x00 IDA"></a>0x00 IDA</h4><p>逆向工程分为动态分析(OLLYDBG)和静态分析(IDA)。IDA无法分析自解压运行(.exe)的文件，通常用OLLYDBG动态跟踪，等程序完成自解压后从内存中将解压后的代码完整的挖下来形成文件，再由IDA进行静态分析。</p>
-<p><code>shift+F12</code>查找字符串    <code>ctrl+x</code>查看流程图    <code>F5</code>查看源代码</p>
-<h4 id="0x01-壳"><a href="#0x01-壳" class="headerlink" title="0x01 壳"></a>0x01 壳</h4><p><code>exeinfo pe</code>查壳，发现是UPX-&gt;Markus &amp; …的壳。</p>
-<img src="D:\CTF\notes' pictures\exeinfopeHappyNewYear.png" alt="exeinfopeHappyNewYear" style="zoom:50%;" />
-
-<p><strong>壳</strong>：实质上是一个子程序，它在程序运行时首先取得控制权并对exe、com、和dll等程序文件进行压缩，同时隐藏程序真正的OEP。大多数病毒就是基于此原理，从而防止被杀毒软件扫描。</p>
-<blockquote>
-<p>EP是程序的入口点，OEP是程序的原始入口点。一个正常的程序只有EP，只有入口点被修改的程序（加壳等），才会拥有OEP。壳就是一把锁，OEP就是锁孔。</p>
-<p>UPX：一种可执行程序文件压缩器/压缩壳，压缩壳主要功能是压缩PE文件(比如exe,dll等文件)。壳upx是一种保护程序，一般是EXE文件的一种外保护措施。</p>
-</blockquote>
-<p><font color=#FF0000><strong>ESP定律</strong>（堆栈平衡定律）脱壳（OllyDbg）：</font></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>coriiiander&#39;s weekly</title>
-    <url>/2022/06/20/weekly/</url>
-    <content><![CDATA[<h4 id="0x00-2022-6-20-6-26"><a href="#0x00-2022-6-20-6-26" class="headerlink" title="0x00 2022/6/20-6/26"></a>0x00 2022/6/20-6/26</h4><ol>
-<li>leetcode腾讯精选五十题*5（练JAVA/python），笔记发在leetcode题解上方便查看</li>
-<li>ROS 安装&amp;ROS的HelloWorld C++/python简单实现</li>
-<li>The Economist - Palm roiled &amp; Schumpeter</li>
-<li>工训STC-B焊接及测试案例</li>
-</ol>
-<h4 id="0x01-6-27-7-3"><a href="#0x01-6-27-7-3" class="headerlink" title="0x01 6/27-7/3"></a>0x01 6/27-7/3</h4><ol>
-<li>工训BSP编程</li>
-<li>学了个微软双拼</li>
-<li> 高铁上入门一下二进制安全，入门失败</li>
-</ol>
-<p>学习能力和学习效率也就这样了</p>
-<img src="D:\blog\coriiiander\pictures\提问的智慧.png" alt="提问的智慧" style="zoom: 67%;" />
-
-<h4 id="暑假日报"><a href="#暑假日报" class="headerlink" title="暑假日报"></a>暑假日报</h4><p><strong>7/4</strong> ROS看了第二章通信机制，代码还得着重理解一下。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Web</title>
     <url>/2022/02/10/buuWeb/</url>
     <content><![CDATA[<blockquote>
@@ -360,6 +341,26 @@
 <p>上传github</p>
 <figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">...</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
+]]></content>
+  </entry>
+  <entry>
+    <title>coriiiander&#39;s weekly</title>
+    <url>/2022/06/20/weekly/</url>
+    <content><![CDATA[<h4 id="0x00-2022-6-20-6-26"><a href="#0x00-2022-6-20-6-26" class="headerlink" title="0x00 2022/6/20-6/26"></a>0x00 2022/6/20-6/26</h4><ol>
+<li>leetcode腾讯精选五十题*5（练JAVA/python），笔记发在leetcode题解上方便查看</li>
+<li>ROS 安装&amp;ROS的HelloWorld C++/python简单实现</li>
+<li>The Economist - Palm roiled &amp; Schumpeter</li>
+<li>工训STC-B焊接及测试案例</li>
+</ol>
+<h4 id="0x01-6-27-7-3"><a href="#0x01-6-27-7-3" class="headerlink" title="0x01 6/27-7/3"></a>0x01 6/27-7/3</h4><ol>
+<li>工训BSP编程</li>
+<li>学了个微软双拼</li>
+<li> 高铁上入门一下二进制安全，入门失败</li>
+</ol>
+<p>学习能力和学习效率也就这样了</p>
+<img src="D:\blog\coriiiander\pictures\提问的智慧.png" alt="提问的智慧" style="zoom: 67%;" />
+
+<h4 id="暑假日报"><a href="#暑假日报" class="headerlink" title="暑假日报"></a>暑假日报</h4><p><strong>7/4</strong> ROS看了第二章通信机制，代码还得着重理解一下。</p>
 ]]></content>
   </entry>
 </search>
