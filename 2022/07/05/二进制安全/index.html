@@ -20,21 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="LINUX图形界面转化成命令行界面：ctrl+alt+f2. Crypto是用写代码解决的CTF问题. 虚拟机与实体机共享文件：按照官方教程安装VMtools后直接拖入（kali已经可以了，ubuntu好像还不行）. base64编码：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;339477329. 上位机：可以直接发出操控命令的计算机. LINUX切换成root用户：sudo -i">
+  <meta name="description" content="☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕 0x00 书单☁代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相 1. 逆向系列《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识 《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍 《C++反汇编与逆向分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Broken Knowledge">
-<meta property="og:url" content="http://example.com/2022/01/30/CTF-Broken%20knowledge/index.html">
+<meta property="og:title" content="二进制安全">
+<meta property="og:url" content="http://example.com/2022/07/05/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/index.html">
 <meta property="og:site_name" content="Coriiiander&#39;blog">
-<meta property="og:description" content="LINUX图形界面转化成命令行界面：ctrl+alt+f2. Crypto是用写代码解决的CTF问题. 虚拟机与实体机共享文件：按照官方教程安装VMtools后直接拖入（kali已经可以了，ubuntu好像还不行）. base64编码：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;339477329. 上位机：可以直接发出操控命令的计算机. LINUX切换成root用户：sudo -i">
+<meta property="og:description" content="☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕 0x00 书单☁代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相 1. 逆向系列《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识 《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍 《C++反汇编与逆向分析">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:/CTF/notes">
-<meta property="article:published_time" content="2022-01-30T08:41:22.999Z">
-<meta property="article:modified_time" content="2022-06-24T06:42:35.766Z">
+<meta property="article:published_time" content="2022-07-05T09:18:37.747Z">
+<meta property="article:modified_time" content="2022-07-05T09:33:27.649Z">
 <meta property="article:author" content="六月二十日香菜">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:/CTF/notes">
 
-<link rel="canonical" href="http://example.com/2022/01/30/CTF-Broken%20knowledge/">
+<link rel="canonical" href="http://example.com/2022/07/05/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/">
 
 
 <script id="page-configurations">
@@ -47,7 +45,7 @@
   };
 </script>
 
-  <title>Broken Knowledge | Coriiiander'blog</title>
+  <title>二进制安全 | Coriiiander'blog</title>
   
 
 
@@ -153,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/30/CTF-Broken%20knowledge/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/05/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -166,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Broken Knowledge
+          二进制安全
         </h1>
 
         <div class="post-meta">
@@ -175,16 +173,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-01-30 16:41:22" itemprop="dateCreated datePublished" datetime="2022-01-30T16:41:22+08:00">2022-01-30</time>
+              <time title="创建时间：2022-07-05 17:18:37 / 修改时间：17:33:27" itemprop="dateCreated datePublished" datetime="2022-07-05T17:18:37+08:00">2022-07-05</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-24 14:42:35" itemprop="dateModified" datetime="2022-06-24T14:42:35+08:00">2022-06-24</time>
-              </span>
 
           
 
@@ -197,43 +189,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>LINUX图形界面转化成命令行界面：<code>ctrl+alt+f2</code>.</p>
-<p>Crypto是用写代码解决的CTF问题.</p>
-<p>虚拟机与实体机共享文件：按照<u>官方教程</u>安装VMtools后直接拖入（kali已经可以了，ubuntu好像还不行）.</p>
-<p>base64编码：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/339477329">https://zhuanlan.zhihu.com/p/339477329</a>.</p>
-<p>上位机：可以直接发出操控命令的计算机.</p>
-<p>LINUX切换成root用户：sudo -i</p>
-<img src="D:\CTF\notes' pictures\转换成root用户.png" alt="转换成root用户" style="zoom:90%;" />
-
-<p>LINUX终端下复制粘贴：复制命令:Ctrl + Shift + C，粘贴命令:Ctrl + Shift + V.</p>
-<p>图片隐写（image stegano）：将图片下载，并将其重命名为.txt文件，打开就可以获得密码.</p>
-<p>凯撒密码：位移不是固定的.</p>
-<p>Robots_exclusion_standard：如<a target="_blank" rel="noopener" href="http://www.wechall.net/robots.txt%EF%BC%8C%E8%AF%A5">http://www.wechall.net/robots.txt，该</a> robots.txt 文件被网络爬虫用来检查他们是否被允许对你的网站或其中一部分进行爬网和索引。有时，这些文件会显示目录结构，而非保护内容不被爬网.</p>
-<p>LFI漏洞：本地文件包含（Local File Include)是PHP脚本的一大特色。程序员经常把一系列功能函数都写进function.php中（包含），之后当某个文件需要时再进行调用。</p>
-<blockquote>
-<h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4></blockquote>
-<p>SELECT * FROM user WHERE username=’ <font color=#00BFFF>admin‘ or ‘1‘=‘1</font> ‘ AND password=’ ‘（以用户名admin登录）</p>
-<p>用户名填  ‘ or 1=1#   闭合查询语句</p>
-<p>一个二维码识别网站：<a target="_blank" rel="noopener" href="https://online-barcode-reader.inliteresearch.com/">barcode online reader</a>.🦓真的可以扫二维码！今天做了一道题，题解就是扫斑马身上的二维码。</p>
-<p>一个计算网站：<a target="_blank" rel="noopener" href="https://www.wolframalpha.com/">Wolfram|Alpha: Computational Intelligence</a></p>
-<blockquote>
-<h4 id="代换密码与转置密码"><a href="#代换密码与转置密码" class="headerlink" title="代换密码与转置密码"></a>代换密码与转置密码</h4></blockquote>
-<p>一、代换（substitution）密码（摘自<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c40f45d0d44b%EF%BC%89">https://www.jianshu.com/p/c40f45d0d44b）</a></p>
-<p>采用一一映射的方式，将明文每个字符逐一唯一地代换成另外的一个字符。在凯撒密码中，每个字母都按照其在字母表中的顺序向后（或向前）移动固定数目（循环移动）作为密文。而代换密码则不是简单的按顺序移位，而是完全混乱的毫无规律地进行映射。</p>
-<p><strong>攻击：</strong>凯撒就是简单的字母的移位，仅仅有25种可能的密钥，暴力穷举法可以瞬间攻破它。代换密码则没法简单地看出字符的对应关系了，其可能的密钥可达26!个。</p>
-<p>对于代换密码，有多种的常用的攻击方法，其中常见两种为“词频分析法”和“爬山法”。</p>
-<p><strong>词频分析法</strong>:把密文中字母使用的相对频率统计出来，与日常英语中英文字母使用的相对频率进行比较，利用频率进行匹配，即密文中频率较高的字母对应于日常英语中使用频率较高的英文字母。由于要使用到数学统计的方法，此攻击方法需要用到较长的密文。可<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://quipqiup.com/">点击这里</a>进行线上解密。</p>
-<p><strong>爬山法</strong>：选择性地尝试不同解密密钥，然后给每一个解密出来的明文标记上一个适应度。解密出来的明文越接近我们的日常用的英语，适应度就越高；解密出来的明文越难读懂或者越不像我们日常用的英语，则其适应度越低。我们使用一个基于quadgram statistics的适应度计算方法。</p>
-<p>下面详细描述算法步骤：</p>
-<p>（1）随机生成一个key，称为parentkey，用它解密得对应的明文m1，对明文计算适应度d1。</p>
-<p>（2）随机交换parentkey中的两个字符得到子密钥child，解密出对应的明文m2并计算适应度d2。</p>
-<p>（3）若d1&lt;d2，则child成为新的parentkey</p>
-<p>（4）不断循环进行（2）（3）直到最后的1000次循环中不再有更高的适应度生成</p>
-<p>（5）回到（1）重新生成parentkey继续迭代寻找，或者由操作者终止程序</p>
-<p>  重新执行（1），是为了防止（2）（3）的操作使结果陷入局部最优的困境。对于生成的明文的适应度的比较，其实可以看作是对不同解密密钥的比较，解密出来的明文的适应度越高，对应的密钥就更好。</p>
-<p>quadgrams.txt和ngram_score.py可<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/">点击这里</a>获取。</p>
-<p>二、错位（Transposition）密码</p>
-<p>错位密码是一种使<strong>明文单元的位置（</strong>“单元”通常是字符或者字符串）通过一种有规律的方式进行移动的加密方法，生成的密文构成明文的一个置换。 也即明文被重新排序了。更难被攻击。</p>
+        <p>☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕</p>
+<h4 id="0x00-书单"><a href="#0x00-书单" class="headerlink" title="0x00 书单"></a>0x00 书单</h4><p>☁代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相</p>
+<h5 id="1-逆向系列"><a href="#1-逆向系列" class="headerlink" title="1. 逆向系列"></a>1. 逆向系列</h5><p>《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识</p>
+<p>《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍</p>
+<p>《C++<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%8F%8D%E6%B1%87%E7%BC%96&spm=1001.2101.3001.7020">反汇编</a>与逆向分析技术揭秘》源代码和汇编结合举例，很详细，后面对熊猫烧香的分析也很详细</p>
+<p>《Android软件安全与<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%80%86%E5%90%91%E5%88%86%E6%9E%90&spm=1001.2101.3001.7020">逆向分析</a>》介绍安卓逆向基础，后面出了2019的版本，可以看看2019的版本</p>
+<p>《逆向工程核心原理》逆向入门的好书，讲的非常细致，初学者可以买来看看</p>
+<p>《恶意代码分析实战》案例较多，适合有基础的朋友们看</p>
+<h5 id="2-操作系统基础"><a href="#2-操作系统基础" class="headerlink" title="2. 操作系统基础"></a>2. 操作系统基础</h5><p>《深入理解计算机系统》深入介绍计算机的原理，很详细，内容覆盖很广</p>
+<p>《程序员的自我修养》深入讲解了ELF，PE文件的链接过程，PWN基础学习的好书</p>
+<p>《深入解析Windows操作系统》比较厚的书，分为上下册，详细的介绍了Windows的各种机制，就是不容易耐下性子来看 </p>
+<h5 id="3-漏洞系列"><a href="#3-漏洞系列" class="headerlink" title="3. 漏洞系列"></a>3. 漏洞系列</h5><p>《0day安全 软件漏洞分析技术》漏洞学习基础,里面有许多类型的漏洞分析</p>
+<p>《漏洞战争 软件漏洞分析精要》看完0day安全再看这本书，这本书以实战为主 </p>
+<h5 id="4-内核系列"><a href="#4-内核系列" class="headerlink" title="4. 内核系列"></a>4. 内核系列</h5><p><strong>Windows内核</strong></p>
+<p>《Windows内核情景分析》对内核的介绍非常详细，毛德操老师的著作</p>
+<p>《寒江独钓-Windows内核安全编程》内核安全编程很著名的一本书，适合入门</p>
+<p>《Windows内核安全与驱动开发》寒江独钓的升级版，年份上比寒江独钓新一些</p>
+<p>《Windows驱动开发技术详解》驱动开发入门书籍</p>
+<p><strong>Linux内核</strong></p>
+<p>《深入理解Linux内核(第三版)》详细介绍了Linux内核的知识，很著名的一本书 </p>
+<h5 id="5-编程系列"><a href="#5-编程系列" class="headerlink" title="5. 编程系列"></a>5. 编程系列</h5><p>《Windows黑客编程技术详解》里面有win32和内核的编程，介绍还算比较全面</p>
+<p>《Python编程从入门到实践》基础的python入门书籍，小白都可以看的懂 </p>
+<h5 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h5><p>《IDA Pro权威指南》深入理解IDA工具，神器不解释</p>
+<p>《加密与解密第四版》里面有很多综合的知识，ctf入门书籍，能详细的读完这本书，就算是很厉害了</p>
 
     </div>
 
@@ -248,10 +227,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/02/10/buuWeb/" rel="next" title="Web">
-      Web <i class="fa fa-chevron-right"></i>
+    <a href="/2022/07/03/buuPWN/" rel="prev" title="buuPWN">
+      <i class="fa fa-chevron-left"></i> buuPWN
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/05/%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E7%AC%AC%E5%9B%9B%E7%89%88/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -311,7 +293,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">SQL注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E6%8D%A2%E5%AF%86%E7%A0%81%E4%B8%8E%E8%BD%AC%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">代换密码与转置密码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0x00-%E4%B9%A6%E5%8D%95"><span class="nav-number">1.</span> <span class="nav-text">0x00 书单</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%80%86%E5%90%91%E7%B3%BB%E5%88%97"><span class="nav-number">1.1.</span> <span class="nav-text">1. 逆向系列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80"><span class="nav-number">1.2.</span> <span class="nav-text">2. 操作系统基础</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%BC%8F%E6%B4%9E%E7%B3%BB%E5%88%97"><span class="nav-number">1.3.</span> <span class="nav-text">3. 漏洞系列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%86%85%E6%A0%B8%E7%B3%BB%E5%88%97"><span class="nav-number">1.4.</span> <span class="nav-text">4. 内核系列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E7%BC%96%E7%A8%8B%E7%B3%BB%E5%88%97"><span class="nav-number">1.5.</span> <span class="nav-text">5. 编程系列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E5%85%B6%E4%BB%96"><span class="nav-number">1.6.</span> <span class="nav-text">6. 其他</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
