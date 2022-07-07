@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-05T09:35:44.427Z</updated>
+  <updated>2022-07-06T08:46:53.810Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,32 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://example.com/2022/07/05/%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E7%AC%AC%E5%9B%9B%E7%89%88/"/>
-    <id>http://example.com/2022/07/05/%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E7%AC%AC%E5%9B%9B%E7%89%88/</id>
-    <published>2022-07-05T09:35:34.025Z</published>
-    <updated>2022-07-05T09:35:44.427Z</updated>
-    
-    <content type="html"><![CDATA[<hr><h2 id="title：加密与解密第四版"><a href="#title：加密与解密第四版" class="headerlink" title="title：加密与解密第四版"></a>title：加密与解密第四版</h2><h4 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h4>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;hr&gt;
-&lt;h2 id=&quot;title：加密与解密第四版&quot;&gt;&lt;a href=&quot;#title：加密与解密第四版&quot; class=&quot;headerlink&quot; title=&quot;title：加密与解密第四版&quot;&gt;&lt;/a&gt;title：加密与解密第四版&lt;/h2&gt;&lt;h4 id=&quot;0x00&quot;&gt;&lt;a hre</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>二进制安全</title>
     <link href="http://example.com/2022/07/05/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/"/>
     <id>http://example.com/2022/07/05/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/</id>
     <published>2022-07-05T09:18:37.747Z</published>
-    <updated>2022-07-05T09:33:27.649Z</updated>
+    <updated>2022-07-06T08:46:53.810Z</updated>
     
     <content type="html"><![CDATA[<p>☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕</p><h4 id="0x00-书单"><a href="#0x00-书单" class="headerlink" title="0x00 书单"></a>0x00 书单</h4><p>☁代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相</p><h5 id="1-逆向系列"><a href="#1-逆向系列" class="headerlink" title="1. 逆向系列"></a>1. 逆向系列</h5><p>《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识</p><p>《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍</p><p>《C++<a href="https://so.csdn.net/so/search?q=%E5%8F%8D%E6%B1%87%E7%BC%96&spm=1001.2101.3001.7020">反汇编</a>与逆向分析技术揭秘》源代码和汇编结合举例，很详细，后面对熊猫烧香的分析也很详细</p><p>《Android软件安全与<a href="https://so.csdn.net/so/search?q=%E9%80%86%E5%90%91%E5%88%86%E6%9E%90&spm=1001.2101.3001.7020">逆向分析</a>》介绍安卓逆向基础，后面出了2019的版本，可以看看2019的版本</p><p>《逆向工程核心原理》逆向入门的好书，讲的非常细致，初学者可以买来看看</p><p>《恶意代码分析实战》案例较多，适合有基础的朋友们看</p><h5 id="2-操作系统基础"><a href="#2-操作系统基础" class="headerlink" title="2. 操作系统基础"></a>2. 操作系统基础</h5><p>《深入理解计算机系统》深入介绍计算机的原理，很详细，内容覆盖很广</p><p>《程序员的自我修养》深入讲解了ELF，PE文件的链接过程，PWN基础学习的好书</p><p>《深入解析Windows操作系统》比较厚的书，分为上下册，详细的介绍了Windows的各种机制，就是不容易耐下性子来看 </p><h5 id="3-漏洞系列"><a href="#3-漏洞系列" class="headerlink" title="3. 漏洞系列"></a>3. 漏洞系列</h5><p>《0day安全 软件漏洞分析技术》漏洞学习基础,里面有许多类型的漏洞分析</p><p>《漏洞战争 软件漏洞分析精要》看完0day安全再看这本书，这本书以实战为主 </p><h5 id="4-内核系列"><a href="#4-内核系列" class="headerlink" title="4. 内核系列"></a>4. 内核系列</h5><p><strong>Windows内核</strong></p><p>《Windows内核情景分析》对内核的介绍非常详细，毛德操老师的著作</p><p>《寒江独钓-Windows内核安全编程》内核安全编程很著名的一本书，适合入门</p><p>《Windows内核安全与驱动开发》寒江独钓的升级版，年份上比寒江独钓新一些</p><p>《Windows驱动开发技术详解》驱动开发入门书籍</p><p><strong>Linux内核</strong></p><p>《深入理解Linux内核(第三版)》详细介绍了Linux内核的知识，很著名的一本书 </p><h5 id="5-编程系列"><a href="#5-编程系列" class="headerlink" title="5. 编程系列"></a>5. 编程系列</h5><p>《Windows黑客编程技术详解》里面有win32和内核的编程，介绍还算比较全面</p><p>《Python编程从入门到实践》基础的python入门书籍，小白都可以看的懂 </p><h5 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h5><p>《IDA Pro权威指南》深入理解IDA工具，神器不解释</p><p>《加密与解密第四版》里面有很多综合的知识，ctf入门书籍，能详细的读完这本书，就算是很厉害了</p>]]></content>
     
@@ -124,9 +103,9 @@
     <link href="http://example.com/2022/06/20/weekly/"/>
     <id>http://example.com/2022/06/20/weekly/</id>
     <published>2022-06-20T09:12:20.846Z</published>
-    <updated>2022-07-05T09:35:51.319Z</updated>
+    <updated>2022-07-07T03:37:32.611Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="0x00-2022-6-20-6-26"><a href="#0x00-2022-6-20-6-26" class="headerlink" title="0x00 2022/6/20-6/26"></a>0x00 2022/6/20-6/26</h4><ol><li>leetcode腾讯精选五十题*5（练JAVA/python），笔记发在leetcode题解上方便查看</li><li>ROS 安装&amp;ROS的HelloWorld C++/python简单实现</li><li>The Economist - Palm roiled &amp; Schumpeter</li><li>工训STC-B焊接及测试案例</li></ol><h4 id="0x01-6-27-7-3"><a href="#0x01-6-27-7-3" class="headerlink" title="0x01 6/27-7/3"></a>0x01 6/27-7/3</h4><ol><li>工训BSP编程</li><li>学了个微软双拼</li><li> 高铁上入门一下二进制安全，入门失败</li></ol><p>学习能力和学习效率也就这样了</p><img src="D:\blog\coriiiander\source\_posts\pictures\提问的智慧.png" alt="提问的智慧" style="zoom: 67%;" /><h4 id="暑假日报"><a href="#暑假日报" class="headerlink" title="暑假日报"></a>暑假日报</h4><p><strong>7/4</strong> ROS看了第二章通信机制，代码还得着重理解一下。</p><p><strong>7/5</strong> 入门二进制安全，进个货先。</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="0x00-2022-6-20-6-26"><a href="#0x00-2022-6-20-6-26" class="headerlink" title="0x00 2022/6/20-6/26"></a>0x00 2022/6/20-6/26</h4><ol><li>leetcode腾讯精选五十题*5（练JAVA/python），笔记发在leetcode题解上方便查看</li><li>ROS 安装&amp;ROS的HelloWorld C++/python简单实现</li><li>The Economist - Palm roiled &amp; Schumpeter</li><li>工训STC-B焊接及测试案例</li></ol><h4 id="0x01-6-27-7-3"><a href="#0x01-6-27-7-3" class="headerlink" title="0x01 6/27-7/3"></a>0x01 6/27-7/3</h4><ol><li>工训BSP编程</li><li>学了个微软双拼</li><li> 高铁上入门一下二进制安全，入门失败</li></ol><p>学习能力和学习效率也就这样了</p><img src="D:\blog\coriiiander\source\_posts\pictures\提问的智慧.png" alt="提问的智慧" style="zoom: 67%;" /><h4 id="暑假日报"><a href="#暑假日报" class="headerlink" title="暑假日报"></a>暑假日报</h4><p><strong>7/4</strong> ROS看了第二章通信机制，代码还得着重理解一下。</p><p><strong>7/5</strong> 入门二进制安全，进个货先。看了《加密与解密第四版》第一章 基础知识。</p><p><strong>7/6</strong> 看了《0 day安全第一章》漏洞概述、《逆向工程核心原理》前两章 阅读第二章更全面地了解了OllyDbg的功能和使用。在考虑怎么高效做笔记。</p><p><strong>7/7</strong> </p>]]></content>
     
     
       
