@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-06T08:46:53.810Z</updated>
+  <updated>2022-07-07T09:59:46.903Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,19 +17,19 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>二进制安全</title>
-    <link href="http://example.com/2022/07/05/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/"/>
-    <id>http://example.com/2022/07/05/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/</id>
+    <title>bookList</title>
+    <link href="http://example.com/2022/07/05/bookList/"/>
+    <id>http://example.com/2022/07/05/bookList/</id>
     <published>2022-07-05T09:18:37.747Z</published>
-    <updated>2022-07-06T08:46:53.810Z</updated>
+    <updated>2022-07-07T09:59:46.903Z</updated>
     
-    <content type="html"><![CDATA[<p>☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕</p><h4 id="0x00-书单"><a href="#0x00-书单" class="headerlink" title="0x00 书单"></a>0x00 书单</h4><p>☁代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相</p><h5 id="1-逆向系列"><a href="#1-逆向系列" class="headerlink" title="1. 逆向系列"></a>1. 逆向系列</h5><p>《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识</p><p>《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍</p><p>《C++<a href="https://so.csdn.net/so/search?q=%E5%8F%8D%E6%B1%87%E7%BC%96&spm=1001.2101.3001.7020">反汇编</a>与逆向分析技术揭秘》源代码和汇编结合举例，很详细，后面对熊猫烧香的分析也很详细</p><p>《Android软件安全与<a href="https://so.csdn.net/so/search?q=%E9%80%86%E5%90%91%E5%88%86%E6%9E%90&spm=1001.2101.3001.7020">逆向分析</a>》介绍安卓逆向基础，后面出了2019的版本，可以看看2019的版本</p><p>《逆向工程核心原理》逆向入门的好书，讲的非常细致，初学者可以买来看看</p><p>《恶意代码分析实战》案例较多，适合有基础的朋友们看</p><h5 id="2-操作系统基础"><a href="#2-操作系统基础" class="headerlink" title="2. 操作系统基础"></a>2. 操作系统基础</h5><p>《深入理解计算机系统》深入介绍计算机的原理，很详细，内容覆盖很广</p><p>《程序员的自我修养》深入讲解了ELF，PE文件的链接过程，PWN基础学习的好书</p><p>《深入解析Windows操作系统》比较厚的书，分为上下册，详细的介绍了Windows的各种机制，就是不容易耐下性子来看 </p><h5 id="3-漏洞系列"><a href="#3-漏洞系列" class="headerlink" title="3. 漏洞系列"></a>3. 漏洞系列</h5><p>《0day安全 软件漏洞分析技术》漏洞学习基础,里面有许多类型的漏洞分析</p><p>《漏洞战争 软件漏洞分析精要》看完0day安全再看这本书，这本书以实战为主 </p><h5 id="4-内核系列"><a href="#4-内核系列" class="headerlink" title="4. 内核系列"></a>4. 内核系列</h5><p><strong>Windows内核</strong></p><p>《Windows内核情景分析》对内核的介绍非常详细，毛德操老师的著作</p><p>《寒江独钓-Windows内核安全编程》内核安全编程很著名的一本书，适合入门</p><p>《Windows内核安全与驱动开发》寒江独钓的升级版，年份上比寒江独钓新一些</p><p>《Windows驱动开发技术详解》驱动开发入门书籍</p><p><strong>Linux内核</strong></p><p>《深入理解Linux内核(第三版)》详细介绍了Linux内核的知识，很著名的一本书 </p><h5 id="5-编程系列"><a href="#5-编程系列" class="headerlink" title="5. 编程系列"></a>5. 编程系列</h5><p>《Windows黑客编程技术详解》里面有win32和内核的编程，介绍还算比较全面</p><p>《Python编程从入门到实践》基础的python入门书籍，小白都可以看的懂 </p><h5 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h5><p>《IDA Pro权威指南》深入理解IDA工具，神器不解释</p><p>《加密与解密第四版》里面有很多综合的知识，ctf入门书籍，能详细的读完这本书，就算是很厉害了</p>]]></content>
+    <content type="html"><![CDATA[<p>☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相</p><h5 id="1-逆向系列"><a href="#1-逆向系列" class="headerlink" title="1. 逆向系列"></a>1. 逆向系列</h5><p>《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识</p><p>《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍</p><p>《C++<a href="https://so.csdn.net/so/search?q=%E5%8F%8D%E6%B1%87%E7%BC%96&spm=1001.2101.3001.7020">反汇编</a>与逆向分析技术揭秘》源代码和汇编结合举例，很详细，后面对熊猫烧香的分析也很详细</p><p>《Android软件安全与<a href="https://so.csdn.net/so/search?q=%E9%80%86%E5%90%91%E5%88%86%E6%9E%90&spm=1001.2101.3001.7020">逆向分析</a>》介绍安卓逆向基础，后面出了2019的版本，可以看看2019的版本</p><p>《逆向工程核心原理》逆向入门的好书，讲的非常细致，初学者可以买来看看</p><p>《恶意代码分析实战》案例较多，适合有基础的朋友们看</p><h5 id="2-操作系统基础"><a href="#2-操作系统基础" class="headerlink" title="2. 操作系统基础"></a>2. 操作系统基础</h5><p>《深入理解计算机系统》深入介绍计算机的原理，很详细，内容覆盖很广</p><p>《程序员的自我修养》深入讲解了ELF，PE文件的链接过程，PWN基础学习的好书。作者荐书：</p><p>intel手册 - <a href="http://www.intel.com/products/processor/manuals">http://www.intel.com/products/processor/manuals</a></p><img src="D:\blog\coriiiander\source\_posts\pictures\荐书1.png" alt="荐书1" style="zoom:67%;" /><img src="D:\blog\coriiiander\source\_posts\pictures\荐书2.png" alt="荐书2" style="zoom:67%;" /><p>《深入解析Windows操作系统》比较厚的书，分为上下册，详细的介绍了Windows的各种机制，就是不容易耐下性子来看 </p><h5 id="3-漏洞系列"><a href="#3-漏洞系列" class="headerlink" title="3. 漏洞系列"></a>3. 漏洞系列</h5><p>《0day安全 软件漏洞分析技术》漏洞学习基础,里面有许多类型的漏洞分析</p><p>《漏洞战争 软件漏洞分析精要》看完0day安全再看这本书，这本书以实战为主 </p><h5 id="4-内核系列"><a href="#4-内核系列" class="headerlink" title="4. 内核系列"></a>4. 内核系列</h5><p><strong>Windows内核</strong></p><p>《Windows内核情景分析》对内核的介绍非常详细，毛德操老师的著作</p><p>《寒江独钓-Windows内核安全编程》内核安全编程很著名的一本书，适合入门</p><p>《Windows内核安全与驱动开发》寒江独钓的升级版，年份上比寒江独钓新一些</p><p>《Windows驱动开发技术详解》驱动开发入门书籍</p><p><strong>Linux内核</strong></p><p>《深入理解Linux内核(第三版)》详细介绍了Linux内核的知识，很著名的一本书 </p><h5 id="5-编程系列"><a href="#5-编程系列" class="headerlink" title="5. 编程系列"></a>5. 编程系列</h5><p>《Windows黑客编程技术详解》里面有win32和内核的编程，介绍还算比较全面</p><p>《Python编程从入门到实践》基础的python入门书籍，小白都可以看的懂 </p><h5 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h5><p>《IDA Pro权威指南》深入理解IDA工具，神器不解释</p><p>《加密与解密第四版》里面有很多综合的知识，ctf入门书籍，能详细的读完这本书，就算是很厉害了</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕&lt;/p&gt;
-&lt;h4 id=&quot;0x00-书单&quot;&gt;&lt;a href=&quot;#0x00-书单&quot; class=&quot;headerlink&quot; title=&quot;0x00 书单&quot;&gt;&lt;/a&gt;0x00 书单&lt;/h4</summary>
+    <summary type="html">&lt;p&gt;☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相&lt;/p&gt;
+&lt;h5 id=&quot;1-逆向系列&quot;&gt;&lt;a href=&quot;#1-逆向系列&quot; class=&quot;he</summary>
       
     
     
@@ -38,11 +38,11 @@
   </entry>
   
   <entry>
-    <title>buuPWN</title>
-    <link href="http://example.com/2022/07/03/buuPWN/"/>
-    <id>http://example.com/2022/07/03/buuPWN/</id>
+    <title>PWN</title>
+    <link href="http://example.com/2022/07/03/PWN/"/>
+    <id>http://example.com/2022/07/03/PWN/</id>
     <published>2022-07-03T06:10:16.579Z</published>
-    <updated>2022-07-03T08:28:29.964Z</updated>
+    <updated>2022-07-07T09:58:44.697Z</updated>
     
     <content type="html"><![CDATA[<h4 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h4><blockquote><p>nc命令：全称netcat，用于设置路由器，能通过 TCP 和 UDP 在网络中读写数据，通过与其他工具结合和重定向。</p></blockquote>]]></content>
     
@@ -103,9 +103,9 @@
     <link href="http://example.com/2022/06/20/weekly/"/>
     <id>http://example.com/2022/06/20/weekly/</id>
     <published>2022-06-20T09:12:20.846Z</published>
-    <updated>2022-07-07T03:37:32.611Z</updated>
+    <updated>2022-07-08T15:37:43.170Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="0x00-2022-6-20-6-26"><a href="#0x00-2022-6-20-6-26" class="headerlink" title="0x00 2022/6/20-6/26"></a>0x00 2022/6/20-6/26</h4><ol><li>leetcode腾讯精选五十题*5（练JAVA/python），笔记发在leetcode题解上方便查看</li><li>ROS 安装&amp;ROS的HelloWorld C++/python简单实现</li><li>The Economist - Palm roiled &amp; Schumpeter</li><li>工训STC-B焊接及测试案例</li></ol><h4 id="0x01-6-27-7-3"><a href="#0x01-6-27-7-3" class="headerlink" title="0x01 6/27-7/3"></a>0x01 6/27-7/3</h4><ol><li>工训BSP编程</li><li>学了个微软双拼</li><li> 高铁上入门一下二进制安全，入门失败</li></ol><p>学习能力和学习效率也就这样了</p><img src="D:\blog\coriiiander\source\_posts\pictures\提问的智慧.png" alt="提问的智慧" style="zoom: 67%;" /><h4 id="暑假日报"><a href="#暑假日报" class="headerlink" title="暑假日报"></a>暑假日报</h4><p><strong>7/4</strong> ROS看了第二章通信机制，代码还得着重理解一下。</p><p><strong>7/5</strong> 入门二进制安全，进个货先。看了《加密与解密第四版》第一章 基础知识。</p><p><strong>7/6</strong> 看了《0 day安全第一章》漏洞概述、《逆向工程核心原理》前两章 阅读第二章更全面地了解了OllyDbg的功能和使用。在考虑怎么高效做笔记。</p><p><strong>7/7</strong> </p>]]></content>
+    <content type="html"><![CDATA[<h4 id="0x00-2022-6-20-6-26"><a href="#0x00-2022-6-20-6-26" class="headerlink" title="0x00 2022/6/20-6/26"></a>0x00 2022/6/20-6/26</h4><ol><li>leetcode腾讯精选五十题*5（练JAVA/python），笔记发在leetcode题解上方便查看</li><li>ROS 安装&amp;ROS的HelloWorld C++/python简单实现</li><li>The Economist - Palm roiled &amp; Schumpeter</li><li>工训STC-B焊接及测试案例</li></ol><h4 id="0x01-6-27-7-3"><a href="#0x01-6-27-7-3" class="headerlink" title="0x01 6/27-7/3"></a>0x01 6/27-7/3</h4><ol><li>工训BSP编程</li><li>学了个微软双拼</li><li> 高铁上入门一下二进制安全，入门失败</li></ol><p>学习能力和学习效率也就这样了</p><img src="D:\blog\coriiiander\source\_posts\pictures\提问的智慧.png" alt="提问的智慧" style="zoom: 67%;" /><h4 id="暑假日报"><a href="#暑假日报" class="headerlink" title="暑假日报"></a>暑假日报</h4><p><strong>7/4</strong> ROS看了第二章通信机制，代码还得着重理解一下。</p><p><strong>7/5</strong> 入门二进制安全，进个货先；看了《加密与解密第四版》第一章 基础知识。</p><p><strong>7/6</strong> 看了《0 day安全第一章》漏洞概述；《逆向工程核心原理》前两章 阅读第二章更全面地了解了OllyDbg的功能和使用；在考虑怎么高效做笔记。</p><p><strong>7/7</strong> 《程序员的自我修养》看到第一章温故知新 - 操作系统，这本书没其他几本好看；继续看《逆向》3 - 12章，第一部分 代码逆向技术基础书是看了，但是有很多实践的不是很理解，已标记下来。</p><p><strong>7/8</strong> 上班不敢摸鱼；下班简单看了一下《逆向》的PE文件格式，为了皮肤不敢熬夜；躺！</p><img src="D:\blog\coriiiander\source\_posts\pictures\上班第一天.jpg" alt="上班第一天" style="zoom: 67%;" /><p><strong>7/9</strong> </p>]]></content>
     
     
       
@@ -121,17 +121,18 @@
   
   <entry>
     <title>Reverse</title>
-    <link href="http://example.com/2022/02/25/buuReverse/"/>
-    <id>http://example.com/2022/02/25/buuReverse/</id>
+    <link href="http://example.com/2022/02/25/Reverse/"/>
+    <id>http://example.com/2022/02/25/Reverse/</id>
     <published>2022-02-25T12:40:35.437Z</published>
-    <updated>2022-07-02T13:17:02.497Z</updated>
+    <updated>2022-07-07T10:05:37.526Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="0x00-IDA"><a href="#0x00-IDA" class="headerlink" title="0x00 IDA"></a>0x00 IDA</h4><p>逆向工程分为动态分析(OLLYDBG)和静态分析(IDA)。IDA无法分析自解压运行(.exe)的文件，通常用OLLYDBG动态跟踪，等程序完成自解压后从内存中将解压后的代码完整的挖下来形成文件，再由IDA进行静态分析。</p><p><code>shift+F12</code>查找字符串    <code>ctrl+x</code>查看流程图    <code>F5</code>查看源代码</p><h4 id="0x01-壳"><a href="#0x01-壳" class="headerlink" title="0x01 壳"></a>0x01 壳</h4><p><code>exeinfo pe</code>查壳，发现是UPX-&gt;Markus &amp; …的壳。</p><img src="D:\CTF\notes' pictures\exeinfopeHappyNewYear.png" alt="exeinfopeHappyNewYear" style="zoom:50%;" /><p><strong>壳</strong>：实质上是一个子程序，它在程序运行时首先取得控制权并对exe、com、和dll等程序文件进行压缩，同时隐藏程序真正的OEP。大多数病毒就是基于此原理，从而防止被杀毒软件扫描。</p><blockquote><p>EP是程序的入口点，OEP是程序的原始入口点。一个正常的程序只有EP，只有入口点被修改的程序（加壳等），才会拥有OEP。壳就是一把锁，OEP就是锁孔。</p><p>UPX：一种可执行程序文件压缩器/压缩壳，压缩壳主要功能是压缩PE文件(比如exe,dll等文件)。壳upx是一种保护程序，一般是EXE文件的一种外保护措施。</p></blockquote><p><font color=#FF0000><strong>ESP定律</strong>（堆栈平衡定律）脱壳（OllyDbg）：</font></p>]]></content>
+    <content type="html"><![CDATA[<p>☁buu做题和《逆向工程核心原理》阅读笔记</p><h4 id="0x00-IDA"><a href="#0x00-IDA" class="headerlink" title="0x00 IDA"></a>0x00 IDA</h4><p>逆向工程分为动态分析(OLLYDBG)和静态分析(IDA)。IDA无法分析自解压运行(.exe)的文件，通常用OLLYDBG动态跟踪，等程序完成自解压后从内存中将解压后的代码完整的挖下来形成文件，再由IDA进行静态分析。</p><p><code>shift+F12</code>查找字符串    <code>ctrl+x</code>查看流程图    <code>F5</code>查看源代码</p><h4 id="0x01-OllyDBG"><a href="#0x01-OllyDBG" class="headerlink" title="0x01 OllyDBG"></a>0x01 OllyDBG</h4><p>《逆向工程核心原理》第二章</p><h4 id="0x02-壳"><a href="#0x02-壳" class="headerlink" title="0x02 壳"></a>0x02 壳</h4><p><code>exeinfo pe</code>查壳，发现是UPX-&gt;Markus &amp; …的壳。</p><img src="D:\CTF\notes' pictures\exeinfopeHappyNewYear.png" alt="exeinfopeHappyNewYear" style="zoom:50%;" /><p><strong>壳</strong>：实质上是一个子程序，它在程序运行时首先取得控制权并对exe、com、和dll等程序文件进行压缩，同时隐藏程序真正的OEP。大多数病毒就是基于此原理，从而防止被杀毒软件扫描。</p><blockquote><p>EP是程序的入口点，OEP是程序的原始入口点。一个正常的程序只有EP，只有入口点被修改的程序（加壳等），才会拥有OEP。壳就是一把锁，OEP就是锁孔。</p><p>UPX：一种可执行程序文件压缩器/压缩壳，压缩壳主要功能是压缩PE文件(比如exe,dll等文件)。壳upx是一种保护程序，一般是EXE文件的一种外保护措施。</p></blockquote><p><font color=#FF0000><strong>ESP定律</strong>（堆栈平衡定律）脱壳（OllyDbg）：</font></p><h4 id="0x03-Abex’-crackme"><a href="#0x03-Abex’-crackme" class="headerlink" title="0x03 Abex’ crackme"></a>0x03 Abex’ crackme</h4><h5 id="Abex’-crackme-1"><a href="#Abex’-crackme-1" class="headerlink" title="Abex’ crackme #1"></a>Abex’ crackme #1</h5><blockquote><p>CD-Rom：compact disc read-only memory只读光盘</p><p>HDD：Hard Disk Drive</p></blockquote>]]></content>
     
     
       
       
-    <summary type="html">&lt;h4 id=&quot;0x00-IDA&quot;&gt;&lt;a href=&quot;#0x00-IDA&quot; class=&quot;headerlink&quot; title=&quot;0x00 IDA&quot;&gt;&lt;/a&gt;0x00 IDA&lt;/h4&gt;&lt;p&gt;逆向工程分为动态分析(OLLYDBG)和静态分析(IDA)。IDA无法分析自解压运行(.ex</summary>
+    <summary type="html">&lt;p&gt;☁buu做题和《逆向工程核心原理》阅读笔记&lt;/p&gt;
+&lt;h4 id=&quot;0x00-IDA&quot;&gt;&lt;a href=&quot;#0x00-IDA&quot; class=&quot;headerlink&quot; title=&quot;0x00 IDA&quot;&gt;&lt;/a&gt;0x00 IDA&lt;/h4&gt;&lt;p&gt;逆向工程分为动态分析(OLLYDB</summary>
       
     
     
@@ -141,8 +142,8 @@
   
   <entry>
     <title>Misc</title>
-    <link href="http://example.com/2022/02/12/buuMisc/"/>
-    <id>http://example.com/2022/02/12/buuMisc/</id>
+    <link href="http://example.com/2022/02/12/Misc/"/>
+    <id>http://example.com/2022/02/12/Misc/</id>
     <published>2022-02-12T03:59:05.932Z</published>
     <updated>2022-06-24T06:41:19.343Z</updated>
     
@@ -162,8 +163,8 @@
   
   <entry>
     <title>Web</title>
-    <link href="http://example.com/2022/02/10/buuWeb/"/>
-    <id>http://example.com/2022/02/10/buuWeb/</id>
+    <link href="http://example.com/2022/02/10/Web/"/>
+    <id>http://example.com/2022/02/10/Web/</id>
     <published>2022-02-10T08:55:11.194Z</published>
     <updated>2022-06-24T15:25:35.752Z</updated>
     
