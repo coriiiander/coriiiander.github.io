@@ -163,6 +163,28 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Reverse</title>
+    <url>/2022/02/25/Reverse/</url>
+    <content><![CDATA[<p>☁buu做题和《逆向工程核心原理》阅读笔记</p>
+<h4 id="0x00-IDA"><a href="#0x00-IDA" class="headerlink" title="0x00 IDA"></a>0x00 IDA</h4><p>逆向工程分为动态分析(OLLYDBG)和静态分析(IDA)。IDA无法分析自解压运行(.exe)的文件，通常用OLLYDBG动态跟踪，等程序完成自解压后从内存中将解压后的代码完整的挖下来形成文件，再由IDA进行静态分析。</p>
+<p><code>shift+F12</code>查找字符串    <code>ctrl+x</code>查看流程图    <code>F5</code>查看源代码</p>
+<h4 id="0x01-OllyDBG"><a href="#0x01-OllyDBG" class="headerlink" title="0x01 OllyDBG"></a>0x01 OllyDBG</h4><p>《逆向工程核心原理》第二章</p>
+<h4 id="0x02-壳"><a href="#0x02-壳" class="headerlink" title="0x02 壳"></a>0x02 壳</h4><p><code>exeinfo pe</code>查壳，发现是UPX-&gt;Markus &amp; …的壳。</p>
+<img src="D:\CTF\notes' pictures\exeinfopeHappyNewYear.png" alt="exeinfopeHappyNewYear" style="zoom:50%;" />
+
+<p><strong>壳</strong>：实质上是一个子程序，它在程序运行时首先取得控制权并对exe、com、和dll等程序文件进行压缩，同时隐藏程序真正的OEP。大多数病毒就是基于此原理，从而防止被杀毒软件扫描。</p>
+<blockquote>
+<p>EP是程序的入口点，OEP是程序的原始入口点。一个正常的程序只有EP，只有入口点被修改的程序（加壳等），才会拥有OEP。壳就是一把锁，OEP就是锁孔。</p>
+<p>UPX：一种可执行程序文件压缩器/压缩壳，压缩壳主要功能是压缩PE文件(比如exe,dll等文件)。壳upx是一种保护程序，一般是EXE文件的一种外保护措施。</p>
+</blockquote>
+<p><font color=#FF0000><strong>ESP定律</strong>（堆栈平衡定律）脱壳（OllyDbg）：</font></p>
+<h4 id="0x03-Abex’-crackme"><a href="#0x03-Abex’-crackme" class="headerlink" title="0x03 Abex’ crackme"></a>0x03 Abex’ crackme</h4><h5 id="Abex’-crackme-1"><a href="#Abex’-crackme-1" class="headerlink" title="Abex’ crackme #1"></a>Abex’ crackme #1</h5><blockquote>
+<p>CD-Rom：compact disc read-only memory只读光盘</p>
+<p>HDD：Hard Disk Drive</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
     <title>PWN</title>
     <url>/2022/07/03/PWN/</url>
     <content><![CDATA[<h4 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h4><blockquote>
@@ -286,48 +308,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Web</title>
-    <url>/2022/02/10/Web/</url>
-    <content><![CDATA[<blockquote>
-<h4 id="WarmUp"><a href="#WarmUp" class="headerlink" title="WarmUp"></a>WarmUp</h4></blockquote>
-<p>代码审计：hint.php?../…/…/…/…/ffffllllaaaagggg 传入 checkFile( ) 要经历一次白名单验证、一次?过滤得 hint.php 再进行一次白名单验证返回为真，即得到flag。</p>
-<p>☁<code>http://34774e72-ec93-4cf6-9472-b655238aff59.node4.buuoj.cn:81/index.php?file=hint.php?../../../../../ffffllllaaaagggg</code> <font color=#00BFFF>为什么有index.php?file=</font></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="comment">//highlight_file() 函数对文件进行 PHP 语法高亮显示。语法通过使用 HTML 标签进行高亮。</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">emmm</span></span></span><br><span class="line"><span class="class">      </span>&#123;</span><br><span class="line">          <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params">&amp;<span class="variable">$page</span></span>)</span></span><br><span class="line"><span class="function">          //<span class="title">cehckFile</span>(<span class="params"></span>)进行了3次白名单检测、 2次问号过滤、一次<span class="title">URL</span>解码</span></span><br><span class="line"><span class="function">          </span>&#123;</span><br><span class="line">              <span class="comment">//白名单列表</span></span><br><span class="line">              <span class="variable">$whitelist</span> = [<span class="string">&quot;source&quot;</span>=&gt;<span class="string">&quot;source.php&quot;</span>,<span class="string">&quot;hint&quot;</span>=&gt;<span class="string">&quot;hint.php&quot;</span>];</span><br><span class="line">              <span class="comment">//isset()检测变量是否已设置并且非 NULL;  </span></span><br><span class="line">              <span class="comment">//is_string()判断变量是否是字符串</span></span><br><span class="line">              <span class="keyword">if</span> (! <span class="keyword">isset</span>(<span class="variable">$page</span>) || !<span class="title function_ invoke__">is_string</span>(<span class="variable">$page</span>)) &#123;</span><br><span class="line">                 <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it A&quot;</span>;</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">//检测传进来的值是否匹配白名单列表$whitelist</span></span><br><span class="line">             <span class="keyword">if</span> (<span class="title function_ invoke__">in_array</span>(<span class="variable">$page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">//过滤问号的函数(如果$page的值有？则从?之前提取字符串)</span></span><br><span class="line">               <span class="comment">//mb_substr() 函数返回字符串的一部分，substr() 只针对英文字符，如果要分割的中文文字则需要使用 mb_substr()。</span></span><br><span class="line">             <span class="variable">$_page</span> = <span class="title function_ invoke__">mb_substr</span>(</span><br><span class="line">                 <span class="variable">$page</span>,</span><br><span class="line">                 <span class="number">0</span>,</span><br><span class="line">                 <span class="title function_ invoke__">mb_strpos</span>(<span class="variable">$page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)//返回<span class="variable">$page</span>.里?号出现的第一个位置</span><br><span class="line">             );</span><br><span class="line"> </span><br><span class="line">              <span class="comment">//第二次检测传进来的值是否匹配白名单列表$whitelist</span></span><br><span class="line">             <span class="keyword">if</span> (<span class="title function_ invoke__">in_array</span>(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">//url对$page解码</span></span><br><span class="line">             <span class="variable">$_page</span> = <span class="title function_ invoke__">urldecode</span>(<span class="variable">$page</span>);</span><br><span class="line"> </span><br><span class="line">             <span class="comment">//第二次过滤问号的函数(如果$page的值有？则从?之前提取字符串)</span></span><br><span class="line">             <span class="variable">$_page</span> = <span class="title function_ invoke__">mb_substr</span>(</span><br><span class="line">                 <span class="variable">$_page</span>,</span><br><span class="line">                 <span class="number">0</span>,</span><br><span class="line">                 <span class="title function_ invoke__">mb_strpos</span>(<span class="variable">$_page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">             );</span><br><span class="line">             <span class="comment">//第三次检测传进来的值是否匹配白名单列表$whitelist</span></span><br><span class="line">             <span class="keyword">if</span> (<span class="title function_ invoke__">in_array</span>(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">             <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (! <span class="keyword">empty</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; <span class="title function_ invoke__">is_string</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; emmm::<span class="title function_ invoke__">checkFile</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> <span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">        <span class="comment">/*如果您希望继续执行，并向用户输出结果，即使包含文件已丢失，那么请使用 include。</span></span><br><span class="line"><span class="comment">        否则，在框架、CMS 或者复杂的 PHP 应用程序编程中，请始终使用 require 向执行流引用关键文件。*/</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;</span><br><span class="line">    &#125;  </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<h4 id="Include-1"><a href="#Include-1" class="headerlink" title="Include 1"></a>Include 1</h4></blockquote>
-<p>靶场环境：<a href="http://78d5d456-3136-4627-9d09-4cdbb8f1af18.node4.buuoj.cn:81/">http://78d5d456-3136-4627-9d09-4cdbb8f1af18.node4.buuoj.cn:81</a></p>
-<p>文件包含漏洞，读取代码（PHP伪协议）：<code>php://filter/read=convert.base64-encode/resource=xxx.php</code></p>
-<p>然后构造playload：<code>?file=php://filter/read=convert.base64-encode/resource=flag.php</code></p>
-<blockquote>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4></blockquote>
-]]></content>
-  </entry>
-  <entry>
-    <title>Reverse</title>
-    <url>/2022/02/25/Reverse/</url>
-    <content><![CDATA[<p>☁buu做题和《逆向工程核心原理》阅读笔记</p>
-<h4 id="0x00-IDA"><a href="#0x00-IDA" class="headerlink" title="0x00 IDA"></a>0x00 IDA</h4><p>逆向工程分为动态分析(OLLYDBG)和静态分析(IDA)。IDA无法分析自解压运行(.exe)的文件，通常用OLLYDBG动态跟踪，等程序完成自解压后从内存中将解压后的代码完整的挖下来形成文件，再由IDA进行静态分析。</p>
-<p><code>shift+F12</code>查找字符串    <code>ctrl+x</code>查看流程图    <code>F5</code>查看源代码</p>
-<h4 id="0x01-OllyDBG"><a href="#0x01-OllyDBG" class="headerlink" title="0x01 OllyDBG"></a>0x01 OllyDBG</h4><p>《逆向工程核心原理》第二章</p>
-<h4 id="0x02-壳"><a href="#0x02-壳" class="headerlink" title="0x02 壳"></a>0x02 壳</h4><p><code>exeinfo pe</code>查壳，发现是UPX-&gt;Markus &amp; …的壳。</p>
-<img src="D:\CTF\notes' pictures\exeinfopeHappyNewYear.png" alt="exeinfopeHappyNewYear" style="zoom:50%;" />
-
-<p><strong>壳</strong>：实质上是一个子程序，它在程序运行时首先取得控制权并对exe、com、和dll等程序文件进行压缩，同时隐藏程序真正的OEP。大多数病毒就是基于此原理，从而防止被杀毒软件扫描。</p>
-<blockquote>
-<p>EP是程序的入口点，OEP是程序的原始入口点。一个正常的程序只有EP，只有入口点被修改的程序（加壳等），才会拥有OEP。壳就是一把锁，OEP就是锁孔。</p>
-<p>UPX：一种可执行程序文件压缩器/压缩壳，压缩壳主要功能是压缩PE文件(比如exe,dll等文件)。壳upx是一种保护程序，一般是EXE文件的一种外保护措施。</p>
-</blockquote>
-<p><font color=#FF0000><strong>ESP定律</strong>（堆栈平衡定律）脱壳（OllyDbg）：</font></p>
-<h4 id="0x03-Abex’-crackme"><a href="#0x03-Abex’-crackme" class="headerlink" title="0x03 Abex’ crackme"></a>0x03 Abex’ crackme</h4><h5 id="Abex’-crackme-1"><a href="#Abex’-crackme-1" class="headerlink" title="Abex’ crackme #1"></a>Abex’ crackme #1</h5><blockquote>
-<p>CD-Rom：compact disc read-only memory只读光盘</p>
-<p>HDD：Hard Disk Drive</p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
     <title>bookList</title>
     <url>/2022/07/05/bookList/</url>
     <content><![CDATA[<p>☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相</p>
@@ -358,6 +338,26 @@
 <p>《Python编程从入门到实践》基础的python入门书籍，小白都可以看的懂 </p>
 <h5 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h5><p>《IDA Pro权威指南》深入理解IDA工具，神器不解释</p>
 <p>《加密与解密第四版》里面有很多综合的知识，ctf入门书籍，能详细的读完这本书，就算是很厉害了</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Web</title>
+    <url>/2022/02/10/Web/</url>
+    <content><![CDATA[<blockquote>
+<h4 id="WarmUp"><a href="#WarmUp" class="headerlink" title="WarmUp"></a>WarmUp</h4></blockquote>
+<p>代码审计：hint.php?../…/…/…/…/ffffllllaaaagggg 传入 checkFile( ) 要经历一次白名单验证、一次?过滤得 hint.php 再进行一次白名单验证返回为真，即得到flag。</p>
+<p>☁<code>http://34774e72-ec93-4cf6-9472-b655238aff59.node4.buuoj.cn:81/index.php?file=hint.php?../../../../../ffffllllaaaagggg</code> <font color=#00BFFF>为什么有index.php?file=</font></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="comment">//highlight_file() 函数对文件进行 PHP 语法高亮显示。语法通过使用 HTML 标签进行高亮。</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">emmm</span></span></span><br><span class="line"><span class="class">      </span>&#123;</span><br><span class="line">          <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params">&amp;<span class="variable">$page</span></span>)</span></span><br><span class="line"><span class="function">          //<span class="title">cehckFile</span>(<span class="params"></span>)进行了3次白名单检测、 2次问号过滤、一次<span class="title">URL</span>解码</span></span><br><span class="line"><span class="function">          </span>&#123;</span><br><span class="line">              <span class="comment">//白名单列表</span></span><br><span class="line">              <span class="variable">$whitelist</span> = [<span class="string">&quot;source&quot;</span>=&gt;<span class="string">&quot;source.php&quot;</span>,<span class="string">&quot;hint&quot;</span>=&gt;<span class="string">&quot;hint.php&quot;</span>];</span><br><span class="line">              <span class="comment">//isset()检测变量是否已设置并且非 NULL;  </span></span><br><span class="line">              <span class="comment">//is_string()判断变量是否是字符串</span></span><br><span class="line">              <span class="keyword">if</span> (! <span class="keyword">isset</span>(<span class="variable">$page</span>) || !<span class="title function_ invoke__">is_string</span>(<span class="variable">$page</span>)) &#123;</span><br><span class="line">                 <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it A&quot;</span>;</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">//检测传进来的值是否匹配白名单列表$whitelist</span></span><br><span class="line">             <span class="keyword">if</span> (<span class="title function_ invoke__">in_array</span>(<span class="variable">$page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">//过滤问号的函数(如果$page的值有？则从?之前提取字符串)</span></span><br><span class="line">               <span class="comment">//mb_substr() 函数返回字符串的一部分，substr() 只针对英文字符，如果要分割的中文文字则需要使用 mb_substr()。</span></span><br><span class="line">             <span class="variable">$_page</span> = <span class="title function_ invoke__">mb_substr</span>(</span><br><span class="line">                 <span class="variable">$page</span>,</span><br><span class="line">                 <span class="number">0</span>,</span><br><span class="line">                 <span class="title function_ invoke__">mb_strpos</span>(<span class="variable">$page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)//返回<span class="variable">$page</span>.里?号出现的第一个位置</span><br><span class="line">             );</span><br><span class="line"> </span><br><span class="line">              <span class="comment">//第二次检测传进来的值是否匹配白名单列表$whitelist</span></span><br><span class="line">             <span class="keyword">if</span> (<span class="title function_ invoke__">in_array</span>(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">//url对$page解码</span></span><br><span class="line">             <span class="variable">$_page</span> = <span class="title function_ invoke__">urldecode</span>(<span class="variable">$page</span>);</span><br><span class="line"> </span><br><span class="line">             <span class="comment">//第二次过滤问号的函数(如果$page的值有？则从?之前提取字符串)</span></span><br><span class="line">             <span class="variable">$_page</span> = <span class="title function_ invoke__">mb_substr</span>(</span><br><span class="line">                 <span class="variable">$_page</span>,</span><br><span class="line">                 <span class="number">0</span>,</span><br><span class="line">                 <span class="title function_ invoke__">mb_strpos</span>(<span class="variable">$_page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">             );</span><br><span class="line">             <span class="comment">//第三次检测传进来的值是否匹配白名单列表$whitelist</span></span><br><span class="line">             <span class="keyword">if</span> (<span class="title function_ invoke__">in_array</span>(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">             <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (! <span class="keyword">empty</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; <span class="title function_ invoke__">is_string</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; emmm::<span class="title function_ invoke__">checkFile</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> <span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">        <span class="comment">/*如果您希望继续执行，并向用户输出结果，即使包含文件已丢失，那么请使用 include。</span></span><br><span class="line"><span class="comment">        否则，在框架、CMS 或者复杂的 PHP 应用程序编程中，请始终使用 require 向执行流引用关键文件。*/</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;</span><br><span class="line">    &#125;  </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<h4 id="Include-1"><a href="#Include-1" class="headerlink" title="Include 1"></a>Include 1</h4></blockquote>
+<p>靶场环境：<a href="http://78d5d456-3136-4627-9d09-4cdbb8f1af18.node4.buuoj.cn:81/">http://78d5d456-3136-4627-9d09-4cdbb8f1af18.node4.buuoj.cn:81</a></p>
+<p>文件包含漏洞，读取代码（PHP伪协议）：<code>php://filter/read=convert.base64-encode/resource=xxx.php</code></p>
+<p>然后构造playload：<code>?file=php://filter/read=convert.base64-encode/resource=flag.php</code></p>
+<blockquote>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4></blockquote>
 ]]></content>
   </entry>
   <entry>
@@ -404,10 +404,12 @@
 <p><strong>7/6</strong> 看了《0 day安全第一章》漏洞概述；《逆向工程核心原理》前两章 阅读第二章更全面地了解了OllyDbg的功能和使用；在考虑怎么高效做笔记。</p>
 <p><strong>7/7</strong> 《程序员的自我修养》看到第一章温故知新 - 操作系统，这本书没其他几本好看；继续看《逆向》3 - 12章，第一部分 代码逆向技术基础看完了，不理解的部分已标记下来。</p>
 <p><strong>7/8</strong> 上班不敢摸鱼；下班简单看了一下《逆向》的PE文件格式，为了皮肤不敢熬夜，睡了。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\上班第一天.jpg" alt="上班第一天" style="zoom: 67%;" />
+<img src="D:\blog\coriiiander\source\_posts\pictures\校对女孩河野悦子.jpg" alt="校对女孩河野悦子" style="zoom: 67%;" />
 
-<p><strong>7/9</strong> 看完了PE文件格式。开始难看起来😶</p>
-<p><strong>7/10</strong> </p>
+<p><strong>周末7/9 - 7/10</strong> 看完了PE文件格式、运行时压缩、基址重定位表（第16章）← 好难看啊；The Economist 121.124期。</p>
+<p><strong>7/11</strong> 浅浅看一下《0 day》第16-17章漏洞挖掘。</p>
+<p><strong>7/12</strong> The Economist 120期，准备pikachu。</p>
+<p><strong>7/13</strong> 学了一下burpsuite，做了pikachu的暴力破解。</p>
 ]]></content>
   </entry>
 </search>
