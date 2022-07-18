@@ -1,48 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Broken Knowledge</title>
-    <url>/2022/01/30/CTF-Broken%20knowledge/</url>
-    <content><![CDATA[<p>LINUX图形界面转化成命令行界面：<code>ctrl+alt+f2</code>.</p>
-<p>Crypto是用写代码解决的CTF问题.</p>
-<p>虚拟机与实体机共享文件：按照<u>官方教程</u>安装VMtools后直接拖入（kali已经可以了，ubuntu好像还不行）.</p>
-<p>base64编码：<a href="https://zhuanlan.zhihu.com/p/339477329">https://zhuanlan.zhihu.com/p/339477329</a>.</p>
-<p>上位机：可以直接发出操控命令的计算机.</p>
-<p>LINUX切换成root用户：sudo -i</p>
-<img src="D:\CTF\notes' pictures\转换成root用户.png" alt="转换成root用户" style="zoom:90%;" />
-
-<p>LINUX终端下复制粘贴：复制命令:Ctrl + Shift + C，粘贴命令:Ctrl + Shift + V.</p>
-<p>图片隐写（image stegano）：将图片下载，并将其重命名为.txt文件，打开就可以获得密码.</p>
-<p>凯撒密码：位移不是固定的.</p>
-<p>Robots_exclusion_standard：如<a href="http://www.wechall.net/robots.txt%EF%BC%8C%E8%AF%A5">http://www.wechall.net/robots.txt，该</a> robots.txt 文件被网络爬虫用来检查他们是否被允许对你的网站或其中一部分进行爬网和索引。有时，这些文件会显示目录结构，而非保护内容不被爬网.</p>
-<p>LFI漏洞：本地文件包含（Local File Include)是PHP脚本的一大特色。程序员经常把一系列功能函数都写进function.php中（包含），之后当某个文件需要时再进行调用。</p>
-<blockquote>
-<h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4></blockquote>
-<p>SELECT * FROM user WHERE username=’ <font color=#00BFFF>admin‘ or ‘1‘=‘1</font> ‘ AND password=’ ‘（以用户名admin登录）</p>
-<p>用户名填  ‘ or 1=1#   闭合查询语句</p>
-<p>一个二维码识别网站：<a href="https://online-barcode-reader.inliteresearch.com/">barcode online reader</a>.🦓真的可以扫二维码！今天做了一道题，题解就是扫斑马身上的二维码。</p>
-<p>一个计算网站：<a href="https://www.wolframalpha.com/">Wolfram|Alpha: Computational Intelligence</a></p>
-<blockquote>
-<h4 id="代换密码与转置密码"><a href="#代换密码与转置密码" class="headerlink" title="代换密码与转置密码"></a>代换密码与转置密码</h4></blockquote>
-<p>一、代换（substitution）密码（摘自<a href="https://www.jianshu.com/p/c40f45d0d44b%EF%BC%89">https://www.jianshu.com/p/c40f45d0d44b）</a></p>
-<p>采用一一映射的方式，将明文每个字符逐一唯一地代换成另外的一个字符。在凯撒密码中，每个字母都按照其在字母表中的顺序向后（或向前）移动固定数目（循环移动）作为密文。而代换密码则不是简单的按顺序移位，而是完全混乱的毫无规律地进行映射。</p>
-<p><strong>攻击：</strong>凯撒就是简单的字母的移位，仅仅有25种可能的密钥，暴力穷举法可以瞬间攻破它。代换密码则没法简单地看出字符的对应关系了，其可能的密钥可达26!个。</p>
-<p>对于代换密码，有多种的常用的攻击方法，其中常见两种为“词频分析法”和“爬山法”。</p>
-<p><strong>词频分析法</strong>:把密文中字母使用的相对频率统计出来，与日常英语中英文字母使用的相对频率进行比较，利用频率进行匹配，即密文中频率较高的字母对应于日常英语中使用频率较高的英文字母。由于要使用到数学统计的方法，此攻击方法需要用到较长的密文。可<a href="https://link.jianshu.com/?t=https://quipqiup.com/">点击这里</a>进行线上解密。</p>
-<p><strong>爬山法</strong>：选择性地尝试不同解密密钥，然后给每一个解密出来的明文标记上一个适应度。解密出来的明文越接近我们的日常用的英语，适应度就越高；解密出来的明文越难读懂或者越不像我们日常用的英语，则其适应度越低。我们使用一个基于quadgram statistics的适应度计算方法。</p>
-<p>下面详细描述算法步骤：</p>
-<p>（1）随机生成一个key，称为parentkey，用它解密得对应的明文m1，对明文计算适应度d1。</p>
-<p>（2）随机交换parentkey中的两个字符得到子密钥child，解密出对应的明文m2并计算适应度d2。</p>
-<p>（3）若d1&lt;d2，则child成为新的parentkey</p>
-<p>（4）不断循环进行（2）（3）直到最后的1000次循环中不再有更高的适应度生成</p>
-<p>（5）回到（1）重新生成parentkey继续迭代寻找，或者由操作者终止程序</p>
-<p>  重新执行（1），是为了防止（2）（3）的操作使结果陷入局部最优的困境。对于生成的明文的适应度的比较，其实可以看作是对不同解密密钥的比较，解密出来的明文的适应度越高，对应的密钥就更好。</p>
-<p>quadgrams.txt和ngram_score.py可<a href="https://link.jianshu.com/?t=http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/">点击这里</a>获取。</p>
-<p>二、错位（Transposition）密码</p>
-<p>错位密码是一种使<strong>明文单元的位置（</strong>“单元”通常是字符或者字符串）通过一种有规律的方式进行移动的加密方法，生成的密文构成明文的一个置换。 也即明文被重新排序了。更难被攻击。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Misc</title>
     <url>/2022/02/12/Misc/</url>
     <content><![CDATA[<blockquote>
@@ -163,6 +121,56 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Broken Knowledge</title>
+    <url>/2022/01/30/CTF-Broken%20knowledge/</url>
+    <content><![CDATA[<p>LINUX图形界面转化成命令行界面：<code>ctrl+alt+f2</code>.</p>
+<p>Crypto是用写代码解决的CTF问题.</p>
+<p>虚拟机与实体机共享文件：按照<u>官方教程</u>安装VMtools后直接拖入（kali已经可以了，ubuntu好像还不行）.</p>
+<p>base64编码：<a href="https://zhuanlan.zhihu.com/p/339477329">https://zhuanlan.zhihu.com/p/339477329</a>.</p>
+<p>上位机：可以直接发出操控命令的计算机.</p>
+<p>LINUX切换成root用户：sudo -i</p>
+<img src="D:\CTF\notes' pictures\转换成root用户.png" alt="转换成root用户" style="zoom:90%;" />
+
+<p>LINUX终端下复制粘贴：复制命令:Ctrl + Shift + C，粘贴命令:Ctrl + Shift + V.</p>
+<p>图片隐写（image stegano）：将图片下载，并将其重命名为.txt文件，打开就可以获得密码.</p>
+<p>凯撒密码：位移不是固定的.</p>
+<p>Robots_exclusion_standard：如<a href="http://www.wechall.net/robots.txt%EF%BC%8C%E8%AF%A5">http://www.wechall.net/robots.txt，该</a> robots.txt 文件被网络爬虫用来检查他们是否被允许对你的网站或其中一部分进行爬网和索引。有时，这些文件会显示目录结构，而非保护内容不被爬网.</p>
+<p>LFI漏洞：本地文件包含（Local File Include)是PHP脚本的一大特色。程序员经常把一系列功能函数都写进function.php中（包含），之后当某个文件需要时再进行调用。</p>
+<blockquote>
+<h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4></blockquote>
+<p>SELECT * FROM user WHERE username=’ <font color=#00BFFF>admin‘ or ‘1‘=‘1</font> ‘ AND password=’ ‘（以用户名admin登录）</p>
+<p>用户名填  ‘ or 1=1#   闭合查询语句</p>
+<p>一个二维码识别网站：<a href="https://online-barcode-reader.inliteresearch.com/">barcode online reader</a>.🦓真的可以扫二维码！今天做了一道题，题解就是扫斑马身上的二维码。</p>
+<p>一个计算网站：<a href="https://www.wolframalpha.com/">Wolfram|Alpha: Computational Intelligence</a></p>
+<blockquote>
+<h4 id="代换密码与转置密码"><a href="#代换密码与转置密码" class="headerlink" title="代换密码与转置密码"></a>代换密码与转置密码</h4></blockquote>
+<p>一、代换（substitution）密码（摘自<a href="https://www.jianshu.com/p/c40f45d0d44b%EF%BC%89">https://www.jianshu.com/p/c40f45d0d44b）</a></p>
+<p>采用一一映射的方式，将明文每个字符逐一唯一地代换成另外的一个字符。在凯撒密码中，每个字母都按照其在字母表中的顺序向后（或向前）移动固定数目（循环移动）作为密文。而代换密码则不是简单的按顺序移位，而是完全混乱的毫无规律地进行映射。</p>
+<p><strong>攻击：</strong>凯撒就是简单的字母的移位，仅仅有25种可能的密钥，暴力穷举法可以瞬间攻破它。代换密码则没法简单地看出字符的对应关系了，其可能的密钥可达26!个。</p>
+<p>对于代换密码，有多种的常用的攻击方法，其中常见两种为“词频分析法”和“爬山法”。</p>
+<p><strong>词频分析法</strong>:把密文中字母使用的相对频率统计出来，与日常英语中英文字母使用的相对频率进行比较，利用频率进行匹配，即密文中频率较高的字母对应于日常英语中使用频率较高的英文字母。由于要使用到数学统计的方法，此攻击方法需要用到较长的密文。可<a href="https://link.jianshu.com/?t=https://quipqiup.com/">点击这里</a>进行线上解密。</p>
+<p><strong>爬山法</strong>：选择性地尝试不同解密密钥，然后给每一个解密出来的明文标记上一个适应度。解密出来的明文越接近我们的日常用的英语，适应度就越高；解密出来的明文越难读懂或者越不像我们日常用的英语，则其适应度越低。我们使用一个基于quadgram statistics的适应度计算方法。</p>
+<p>下面详细描述算法步骤：</p>
+<p>（1）随机生成一个key，称为parentkey，用它解密得对应的明文m1，对明文计算适应度d1。</p>
+<p>（2）随机交换parentkey中的两个字符得到子密钥child，解密出对应的明文m2并计算适应度d2。</p>
+<p>（3）若d1&lt;d2，则child成为新的parentkey</p>
+<p>（4）不断循环进行（2）（3）直到最后的1000次循环中不再有更高的适应度生成</p>
+<p>（5）回到（1）重新生成parentkey继续迭代寻找，或者由操作者终止程序</p>
+<p>  重新执行（1），是为了防止（2）（3）的操作使结果陷入局部最优的困境。对于生成的明文的适应度的比较，其实可以看作是对不同解密密钥的比较，解密出来的明文的适应度越高，对应的密钥就更好。</p>
+<p>quadgrams.txt和ngram_score.py可<a href="https://link.jianshu.com/?t=http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/">点击这里</a>获取。</p>
+<p>二、错位（Transposition）密码</p>
+<p>错位密码是一种使<strong>明文单元的位置（</strong>“单元”通常是字符或者字符串）通过一种有规律的方式进行移动的加密方法，生成的密文构成明文的一个置换。 也即明文被重新排序了。更难被攻击。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>PWN</title>
+    <url>/2022/07/03/PWN/</url>
+    <content><![CDATA[<h4 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h4><blockquote>
+<p>nc命令：全称netcat，用于设置路由器，能通过 TCP 和 UDP 在网络中读写数据，通过与其他工具结合和重定向。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
     <title>Reverse</title>
     <url>/2022/02/25/Reverse/</url>
     <content><![CDATA[<p>☁buu做题和《逆向工程核心原理》阅读笔记</p>
@@ -181,14 +189,6 @@
 <h4 id="0x03-Abex’-crackme"><a href="#0x03-Abex’-crackme" class="headerlink" title="0x03 Abex’ crackme"></a>0x03 Abex’ crackme</h4><h5 id="Abex’-crackme-1"><a href="#Abex’-crackme-1" class="headerlink" title="Abex’ crackme #1"></a>Abex’ crackme #1</h5><blockquote>
 <p>CD-Rom：compact disc read-only memory只读光盘</p>
 <p>HDD：Hard Disk Drive</p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
-    <title>PWN</title>
-    <url>/2022/07/03/PWN/</url>
-    <content><![CDATA[<h4 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h4><blockquote>
-<p>nc命令：全称netcat，用于设置路由器，能通过 TCP 和 UDP 在网络中读写数据，通过与其他工具结合和重定向。</p>
 </blockquote>
 ]]></content>
   </entry>
@@ -403,13 +403,18 @@
 <p><strong>7/5</strong> 入门二进制安全，进个货先；看了《加密与解密第四版》第一章 基础知识。</p>
 <p><strong>7/6</strong> 看了《0 day安全第一章》漏洞概述；《逆向工程核心原理》前两章 阅读第二章更全面地了解了OllyDbg的功能和使用；在考虑怎么高效做笔记。</p>
 <p><strong>7/7</strong> 《程序员的自我修养》看到第一章温故知新 - 操作系统，这本书没其他几本好看；继续看《逆向》3 - 12章，第一部分 代码逆向技术基础看完了，不理解的部分已标记下来。</p>
-<p><strong>7/8</strong> 上班不敢摸鱼；下班简单看了一下《逆向》的PE文件格式，为了皮肤不敢熬夜，睡了。</p>
+<p><strong>7/8</strong> 晚上回来简单看了一下《逆向》的PE文件格式，为了皮肤不敢熬夜，睡觉😴。</p>
 <img src="D:\blog\coriiiander\source\_posts\pictures\校对女孩河野悦子.jpg" alt="校对女孩河野悦子" style="zoom: 67%;" />
 
 <p><strong>周末7/9 - 7/10</strong> 看完了PE文件格式、运行时压缩、基址重定位表（第16章）← 好难看啊；The Economist 121.124期。</p>
 <p><strong>7/11</strong> 浅浅看一下《0 day》第16-17章漏洞挖掘。</p>
 <p><strong>7/12</strong> The Economist 120期，准备pikachu。</p>
-<p><strong>7/13</strong> 学了一下burpsuite，做了pikachu的暴力破解。</p>
+<p><strong>7/13</strong> 学了一下burpsuite，pikachu暴力破解做了一题。</p>
+<p>被迫坐一天好不舒服😫效率好低好低</p>
+<p><strong>7/14</strong> pikachu暴破余下2题&amp;XSS做一半</p>
+<p><strong>7/15</strong> pika XSS剩下的一半&amp;CSRF</p>
+<p><strong>周末7/16 - 7/17</strong> pika SQL-Inject 大部分；The Economist 119.118期。</p>
+<p><strong>7/18</strong> 下午开始pika SQL-Inject余下一点；将所有只有一问的漏洞都简单看了一下，但是没有实践&amp;做笔记，有详细代码和函数的还要再查查、再理解理解。</p>
 ]]></content>
   </entry>
 </search>
