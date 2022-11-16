@@ -10,6 +10,82 @@
 <h4 id="0x01-lexical-analyzer"><a href="#0x01-lexical-analyzer" class="headerlink" title="0x01 lexical analyzer"></a>0x01 lexical analyzer</h4>]]></content>
   </entry>
   <entry>
+    <title>CS144 Lab 1</title>
+    <url>/2022/11/02/CS144%20Lab%201/</url>
+    <content><![CDATA[<p>实验指导书：<a href="https://cs144.github.io/assignments/lab1.pdf">Lab Checkpoint 1: stitching substrings into a byte stream</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>CS144 Lab 0</title>
+    <url>/2022/10/24/CS144%20Lab%200/</url>
+    <content><![CDATA[<p>实验指导书：<a href="https://cs144.github.io/assignments/lab0.pdf">Lab Checkpoint 0: networking warmup</a></p>
+<p>环境搭建：<a href="https://stanford.edu/class/cs144/vm_howto/vm-howto-image.html#download">Setting up your CS144 VM using VirtualBox</a></p>
+<h4 id="1-Networking-by-hand"><a href="#1-Networking-by-hand" class="headerlink" title="1 Networking by hand"></a>1 Networking by hand</h4><h5 id="1-1-Fetch-a-Web-page"><a href="#1-1-Fetch-a-Web-page" class="headerlink" title="1.1 Fetch a Web page"></a>1.1 Fetch a Web page</h5><blockquote>
+<p>computer’s name - IP, service’s name - TCP port number</p>
+</blockquote>
+<p>使用<code>telnet cs144.keithw.org http</code>连接远程网页服务器</p>
+<blockquote>
+<p><strong>telnet</strong> program open a reliable byte stream between your computer and another computer with a particular service running on that computer - http.</p>
+</blockquote>
+<p>之后再键入以下内容</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">GET /hello HTTP/<span class="number">1.1</span><span class="symbol">&lt;enter&gt;</span></span><br><span class="line">Host: cs144.keithw.org<span class="symbol">&lt;enter&gt;</span></span><br><span class="line">Connection: <span class="keyword">close</span><span class="symbol">&lt;enter&gt;</span></span><br><span class="line"><span class="symbol">&lt;enter&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="D:\blog\coriiiander\source\_posts\pictures\cs144_1.png" alt="cs144_1" style="zoom:80%;" />
+
+
+
+<h5 id="1-2-Listening-and-connecting"><a href="#1-2-Listening-and-connecting" class="headerlink" title="1.2 Listening and connecting"></a>1.2 Listening and connecting</h5><p>telnet as client, netcat as server</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\cs144_2.png" alt="cs144_2" style="zoom:67%;" />
+
+
+
+<h4 id="2-Writing-a-network-program-using-an-OS-stream-socket"><a href="#2-Writing-a-network-program-using-an-OS-stream-socket" class="headerlink" title="2 Writing a network program using an OS stream socket"></a>2 Writing a network program using an OS stream socket</h4><h5 id="2-0-参考文档阅读"><a href="#2-0-参考文档阅读" class="headerlink" title="2.0 参考文档阅读"></a>2.0 参考文档阅读</h5><p>参考文档： <a href="https://cs144.github.io/doc/lab0/">Sponge documentation </a> FileDescriptor, Socket, TCPSocket, Address classes部分；file descriptor.hh, socket.hh, address.hh头文件。</p>
+<ul>
+<li><p>FileDescriptor</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\FileDescriptor.png" alt="FileDescriptor" style="zoom:85%;" /></li>
+</ul>
+<h5 id="2-1-building-the-starter-code"><a href="#2-1-building-the-starter-code" class="headerlink" title="2.1 building the starter code"></a>2.1 building the starter code</h5><figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/cs144/sponge</span><br><span class="line">cd sponge</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. <span class="comment"># 在该目录下生成makefile文件</span></span><br><span class="line">make <span class="comment"># 编译 &quot;make -j4&quot; use four processors</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>make：任意一个 C++ 程序都可以用 g++ 来编译，但当程序规模较大时，使用 g++ 将输入大量的编译指令。可用 makefile 进行自动编译。直接用 cmake 命令生成 makefile 文件，再用 make命令根据 makefile 文件的内容，编译整个工程更加方便。</p>
+</blockquote>
+<ul>
+<li>git clone 报错<code>gnutls_handshake() failed: Error in the pull function.</code> 解决方法：root下运行<code>apt-get -y install build-essential nghttp2 libnghttp2-dev libssl-dev</code>。</li>
+<li>VScode远程连接虚拟机进行开发问题<ul>
+<li><a href="https://blog.csdn.net/yylxiaobai/article/details/120024829">ssh连接</a></li>
+<li>permission denied: <code>sudo chmod 777 路径</code></li>
+<li>找不到头文件：<code>#include &quot;socket.hh&quot;</code> 添加路径修改为 <code>#include &quot;/home/cs144/sponge/libsponge/util/socket.hh&quot;</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="2-2-writing-webget"><a href="#2-2-writing-webget" class="headerlink" title="2.2 writing webget"></a>2.2 writing webget</h5><p>编码实现类似于wget命令和1.1手动实现的内容。</p>
+<ol>
+<li>用到HTTP请求报文、TCPSocket和Address类；</li>
+<li>HTTP中每行以“\r\n”结尾而非单个”\n”；</li>
+<li>client要在收到“EOF”（server回复结束）前读并打印出所有的server输出（要多次read）；</li>
+</ol>
+<h4 id="3-An-in-memory-reliable-byte-stream"><a href="#3-An-in-memory-reliable-byte-stream" class="headerlink" title="3 An in-memory reliable byte stream"></a>3 An in-memory reliable byte stream</h4><p>参考代码：<a href="https://www.epis2048.net/2022/cs144-lab0/">https://www.epis2048.net/2022/cs144-lab0/</a></p>
+<blockquote>
+<p>实验感想</p>
+<ol>
+<li><p>我的编程能力真的很差，写不出来，只能理解一下大佬的😵因此感觉代码非原创，博文发出来也没什么意思，指导书大家都会看。写实验报告的热情骤减。</p>
+</li>
+<li><p>CS144虚拟机密码设定要求一定强度，无语，每次输入都很累。</p>
+</li>
+</ol>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>resource</title>
+    <url>/2022/07/05/resource/</url>
+    <content><![CDATA[<p>这里记录了笔者冲浪过程中得到的一些学习灵感。</p>
+<h4 id="0x00-书单"><a href="#0x00-书单" class="headerlink" title="0x00 书单"></a>0x00 书单</h4><p><a href="https://eternalsakura13.com/2018/05/31/shudan/">sakura的ctf re/pwn入门书单</a></p>
+<p><a href="https://blog.csdn.net/wenrennaoda/article/details/98751217">二进制安全书籍推荐</a></p>
+<p>《漏洞战争》1.5 学习资源分享</p>
+]]></content>
+  </entry>
+  <entry>
     <title>fuzzing 101</title>
     <url>/2022/10/30/fuzzing101/</url>
     <content><![CDATA[<h4 id="Exercise-1-Xpdf"><a href="#Exercise-1-Xpdf" class="headerlink" title="Exercise 1 Xpdf"></a>Exercise 1 Xpdf</h4><h5 id="CVE-2019-13288"><a href="#CVE-2019-13288" class="headerlink" title="CVE-2019-13288"></a>CVE-2019-13288</h5><p>每个被调用的函数在栈上被分配一个栈帧，如果一个函数被递归调用很多次，可能会导致栈内存耗尽、程序崩溃（利用它发起DoS攻击）。CVE-2019-13288就是这样一个可通过精心制作的文件导致无限循环的漏洞。</p>
@@ -111,73 +187,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>CS144 Lab 0</title>
-    <url>/2022/10/24/CS144%20Lab%200/</url>
-    <content><![CDATA[<p>实验指导书：<a href="https://cs144.github.io/assignments/lab0.pdf">Lab Checkpoint 0: networking warmup</a></p>
-<p>环境搭建：<a href="https://stanford.edu/class/cs144/vm_howto/vm-howto-image.html#download">Setting up your CS144 VM using VirtualBox</a></p>
-<h4 id="1-Networking-by-hand"><a href="#1-Networking-by-hand" class="headerlink" title="1 Networking by hand"></a>1 Networking by hand</h4><h5 id="1-1-Fetch-a-Web-page"><a href="#1-1-Fetch-a-Web-page" class="headerlink" title="1.1 Fetch a Web page"></a>1.1 Fetch a Web page</h5><blockquote>
-<p>computer’s name - IP, service’s name - TCP port number</p>
-</blockquote>
-<p>使用<code>telnet cs144.keithw.org http</code>连接远程网页服务器</p>
-<blockquote>
-<p><strong>telnet</strong> program open a reliable byte stream between your computer and another computer with a particular service running on that computer - http.</p>
-</blockquote>
-<p>之后再键入以下内容</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">GET /hello HTTP/<span class="number">1.1</span><span class="symbol">&lt;enter&gt;</span></span><br><span class="line">Host: cs144.keithw.org<span class="symbol">&lt;enter&gt;</span></span><br><span class="line">Connection: <span class="keyword">close</span><span class="symbol">&lt;enter&gt;</span></span><br><span class="line"><span class="symbol">&lt;enter&gt;</span></span><br></pre></td></tr></table></figure>
-
-<img src="D:\blog\coriiiander\source\_posts\pictures\cs144_1.png" alt="cs144_1" style="zoom:80%;" />
-
-
-
-<h5 id="1-2-Listening-and-connecting"><a href="#1-2-Listening-and-connecting" class="headerlink" title="1.2 Listening and connecting"></a>1.2 Listening and connecting</h5><p>telnet as client, netcat as server</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\cs144_2.png" alt="cs144_2" style="zoom:67%;" />
-
-
-
-<h4 id="2-Writing-a-network-program-using-an-OS-stream-socket"><a href="#2-Writing-a-network-program-using-an-OS-stream-socket" class="headerlink" title="2 Writing a network program using an OS stream socket"></a>2 Writing a network program using an OS stream socket</h4><h5 id="2-0-参考文档阅读"><a href="#2-0-参考文档阅读" class="headerlink" title="2.0 参考文档阅读"></a>2.0 参考文档阅读</h5><p>参考文档： <a href="https://cs144.github.io/doc/lab0/">Sponge documentation </a> FileDescriptor, Socket, TCPSocket, Address classes部分；file descriptor.hh, socket.hh, address.hh头文件。</p>
-<ul>
-<li><p>FileDescriptor</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\FileDescriptor.png" alt="FileDescriptor" style="zoom:85%;" /></li>
-</ul>
-<h5 id="2-1-building-the-starter-code"><a href="#2-1-building-the-starter-code" class="headerlink" title="2.1 building the starter code"></a>2.1 building the starter code</h5><figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/cs144/sponge</span><br><span class="line">cd sponge</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. <span class="comment"># 在该目录下生成makefile文件</span></span><br><span class="line">make <span class="comment"># 编译 &quot;make -j4&quot; use four processors</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>make：任意一个 C++ 程序都可以用 g++ 来编译，但当程序规模较大时，使用 g++ 将输入大量的编译指令。可用 makefile 进行自动编译。直接用 cmake 命令生成 makefile 文件，再用 make命令根据 makefile 文件的内容，编译整个工程更加方便。</p>
-</blockquote>
-<ul>
-<li>git clone 报错<code>gnutls_handshake() failed: Error in the pull function.</code> 解决方法：root下运行<code>apt-get -y install build-essential nghttp2 libnghttp2-dev libssl-dev</code>。</li>
-<li>VScode远程连接虚拟机进行开发问题<ul>
-<li><a href="https://blog.csdn.net/yylxiaobai/article/details/120024829">ssh连接</a></li>
-<li>permission denied: <code>sudo chmod 777 路径</code></li>
-<li>找不到头文件：<code>#include &quot;socket.hh&quot;</code> 添加路径修改为 <code>#include &quot;/home/cs144/sponge/libsponge/util/socket.hh&quot;</code></li>
-</ul>
-</li>
-</ul>
-<h5 id="2-2-writing-webget"><a href="#2-2-writing-webget" class="headerlink" title="2.2 writing webget"></a>2.2 writing webget</h5><p>编码实现类似于wget命令和1.1手动实现的内容。</p>
-<ol>
-<li>用到HTTP请求报文、TCPSocket和Address类；</li>
-<li>HTTP中每行以“\r\n”结尾而非单个”\n”；</li>
-<li>client要在收到“EOF”（server回复结束）前读并打印出所有的server输出（要多次read）；</li>
-</ol>
-<h4 id="3-An-in-memory-reliable-byte-stream"><a href="#3-An-in-memory-reliable-byte-stream" class="headerlink" title="3 An in-memory reliable byte stream"></a>3 An in-memory reliable byte stream</h4><p>参考代码：<a href="https://www.epis2048.net/2022/cs144-lab0/">https://www.epis2048.net/2022/cs144-lab0/</a></p>
-<blockquote>
-<p>实验感想</p>
-<ol>
-<li><p>我的编程能力真的很差，写不出来，只能理解一下大佬的😵因此感觉代码非原创，博文发出来也没什么意思，指导书大家都会看。写实验报告的热情骤减。</p>
-</li>
-<li><p>CS144虚拟机密码设定要求一定强度，无语，每次输入都很累。</p>
-</li>
-</ol>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
-    <title>CS144 Lab 1</title>
-    <url>/2022/11/02/CS144%20Lab%201/</url>
-    <content><![CDATA[<p>实验指导书：<a href="https://cs144.github.io/assignments/lab1.pdf">Lab Checkpoint 1: stitching substrings into a byte stream</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>setupBlog</title>
     <url>/2022/06/20/setupBlog/</url>
     <content><![CDATA[<h4 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h4><p>参考保姆级教学<a href="https://b23.tv/MLKFY">https://b23.tv/MLKFY</a> B站永远的神！</p>
@@ -197,15 +206,6 @@
 <p>上传github</p>
 <figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">...</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
-]]></content>
-  </entry>
-  <entry>
-    <title>resource</title>
-    <url>/2022/07/05/resource/</url>
-    <content><![CDATA[<p>这里记录了笔者冲浪过程中得到的一些学习灵感。</p>
-<h4 id="0x00-书单"><a href="#0x00-书单" class="headerlink" title="0x00 书单"></a>0x00 书单</h4><p><a href="https://eternalsakura13.com/2018/05/31/shudan/">sakura的ctf re/pwn入门书单</a></p>
-<p><a href="https://blog.csdn.net/wenrennaoda/article/details/98751217">二进制安全书籍推荐</a></p>
-<p>《漏洞战争》1.5 学习资源分享</p>
 ]]></content>
   </entry>
   <entry>
