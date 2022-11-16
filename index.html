@@ -173,7 +173,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-11-16 09:58:16 / 修改时间：10:28:18" itemprop="dateCreated datePublished" datetime="2022-11-16T09:58:16+08:00">2022-11-16</time>
+              <time title="创建时间：2022-11-16 09:58:16 / 修改时间：15:09:07" itemprop="dateCreated datePublished" datetime="2022-11-16T09:58:16+08:00">2022-11-16</time>
             </span>
 
           
@@ -192,151 +192,6 @@
 <li></li>
 </ul>
 <h4 id="0x01-lexical-analyzer"><a href="#0x01-lexical-analyzer" class="headerlink" title="0x01 lexical analyzer"></a>0x01 lexical analyzer</h4>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/12/CSAPP%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="六月二十日香菜">
-      <meta itemprop="description" content="凡是过往，皆为序章">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coriiiander'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/12/CSAPP%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">CSAPP阅读笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-12 01:34:20" itemprop="dateCreated datePublished" datetime="2022-11-12T01:34:20+08:00">2022-11-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-13 10:43:06" itemprop="dateModified" datetime="2022-11-13T10:43:06+08:00">2022-11-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Chapter1-计算机系统漫游"><a href="#Chapter1-计算机系统漫游" class="headerlink" title="Chapter1 计算机系统漫游"></a>Chapter1 计算机系统漫游</h4><ul>
-<li><p>编译系统</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\编译系统.png" alt="编译系统" style="zoom:67%;" />
-
-<ul>
-<li><p>预处理阶段：根据#开头的命令，插入头文件。</p>
-<blockquote>
-<p>hello.c：源程序（文本），由0和1组成的位（bit）序列。8个位为一个字节，每个字节表示程序中某个文本字符（ASCII标准）。</p>
-</blockquote>
-</li>
-<li><p> 编译阶段：编译器输出汇编语言文件。</p>
-</li>
-<li><p>汇编阶段：汇编器将.s文件翻译成机器语言指令。</p>
-</li>
-<li><p>链接阶段：合并一些编译器提供的标准库中的函数。</p>
-<blockquote>
-<p>执行：shell是个命令行解释器，输出一个提示符，等待输入一个命令行，然后执行该命令。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>系统的硬件组成</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\系统硬件组成.png" alt="系统硬件组成" style="zoom:67%;" />
-
-<ul>
-<li><p> 总线：传送定长字（word），字长是一个基本的系统参数。</p>
-</li>
-<li><p>I/O设备：示例系统包括4个I/O设备：键盘、鼠标、显示器、磁盘。每个I/O设备都通过一个控制器或适配器与I/O总线相连。</p>
-<blockquote>
-<p>控制器和适配器：主要区别在于封装方式。控制器是置于I/O设备本身的或系统的主板上的芯片组，而适配器则是一块插在主板插槽上的卡。</p>
-</blockquote>
-</li>
-<li><p>主存：执行程序时临时存储程序和数据。物理上看，由一组动态随机存取存储器（DRAM）芯片组成；逻辑上看，是一个线性字节数组，每个字节有其唯一的地址（数组索引）。</p>
-</li>
-<li><p>处理器：中央处理单元（CPU），用于解释（或执行）存储在主存中的指令。核心是<strong>程序计数器（PC）</strong>，PC指向主存中的某条指令地址，处理器不断执行PC指向的指令。<strong>寄存器文件（register file）</strong>是一个小的存储设备，由一些1字长的寄存器组成。<strong>算术/逻辑单元（ALU）</strong>计算新的数据和地址值。</p>
-<ul>
-<li> 加载：主存 → 寄存器；</li>
-<li> 存储：寄存器 → 主存；</li>
-<li> 操作：两个寄存器 → ALU → 一个寄存器；</li>
-<li> 跳转：指令 → PC。</li>
-</ul>
-<blockquote>
-<p>指令集结构描述的是每条机器代码指令的效果；微体系结构描述的是处理器实际上是如何实现的。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>高速缓存</p>
-</li>
-</ul>
-<p>高速缓存存储器存放近期可能用到的信息以应对处理器和主存之间的差异。L1和L2高速缓存用一种叫做静态随机访问存储器（SRAM）的硬件技术实现的。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\存储器层次结构.png" alt="存储器层次结构" style="zoom:67%;" />
-
-<ul>
-<li>操作系统</li>
-</ul>
-<p>所有应用程序对硬件的操作尝试都必须通过OS。抽象表示部分将在操作系统课程中详细学习，详细看书。</p>
-<img src="D:\blog\coriiiander\source\_posts\pictures\OS CSAPP.png" alt="OS CSAPP" style="zoom:67%;" />
-
-
-
-<h4 id="Chapter-2-信息的表示和处理"><a href="#Chapter-2-信息的表示和处理" class="headerlink" title="Chapter 2 信息的表示和处理"></a>Chapter 2 信息的表示和处理</h4><ul>
-<li><p>信息存储</p>
-<blockquote>
-<p>指针：值表示某个对象的位置，类型表示那个位置上所存储对象的类型。</p>
-</blockquote>
-<ul>
-<li><p>字：计算机的字长决定虚拟地址空间的最大大小。一个字长微w微的机器，虚拟地址范围为0~2。不同位机器分配给数据类型的字节数不同。</p>
-</li>
-<li><p>寻址和字节顺序</p>
-<ul>
-<li><p>小端法：最低有效字节在前，大多Intel兼容机采用；大端法：最高有效字节在前，大多IBM和Sun机器采用。（0x01234567 - 0是高位字节）</p>
-<blockquote>
-<p>x的地址为0x100，也即地址表达式&amp;x的值为0x100。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
       
     </div>
 
@@ -1721,7 +1576,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
