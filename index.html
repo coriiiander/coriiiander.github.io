@@ -148,6 +148,63 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/compiler/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="六月二十日香菜">
+      <meta itemprop="description" content="凡是过往，皆为序章">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coriiiander'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/18/compiler/" class="post-title-link" itemprop="url">Compiler</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-18 19:17:10" itemprop="dateCreated datePublished" datetime="2022-11-18T19:17:10+08:00">2022-11-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/16/CS143%20Compiler/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -171,10 +228,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-11-16 09:58:16 / 修改时间：15:09:07" itemprop="dateCreated datePublished" datetime="2022-11-16T09:58:16+08:00">2022-11-16</time>
+              <time title="创建时间：2022-11-16 09:58:16" itemprop="dateCreated datePublished" datetime="2022-11-16T09:58:16+08:00">2022-11-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-24 12:52:32" itemprop="dateModified" datetime="2022-11-24T12:52:32+08:00">2022-11-24</time>
+              </span>
 
           
 
@@ -189,7 +252,9 @@
       
           <h4 id="0x00-Overview"><a href="#0x00-Overview" class="headerlink" title="0x00 Overview"></a>0x00 Overview</h4><ul>
 <li><strong>lexical analyzer:</strong> also called a scanner, using a lexical analyzer generator called flex.</li>
-<li></li>
+<li> <strong>parsing</strong>: </li>
+<li> <strong>semantic analysis</strong>: </li>
+<li> <strong>code generation</strong>: </li>
 </ul>
 <h4 id="0x01-lexical-analyzer"><a href="#0x01-lexical-analyzer" class="headerlink" title="0x01 lexical analyzer"></a>0x01 lexical analyzer</h4>
       
@@ -241,7 +306,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-03 09:53:43" itemprop="dateModified" datetime="2022-11-03T09:53:43+08:00">2022-11-03</time>
+                <time title="修改时间：2022-11-17 13:27:10" itemprop="dateModified" datetime="2022-11-17T13:27:10+08:00">2022-11-17</time>
               </span>
 
           
@@ -256,6 +321,26 @@
 
       
           <p>实验指导书：<a target="_blank" rel="noopener" href="https://cs144.github.io/assignments/lab1.pdf">Lab Checkpoint 1: stitching substrings into a byte stream</a></p>
+<h4 id="1-Overview"><a href="#1-Overview" class="headerlink" title="1 Overview"></a>1 Overview</h4><img src="D:\blog\coriiiander\source\_posts\pictures\CS144TCPsocket.png" alt="CS144TCPsocket" style="zoom:70%;" />
+
+<ul>
+<li>Lab 0 实现了一个ByteStram</li>
+<li>Lab 1 实现StreamReassembler: a module that stitches small pieces of the byte stream (known as substrings, or segments) back into a contiguous stream of bytes in the correct sequence.</li>
+<li>Lab 2 实现TCPReceiver: the part of TCP that handles the inbound byte-stream.</li>
+<li>Lab 3 实现TCPSender: this part handles the outbound byte-stream.</li>
+<li>Lab 4 实现TCPConnection</li>
+</ul>
+<h4 id="2-Getting-started"><a href="#2-Getting-started" class="headerlink" title="2 Getting started"></a>2 Getting started</h4><ul>
+<li><p>Commit all solutions to Lab 0. </p>
+</li>
+<li><p>Run <code>git fetch</code> to retrieve the most recent version of the lab assignments.</p>
+</li>
+<li><p>Download the starter code for Lab 1 by running <code>git merge origin/lab1-startercode</code>.</p>
+</li>
+<li><p>Use <code>make</code> to compile the source code(run <code>make -j4</code> can use four processors).</p>
+</li>
+<li></li>
+</ul>
 
       
     </div>
@@ -306,7 +391,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-11 22:03:43" itemprop="dateModified" datetime="2022-11-11T22:03:43+08:00">2022-11-11</time>
+                <time title="修改时间：2022-11-29 20:44:14" itemprop="dateModified" datetime="2022-11-29T20:44:14+08:00">2022-11-29</time>
               </span>
 
           
@@ -320,7 +405,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="Exercise-1-Xpdf"><a href="#Exercise-1-Xpdf" class="headerlink" title="Exercise 1 Xpdf"></a>Exercise 1 Xpdf</h4><h5 id="CVE-2019-13288"><a href="#CVE-2019-13288" class="headerlink" title="CVE-2019-13288"></a>CVE-2019-13288</h5><p>每个被调用的函数在栈上被分配一个栈帧，如果一个函数被递归调用很多次，可能会导致栈内存耗尽、程序崩溃（利用它发起DoS攻击）。CVE-2019-13288就是这样一个可通过精心制作的文件导致无限循环的漏洞。</p>
+          <h4 id="Exercise-1-Xpdf"><a href="#Exercise-1-Xpdf" class="headerlink" title="Exercise 1 Xpdf"></a>Exercise 1 Xpdf</h4><h5 id="CVE-2019-13288"><a href="#CVE-2019-13288" class="headerlink" title="CVE-2019-13288"></a>CVE-2019-13288</h5><p>每个被调用的函数在栈上被分配一个栈帧，如果一个函数被递归调用很多次，可能会导致栈内存耗尽、程序崩溃。在 Xpdf 4.01.01 中，Parser.cc 中的 Parser::getObj() 函数就可以通过精心设计的文件导致无限递归。远程攻击者可以利用它进行 DoS 攻击。</p>
 <h5 id="Install-AFL"><a href="#Install-AFL" class="headerlink" title="Install AFL++"></a>Install AFL++</h5><p>Install the dependencies</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y build-essential python3-dev automake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools</span><br><span class="line">sudo apt-get install -y lld-11 llvm-11 llvm-11-dev clang-11 || sudo apt-get install -y lld llvm llvm-dev clang </span><br><span class="line">sudo apt-get install -y gcc-$(gcc --version|head -n1|sed &#x27;s/.* //&#x27;|sed &#x27;s/\..*//&#x27;)-plugin-dev libstdc++-$(gcc --version|head -n1|sed &#x27;s/.* //&#x27;|sed &#x27;s/\..*//&#x27;)-dev</span><br></pre></td></tr></table></figure>
 
@@ -569,7 +654,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/10/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">计算机网络笔记</a>
+            <a href="/2022/10/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -586,7 +671,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-16 15:13:40" itemprop="dateModified" datetime="2022-11-16T15:13:40+08:00">2022-11-16</time>
+                <time title="修改时间：2022-11-29 08:51:09" itemprop="dateModified" datetime="2022-11-29T08:51:09+08:00">2022-11-29</time>
               </span>
 
           
@@ -600,7 +685,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>这里记录了笔者学习《计算机网络：自顶向下方法》和编者的<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/lectures.php">教学资料</a>的一些笔记。由于英文授课及部分翻译较拗口的原因，大部分内容将用英文书写。</p>
+          <p>title: 计算机网络笔记</p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>这里记录了笔者学习《计算机网络：自顶向下方法》和编者的<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/lectures.php">教学资料</a>的一些笔记。由于英文授课及部分翻译较拗口的原因，大部分内容将用英文书写。</p>
 <h4 id="Chapter-2-Appication-layer"><a href="#Chapter-2-Appication-layer" class="headerlink" title="Chapter 2  Appication layer"></a>Chapter 2  Appication layer</h4><ul>
 <li><p>application architecture</p>
 <ul>
@@ -1223,6 +1309,60 @@
 <li><p>Switched Local Area Networks</p>
 </li>
 </ul>
+<h4 id="Chapter-7-Wireless-and-Mobile-Networks"><a href="#Chapter-7-Wireless-and-Mobile-Networks" class="headerlink" title="Chapter 7 Wireless and Mobile Networks"></a>Chapter 7 Wireless and Mobile Networks</h4><ul>
+<li><p>WiFi:  IEEE 802.11 Wireless LANs</p>
+<ul>
+<li><p>architecture</p>
+<blockquote>
+<p>BSS: basic service set; </p>
+<p>AP: access point,  central base station.</p>
+</blockquote>
+<img src="D:\blog\coriiiander\source\_posts\pictures\80211architecture.png" alt="80211architecture" style="zoom:50%;" />
+
+<ul>
+<li><p>ad hoc network: a network with no central control and with no connections to the “outside world.”</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\adhoc.png" alt="adhoc" style="zoom:50%;" /></li>
+<li><p>Channels and Association</p>
+<blockquote>
+<p>APs are assigned  <strong>Service Set Identifier (SSID)</strong> and a channel number.</p>
+</blockquote>
+<blockquote>
+<p>The set of channels 1, 6 and 11 is the only set of three non-overlapping channels. </p>
+</blockquote>
+<ul>
+<li><p>Associating means the wireless device creates a virtual wire between itself and the AP.</p>
+</li>
+<li><p><strong>WiFi jungle</strong> is any physical location where a wireless station receives a sufficiently strong signal from two or more APs. </p>
+</li>
+<li><p>The device send a DHCP discovery message into the subnet via the AP in order to obtain an IP address on the subnet.</p>
+<p>Once associated with an AP, the device will want to join the subnet to which the AP belongs.</p>
+<img src="D:\blog\coriiiander\source\_posts\pictures\scanning.png" alt="scanning " style="zoom:67%;" /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The 802.11 MAC Protocol</p>
+<ul>
+<li><p>CSMA with collision avoidance (CSMA/CA)</p>
+<blockquote>
+<p>“Carrier sense multiple access” meaning that each station senses the channel before transmitting, and refrains from transmitting when the channel is sensed busy.</p>
+<p>Because the reasons that adapter can’t transmit and listen at the same time and the hidden terminal problem and fading, the adapter would not be able to detect all collisions.</p>
+<p>It transmits the frame in its entirety and there is no turning back, so several collision-avoidance techniques are employed.</p>
+</blockquote>
+<img src="D:\blog\coriiiander\source\_posts\pictures\80211.png" alt="80211" style="zoom:60%;" /></li>
+<li><p>RTS &amp; CTS</p>
+<blockquote>
+<p>settle hidden terminals</p>
+</blockquote>
+<ul>
+<li>RTS: Request to Send; CTS: Clear to Send.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -1422,7 +1562,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-16 09:57:20" itemprop="dateModified" datetime="2022-11-16T09:57:20+08:00">2022-11-16</time>
+                <time title="修改时间：2022-12-04 13:47:46" itemprop="dateModified" datetime="2022-12-04T13:47:46+08:00">2022-12-04</time>
               </span>
 
           
@@ -1457,7 +1597,7 @@
 <ul>
 <li>发现了一个很不错的网站：<a target="_blank" rel="noopener" href="https://csdiy.wiki/">CS自学指南</a></li>
 <li>CNATDA：<a target="_blank" rel="noopener" href="https://gaia.cs.umass.edu/kurose_ross/lectures.php">课程视频</a>讲的很好，最重要的是时长在可接受范围内。搭配<a target="_blank" rel="noopener" href="https://kiprey.github.io/2021/05/cnatda-1/">肖神的笔记</a>学习。要做自己的笔记——无法复述出来的都是没学会的。微软输入法没有英文联想，急死了，下个讯飞输入法。…讯飞输入法也太丑了，删了…不想下搜狗。下周能不能开CS144。</li>
-<li>seed：Shellshock Attack，下载了n多次虚拟机，麻了。</li>
+<li>seed Shellshock Attack，下载了n多次虚拟机，麻了。</li>
 <li>要坚持每天英语阅读。</li>
 </ul>
 <p><font size=3 face="楷体">下学期要开始准备考研，校内课程还要兼顾，我只有半年时间，完全不够用。</font></p>
@@ -1467,8 +1607,8 @@
 <ul>
 <li>CS144：同步开始吧，毕竟我容易犯重理论轻实践的毛病。完成了Lab 0。</li>
 <li>CNATDA：Chapter 3结束。后几节图表有点多，有点难。</li>
-<li>软测课设：wifiDOS(ESP8266)，怎么才能用30分钟展示这个小实验。</li>
 <li>fuzzing: <a target="_blank" rel="noopener" href="https://github.com/antonio-morales/Fuzzing101">fuzzing101</a>. 我找到了很好的fuzzing学习资源 - <a target="_blank" rel="noopener" href="https://aflplus.plus/docs/tutorials/">afl++tutorials</a>. 重启是解决一切问题的根本方法，昨天的bug今天再运行一遍突然就好了。</li>
+<li>软测课设 wifiDOS(ESP8266)，怎么才能用30分钟展示这个小实验。</li>
 </ul>
 <p><font size=3 face="楷体">现在重拾fuzzing的话完全学不深入，最多成为一个脚本小子，杀了我吧，fuzzing门槛好高。</font></p>
 <h4 id="0x03-10-31-11-6"><a href="#0x03-10-31-11-6" class="headerlink" title="0x03 10/31 - 11/6"></a>0x03 10/31 - 11/6</h4><blockquote>
@@ -1477,9 +1617,9 @@
 <ul>
 <li>CNATDA：PPT看到Chapter 5。</li>
 <li>CS144：Lab 1。代码自己写还是写不出来。</li>
-<li>校设课程：软测&amp;算法期中复习。信安数学基础读了一篇论文《Jaqen A High-Performance Switch-Native Approach for Detecting and Mitigating Volumetric DDoS Attacks with Programmable Switches》花了挺多工夫但是没读懂没收获，无话可说。</li>
 <li>fuzzing：源码，看不懂。</li>
 <li>英语：选修课阅读。</li>
+<li>软测&amp;算法期中复习。信安数学基础读了一篇论文《Jaqen A High-Performance Switch-Native Approach for Detecting and Mitigating Volumetric DDoS Attacks with Programmable Switches》花了挺多工夫但是没读懂没收获，无话可说。</li>
 </ul>
 <p><font size=3 face="楷体">收拾了一下情绪，果然脑细胞在体外能导向学习，在体内只能长出恋爱脑。</font></p>
 <h4 id="0x04-11-7-11-13"><a href="#0x04-11-7-11-13" class="headerlink" title="0x04 11/7 - 11/13"></a>0x04 11/7 - 11/13</h4><blockquote>
@@ -1488,16 +1628,129 @@
 <ul>
 <li>fuzzing：发现一个有关内核漏洞挖掘的网站<a target="_blank" rel="noopener" href="https://fuzzysecurity.com/tutorials.html%E3%80%82%E5%90%AC%E5%AD%99%E8%80%81%E5%B8%88%E7%9A%84%E5%BB%BA%E8%AE%AE%E4%B8%8D%E7%9C%8BAFL%E6%BA%90%E7%A0%81%E4%BA%86%EF%BC%8C%E5%81%9Afuzzing101">https://fuzzysecurity.com/tutorials.html。听孙老师的建议不看AFL源码了，做fuzzing101</a>. exercise1 &amp; 2.</li>
 <li>CNATDA：网课看不下去了，改看英文原版书。笔记才做到第四章。三天内一定要结束它！</li>
-<li>seed：Buffer Overflow Attack Lab.</li>
+<li>seed Buffer Overflow Attack Lab.</li>
 </ul>
 <p><font size=3 face="楷体">关于我醉心网课被群友说“不适合看书”以及sakura师傅说“一般一本几百页的书，最多看一个周就看完了”的事情。sakura师傅还让我“先打好开发的基础吧”。哭，补天路漫漫。还想做编译原理，还想看《漏洞战争》。</font></p>
-<h4 id="0x05-11-14-11-20"><a href="#0x05-11-14-11-20" class="headerlink" title="0x05 11/14 - 11/20"></a>0x05 11/14 - 11/20</h4><blockquote>
-<p>CS143 &amp; CS144</p>
+<h4 id="0x05-0x06-11-14-11-27"><a href="#0x05-0x06-11-14-11-27" class="headerlink" title="0x05 - 0x06 11/14 - 11/27"></a>0x05 - 0x06 11/14 - 11/27</h4><blockquote>
+<p>编译原理 &amp; CS144 &amp; seed系统安全实验</p>
 </blockquote>
 <ul>
-<li>CNATDA：本周三结束了计网书的阅读。</li>
-<li>CS143：</li>
+<li>CNATDA：11月16日结束了计网书的阅读。</li>
+<li>编译原理：stanford 网课前两章，lab 1 &amp; 2 .</li>
+<li>CS144：lab 2 &amp; 3 &amp; 4 .</li>
+<li>seed实验（BufferOve rflow &amp; FormatString &amp; RaceCondition &amp; DirtyCOW &amp; Meltdown &amp; Spectre），wifiDOS</li>
 </ul>
+<p><font size=3 face="楷体">江姝潼学姐是我的榜样❗ 编译原理第二章难起来了。无语死了，一直在截屏，我怎么能忘了这个世界上有个东西叫PPT啊！</font></p>
+<h4 id="0x07-11-28-12-4"><a href="#0x07-11-28-12-4" class="headerlink" title="0x07 11/28 - 12/4"></a>0x07 11/28 - 12/4</h4><blockquote>
+<p>编译原理 &amp; 软测报告</p>
+</blockquote>
+<ul>
+<li>编译原理：网课听不懂了，编程能力差实验也卡在那里…看看文字资料</li>
+<li>最近大部分时间花在准备软测两个报告上（wifiDOS &amp; fuzzing）<ul>
+<li>fuzzing：crashes分析与源码阅读</li>
+</ul>
+</li>
+</ul>
+<p><font size=3 face="楷体">fuzzing资料想找还是能找到很多的，我原先会觉得门槛高是因为没确定下来学习方向也没认真找。</font></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/11/%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="六月二十日香菜">
+      <meta itemprop="description" content="凡是过往，皆为序章">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coriiiander'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/11/%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-11 21:14:00" itemprop="dateCreated datePublished" datetime="2022-02-11T21:14:00+08:00">2022-02-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-02 10:40:10" itemprop="dateModified" datetime="2022-12-02T10:40:10+08:00">2022-12-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="0x00-传文件到虚拟机"><a href="#0x00-传文件到虚拟机" class="headerlink" title="0x00 传文件到虚拟机"></a>0x00 传文件到虚拟机</h4><h5 id="传文件到ubuntu"><a href="#传文件到ubuntu" class="headerlink" title="传文件到ubuntu"></a>传文件到ubuntu</h5><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jackghq/article/details/54974141">https://blog.csdn.net/jackghq/article/details/54974141</a></p>
+<h5 id="传文件到kali"><a href="#传文件到kali" class="headerlink" title="传文件到kali"></a>传文件到kali</h5><ul>
+<li>重启之后，再次连接失败。</li>
+</ul>
+<p>root权限下分配ip：<code>ifconfig eth0 up</code>    <code>dhclient eth0</code>    </p>
+<p><code>/etc/init.d/ssh start</code>启动SSH后，可以使用。</p>
+<p>最初一直想下载VMTools直接拖文件进虚拟机，并且还能复制粘贴和调整屏幕大小。可是按照官方教程试了很多很多次都在最后一步有<code>eject:cannot open /dev/sr0:设备或资源忙；Eject Failed:If possible manually eject the Tools installer from cdrom mounted at...       </code>的报错。于是我转而用SSH传文件。</p>
+<p>运行<code>ps -e|grep ssh</code>发现kali自带的ssh，用<code>/etc/init.d/ssh start</code>启动它，运行<code>update-rc.d ssh enable</code>设置开机自启SSH。</p>
+<img src="D:\CTF\notes' pictures\SSH传文件到kali_1.png" alt="SSH传文件到kali_1" style="zoom: 67%;" />
+
+<p>下载xshell并配置，注意不修改端口，主机IP不是自己当前所在地的IP（搜“IP”所得），而是虚拟机的ip地址。</p>
+<img src="D:\CTF\notes' pictures\SSH配置1.png" alt="SSH配置1" style="zoom:50%;" />
+
+<p>kali输入<code>ifconfig -a</code>得到如下反馈，误以为127.0.0.1是虚拟机ip，又搞了好长时间。</p>
+<img src="D:\CTF\notes' pictures\虚拟机ip查询1.png" alt="虚拟机ip查询1" style="zoom:50%;" />
+
+<p>因为看到一个方法说kali右上角网络设置中可以直接看到ip，突然发现自己的虚拟机没有网络连接（尽管现在仍然没有，这个好像不影响）。于是又在网上搜这个问题，得到了分配ip的方法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42367179/article/details/112802407%E3%80%82%E7%BB%88%E4%BA%8E%E5%BE%97%E5%88%B0%E4%BA%86SSH%E8%AE%BE%E7%BD%AE%E4%B8%AD%E5%BA%94%E8%AF%A5%E5%A1%AB%E5%86%99%E7%9A%84%E6%AD%A3%E7%A1%AEIP%E5%80%BC%E3%80%82">https://blog.csdn.net/weixin_42367179/article/details/112802407。终于得到了SSH设置中应该填写的正确IP值。</a></p>
+<p>加上之前稀里糊涂地进行过了对属性文件的修改：</p>
+<ul>
+<li>1.将 permitrootlogin 前面的注释去掉,并且后面改为yes，如果没有则添加permitrootlogin  yes</li>
+<li>2.将#PasswordAuthentication no的注释去掉，并且将NO修改为YES //kali中默认是yes</li>
+<li>3.按Esc , 同时按shift和冒号键 ,输入wq ，回车保存</li>
+</ul>
+<p>再次连接时，SSH显示成功连接！最后，修改远程文件夹地址，即可在kali中看到传过来的文件啦！</p>
+<img src="D:\CTF\notes' pictures\SSH配置2.png" alt="SSH配置2" style="zoom:50%;" />
+
+<p><code>rz</code>传送文件。压缩一下就可以传文件夹了。</p>
+<p><code>rm -rf +文件名</code>删除文件</p>
+<p><code>sz</code>将kali文件传到windows中，其后需要跟上文件名</p>
+<p>点击该处下载xftp后，就会出现类似ftp传输界面了。</p>
+<img src="D:\CTF\notes' pictures\xshell中xftp传文件.png" alt="xshell中xftp传文件" style="zoom:50%;" />
+
+
+
+<h4 id="0x01-kali连不上网"><a href="#0x01-kali连不上网" class="headerlink" title="0x01 kali连不上网"></a>0x01 kali连不上网</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xujing19920814/article/details/73469175#:~:text=%23%E9%9C%80%E8%A6%81%E5%9C%A8root%E6%9D%83%E9%99%90%E4%B8%8B,%E9%80%80%E5%87%BA%E6%9C%80%E5%90%8Ereboot%E9%87%8D%E5%90%AF%EF%BC%8C%E5%86%8D%E6%AC%A1">https://blog.csdn.net/xujing19920814/article/details/73469175#:~:text=%23%E9%9C%80%E8%A6%81%E5%9C%A8root%E6%9D%83%E9%99%90%E4%B8%8B,%E9%80%80%E5%87%BA%E6%9C%80%E5%90%8Ereboot%E9%87%8D%E5%90%AF%EF%BC%8C%E5%86%8D%E6%AC%A1</a></p>
 
       
     </div>
@@ -1581,7 +1834,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
